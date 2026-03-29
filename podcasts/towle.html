@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas E. Towle — Author</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400;600&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment:  #F5EDD8;
+    --sand:       #E8D5A8;
+    --dune:       #D4B87A;
+    --rust:       #B84A2A;
+    --terracotta: #C96B3A;
+    --adobe:      #A0522D;
+    --sage:       #6B7C5A;
+    --sage-lt:    #8FA07A;
+    --sage-bg:    #EFF2EB;
+    --ink:        #2C1F0E;
+    --ink-mid:    #5A3E28;
+    --ink-lt:     #8A6A4A;
+    --sky:        #C8DDE8;
+    --sky-lt:     #E8F2F8;
+    --white:      #FDFAF4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN TEXTURE OVERLAY ─────────────────────────────── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 128px;
+  }
+
+  /* ── NAV ───────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3.5rem;
+    background: rgba(253,250,244,0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--sand);
+  }
+  .nav-logo {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.05rem; font-style: italic;
+    color: var(--rust); text-decoration: none; letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2.8rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-mid); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rust); }
+  .nav-cta {
+    padding: 0.55rem 1.4rem;
+    background: var(--rust); color: var(--white) !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--adobe) !important; color: var(--white) !important; }
+
+  /* ── HERO ──────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem 5rem;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--white) 0%, var(--parchment) 60%, var(--sand) 100%);
+  }
+
+  /* diagonal sun-ray bands */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(
+      -55deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(212,184,122,0.08) 80px,
+      rgba(212,184,122,0.08) 160px
+    );
+  }
+
+  /* sun circle top-right */
+  .hero::after {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,107,58,0.18) 0%, rgba(232,213,168,0.1) 40%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+
+  .hero-kicker {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .hero-kicker-line { width: 2.5rem; height: 1px; background: var(--rust); }
+  .hero-kicker span {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  h1.hero-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(3rem, 5.5vw, 6rem);
+    font-weight: 700; line-height: 1;
+    color: var(--ink); margin-bottom: 0.15em;
+  }
+  h1.hero-name em {
+    font-style: italic; color: var(--rust);
+    display: block; font-size: 0.7em; margin-top: 0.1em;
+  }
+
+  .hero-tagline {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem; font-style: italic;
+    color: var(--ink-mid); line-height: 1.7;
+    max-width: 44ch; margin: 1.8rem 0 2.5rem;
+    border-left: 3px solid var(--dune);
+    padding-left: 1.2rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 0.9rem 2.2rem;
+    background: var(--rust); color: var(--white);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--adobe); transform: translateY(-2px); }
+  .btn-outline {
+    padding: 0.9rem 2.2rem;
+    border: 1.5px solid var(--ink-lt); color: var(--ink-mid);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--rust); color: var(--rust); }
+
+  /* hero illustration */
+  .hero-art {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-art svg { width: 100%; max-width: 520px; height: auto; }
+
+  /* scroll hint */
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-lt);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    animation: fadeUp 1.5s ease 1.2s both;
+  }
+  .scroll-hint::after {
+    content: ''; display: block;
+    width: 1px; height: 36px;
+    background: linear-gradient(to bottom, var(--rust), transparent);
+    animation: stretchDown 2s ease-in-out infinite;
+  }
+  @keyframes stretchDown { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(0.5)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateX(-50%) translateY(12px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+
+  /* ── RIBBON BANNER ─────────────────────────────────────── */
+  .ribbon {
+    background: var(--rust);
+    color: var(--white);
+    padding: 0.9rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ribbon-track {
+    display: inline-block;
+    animation: scroll-x 28s linear infinite;
+  }
+  .ribbon-track span {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-right: 4rem;
+  }
+  .ribbon-track .dot { color: rgba(255,255,255,0.5); margin-right: 4rem; }
+  @keyframes scroll-x { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── SECTION UTILITY ───────────────────────────────────── */
+  .section-wrap { max-width: 1200px; margin: 0 auto; }
+
+  .section-kicker {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;
+  }
+  .section-kicker::before {
+    content: ''; display: block;
+    width: 2rem; height: 1px; background: var(--rust);
+  }
+  .section-kicker span {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  h2.sec-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 700; line-height: 1.1; color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+  h2.sec-title em { font-style: italic; color: var(--rust); }
+
+  /* ── ABOUT ─────────────────────────────────────────────── */
+  #about {
+    padding: 7rem 4rem;
+    background: var(--white);
+  }
+  .about-grid {
+    display: grid; grid-template-columns: 380px 1fr;
+    gap: 6rem; align-items: start;
+  }
+  .about-left { position: sticky; top: 7rem; }
+
+  /* faux book cover / portrait */
+  .portrait-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, var(--sand) 0%, var(--parchment) 40%, var(--dune) 100%);
+    border: 1px solid var(--dune);
+    box-shadow: 8px 12px 40px rgba(90,62,40,0.15), 2px 4px 8px rgba(90,62,40,0.1);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end;
+    padding: 2rem; position: relative; overflow: hidden;
+  }
+  .portrait-frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,107,58,0.12) 0%, transparent 70%);
+  }
+  .portrait-initials {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 8rem; font-weight: 700; font-style: italic;
+    color: rgba(160,82,45,0.12);
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -52%);
+    line-height: 1; white-space: nowrap;
+    letter-spacing: -0.04em;
+  }
+  .portrait-caption {
+    position: relative; z-index: 2; text-align: center;
+    border-top: 1px solid rgba(160,82,45,0.2);
+    padding-top: 1rem; width: 100%;
+  }
+  .portrait-caption .pname {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem; font-style: italic; color: var(--adobe);
+    display: block; margin-bottom: 0.2rem;
+  }
+  .portrait-caption .psub {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-lt);
+  }
+
+  .about-pull {
+    margin-top: 1.5rem; padding: 1.2rem 1.5rem;
+    background: var(--sage-bg);
+    border-left: 3px solid var(--sage);
+    font-style: italic; font-size: 0.95rem;
+    color: var(--ink-mid); line-height: 1.7;
+  }
+
+  .about-body p {
+    font-size: 1.1rem; line-height: 1.9;
+    color: var(--ink-mid); margin-bottom: 1.4rem;
+  }
+  .about-body p:first-of-type {
+    font-size: 1.3rem; color: var(--ink); font-weight: 400;
+  }
+
+  .stats-row {
+    display: flex; gap: 2.5rem; margin-top: 2.5rem;
+    padding-top: 2rem; border-top: 1px solid var(--sand);
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-n {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--rust); display: block; line-height: 1;
+  }
+  .stat-l {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-lt); margin-top: 0.3rem; display: block;
+  }
+
+  /* ── BOOKS ─────────────────────────────────────────────── */
+  #books {
+    padding: 7rem 4rem;
+    background: var(--parchment);
+    position: relative; overflow: hidden;
+  }
+  #books::before {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,107,58,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .books-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+
+  .book-card {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    box-shadow: 0 4px 20px rgba(90,62,40,0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 50px rgba(90,62,40,0.14);
+  }
+
+  .book-spine {
+    height: 6px;
+    background: var(--rust);
+  }
+  .book-spine.green { background: var(--sage); }
+  .book-spine.dune  { background: var(--dune); }
+
+  .book-cover-art {
+    aspect-ratio: 3/2; position: relative;
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+  }
+  .bca-slumber {
+    background: linear-gradient(135deg, #2A4A3A 0%, #1A3A2A 40%, #3A5A4A 100%);
+  }
+  .bca-phoenix {
+    background: linear-gradient(135deg, var(--sand) 0%, var(--terracotta) 50%, #8A2800 100%);
+  }
+  .bca-amos {
+    background: linear-gradient(135deg, #3A3060 0%, #5A4090 50%, #8060C0 100%);
+  }
+
+  .bca-text {
+    text-align: center; padding: 1.5rem; position: relative; z-index: 2;
+  }
+  .bca-text .bt {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.1rem; font-style: italic; font-weight: 700;
+    color: rgba(253,250,244,0.92); line-height: 1.2; display: block;
+    margin-bottom: 0.4rem;
+  }
+  .bca-text .ba {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(253,250,244,0.5);
+  }
+  .book-badge {
+    position: absolute; top: 0.8rem; left: 0.8rem;
+    background: var(--rust); color: var(--white);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+  }
+  .book-badge.new { background: var(--sage); }
+  .book-badge.back { background: var(--ink-lt); }
+
+  .book-info { padding: 1.5rem; flex: 1; }
+  .book-info h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--ink); margin-bottom: 0.3rem;
+  }
+  .book-pub {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 1rem; display: block;
+  }
+  .book-info p {
+    font-size: 0.93rem; line-height: 1.7;
+    color: var(--ink-mid); margin-bottom: 0.8rem;
+  }
+  .book-info .pull-quote {
+    font-style: italic; font-size: 0.88rem;
+    color: var(--ink-lt); border-left: 2px solid var(--dune);
+    padding-left: 0.8rem; line-height: 1.6;
+  }
+
+  .book-actions {
+    padding: 0 1.5rem 1.5rem;
+    display: flex; gap: 0.8rem;
+  }
+  .bk-btn {
+    flex: 1; text-align: center; padding: 0.7rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .bk-btn-solid { background: var(--rust); color: var(--white); }
+  .bk-btn-solid:hover { background: var(--adobe); }
+  .bk-btn-ghost { border: 1px solid var(--ink-lt); color: var(--ink-mid); }
+  .bk-btn-ghost:hover { border-color: var(--rust); color: var(--rust); }
+
+  /* ── QUOTE BAND ────────────────────────────────────────── */
+  .quote-band {
+    padding: 5rem 4rem;
+    background: var(--sage);
+    position: relative; overflow: hidden;
+  }
+  .quote-band::before {
+    content: '\201C';
+    position: absolute; top: -1rem; left: 2rem;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20rem; color: rgba(255,255,255,0.06);
+    line-height: 1; pointer-events: none;
+  }
+  .quote-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+  .quote-text {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-style: italic; color: var(--white);
+    line-height: 1.6; margin-bottom: 1.5rem;
+  }
+  .quote-attr {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ── TOUR ──────────────────────────────────────────────── */
+  #tour {
+    padding: 7rem 4rem;
+    background: var(--sky-lt);
+    position: relative;
+  }
+  #tour::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rust) 0%, var(--dune) 50%, var(--sage) 100%);
+  }
+
+  .tour-header {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: end; margin-bottom: 3rem; gap: 2rem;
+  }
+  .rig-tag {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    padding: 1.2rem 1.8rem;
+    box-shadow: 0 2px 12px rgba(90,62,40,0.08);
+    text-align: right;
+  }
+  .rig-tag .rt-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-lt); display: block; margin-bottom: 0.3rem;
+  }
+  .rig-tag .rt-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.3rem; font-style: italic; color: var(--rust);
+    display: block;
+  }
+  .rig-tag .rt-sub {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.1em;
+    color: var(--ink-lt); display: block; margin-top: 0.2rem;
+  }
+
+  .tour-list { display: flex; flex-direction: column; gap: 0; }
+
+  .tour-stop {
+    display: grid;
+    grid-template-columns: 90px 3px 1fr auto;
+    gap: 0 1.5rem;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--sand);
+    position: relative;
+    transition: background 0.2s;
+  }
+  .tour-stop:hover { background: rgba(255,255,255,0.6); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; }
+
+  .ts-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--rust); font-weight: 600; text-align: center; line-height: 1.3;
+  }
+  .ts-date .ts-yr {
+    display: block; font-size: 0.58rem; color: var(--ink-lt);
+    font-weight: 300; margin-top: 0.1rem;
+  }
+
+  .ts-line {
+    width: 3px; align-self: stretch;
+    background: var(--sand); position: relative;
+  }
+  .ts-line::before {
+    content: ''; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--rust); border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--rust);
+  }
+
+  .ts-info h4 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.05rem; color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .ts-venue {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.08em;
+    color: var(--ink-lt); text-transform: uppercase;
+  }
+
+  .ts-badge {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--rust); color: var(--rust);
+    white-space: nowrap;
+  }
+  .ts-badge.special { background: var(--rust); color: var(--white); border-color: var(--rust); }
+  .ts-badge.close   { border-color: var(--sage); color: var(--sage); }
+
+  .tour-note {
+    margin-top: 2.5rem; padding: 1.3rem 1.8rem;
+    background: var(--white); border-left: 3px solid var(--dune);
+    font-style: italic; font-size: 0.95rem;
+    color: var(--ink-mid); line-height: 1.7;
+  }
+
+  /* ── CONTACT ───────────────────────────────────────────── */
+  #contact {
+    padding: 7rem 4rem;
+    background: var(--parchment);
+  }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.1fr;
+    gap: 6rem; align-items: start;
+  }
+  .contact-text p {
+    font-size: 1.05rem; line-height: 1.85;
+    color: var(--ink-mid); margin-bottom: 1.2rem;
+  }
+  .contact-detail {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.05em;
+    color: var(--ink-mid);
+  }
+  .cd-icon {
+    width: 2rem; height: 2rem;
+    background: var(--sand); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; flex-shrink: 0;
+  }
+
+  .press-block { margin-top: 2.5rem; }
+  .press-block h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 1rem;
+  }
+  .press-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--sand);
+    text-decoration: none; color: var(--ink-mid);
+    font-size: 0.9rem; transition: color 0.2s;
+  }
+  .press-item:hover { color: var(--rust); }
+  .press-item span {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ink-lt);
+  }
+  .press-item:hover span { color: var(--rust); }
+
+  /* form */
+  .contact-form-wrap {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    padding: 2.5rem;
+    box-shadow: 0 4px 24px rgba(90,62,40,0.07);
+  }
+  .cf-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.1rem; font-style: italic; color: var(--ink);
+    margin-bottom: 1.8rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .fg { display: flex; flex-direction: column; gap: 0.35rem; }
+  .fg label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-lt);
+  }
+  .fg input, .fg select, .fg textarea {
+    padding: 0.85rem 1rem;
+    background: var(--parchment);
+    border: 1px solid var(--sand);
+    color: var(--ink);
+    font-family: 'Lora', serif; font-size: 0.95rem;
+    outline: none; transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none; appearance: none;
+    border-radius: 0;
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus {
+    border-color: var(--rust); background: var(--white);
+  }
+  .fg textarea { min-height: 110px; resize: vertical; }
+  .fg select { cursor: pointer; }
+
+  .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    margin-top: 0.5rem;
+    padding: 1rem; width: 100%;
+    background: var(--rust); color: var(--white);
+    border: none; cursor: pointer;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: var(--adobe); }
+  .form-submit:disabled { background: var(--ink-lt); cursor: not-allowed; }
+
+  #form-success {
+    display: none; margin-top: 1rem; padding: 1.1rem;
+    background: var(--sage-bg); border: 1px solid var(--sage);
+    color: var(--sage); font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.08em;
+  }
+  #form-error {
+    display: none; margin-top: 1rem; padding: 1.1rem;
+    background: rgba(184,74,42,0.06); border: 1px solid var(--rust);
+    color: var(--rust); font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.08em;
+  }
+
+  /* ── FOOTER ────────────────────────────────────────────── */
+  footer {
+    background: var(--ink);
+    color: var(--sand);
+    padding: 3rem 4rem;
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; gap: 2rem;
+  }
+  .footer-brand {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic; font-size: 1.05rem; color: var(--dune);
+  }
+  .footer-text {
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.58rem; letter-spacing: 0.1em;
+    color: rgba(232,213,168,0.4);
+  }
+  .footer-links {
+    display: flex; gap: 2rem; justify-content: flex-end; list-style: none;
+  }
+  .footer-links a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(232,213,168,0.5); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--dune); }
+
+  /* ── RESPONSIVE ────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .nav-links li:last-child { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
+    .hero-art { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-left { position: static; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    #about, #books, #tour, #contact { padding: 4.5rem 1.5rem; }
+    .quote-band { padding: 4rem 1.5rem; }
+    footer { grid-template-columns: 1fr; text-align: center; gap: 1rem; }
+    .footer-links { justify-content: center; }
+    .tour-stop { grid-template-columns: 70px 3px 1fr; }
+    .ts-badge { display: none; }
+    .fg-row { grid-template-columns: 1fr; }
+    .ribbon { display: none; }
+    .tour-header { grid-template-columns: 1fr; }
+  }
+
+  /* ── ENTRANCE ANIMATIONS ───────────────────────────────── */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ── PUBLISHER BACK BAR ───────────────────────────────────── -->
+<div style="
+  background:var(--ink);
+  padding:0.5rem 3.5rem;
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:2px solid var(--rust);
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase;
+">
+  <a href="index.html" style="
+    color:var(--dune); text-decoration:none;
+    display:flex; align-items:center; gap:0.6rem;
+    transition:color 0.2s;
+  " onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='var(--dune)'">
+    ← Oxford Bean Publishing
+  </a>
+  <span style="color:rgba(212,184,122,0.35);">Author Page &nbsp;·&nbsp; Thomas E. Towle</span>
+</div>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">Thomas E. Towle</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#tour">Tour</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Book an Event</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-kicker">
+      <div class="hero-kicker-line"></div>
+      <span>Author &nbsp;·&nbsp; Desert Walker &nbsp;·&nbsp; Road Traveller</span>
+    </div>
+    <h1 class="hero-name">
+      Thomas
+      <em>E. Towle</em>
+    </h1>
+    <p class="hero-tagline">
+      Writing from the trail, the campfire, and a 1987 Toyota motorhome
+      somewhere in the Sonoran Desert. Books about what it means to stay
+      alive when the world keeps burning.
+    </p>
+    <div class="hero-btns">
+      <a href="#books" class="btn-primary">Read the Books →</a>
+      <a href="#tour" class="btn-outline">Fall 2026 Tour</a>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#C8DDE8"/>
+          <stop offset="60%"  stop-color="#E8F2F8"/>
+          <stop offset="100%" stop-color="#F5EDD8"/>
+        </linearGradient>
+        <linearGradient id="hGround" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#D4B87A"/>
+          <stop offset="100%" stop-color="#B89050"/>
+        </linearGradient>
+        <linearGradient id="hMtn" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#A08060"/>
+          <stop offset="100%" stop-color="#805A38"/>
+        </linearGradient>
+        <radialGradient id="hSun" cx="75%" cy="18%" r="12%">
+          <stop offset="0%"   stop-color="#F5C842" stop-opacity="1"/>
+          <stop offset="40%"  stop-color="#F0A830" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Sky -->
+      <rect width="520" height="480" fill="url(#hSky)"/>
+      <!-- Sun glow -->
+      <rect width="520" height="480" fill="url(#hSun)"/>
+      <!-- Sun disc -->
+      <circle cx="390" cy="86" r="34" fill="#F5C842" opacity="0.9"/>
+      <circle cx="390" cy="86" r="42" fill="#F5C842" opacity="0.12"/>
+      <circle cx="390" cy="86" r="55" fill="#F5C842" opacity="0.06"/>
+
+      <!-- Distant mountain range -->
+      <path d="M0 280 L80 210 L140 250 L200 185 L270 235 L340 170 L400 215 L450 185 L520 220 L520 320 L0 320Z"
+            fill="url(#hMtn)" opacity="0.55"/>
+      <!-- Second range, closer -->
+      <path d="M0 310 L60 265 L120 290 L190 255 L260 285 L330 248 L400 275 L470 255 L520 270 L520 340 L0 340Z"
+            fill="#C09870" opacity="0.7"/>
+
+      <!-- Ground -->
+      <path d="M0 330 Q130 320 260 332 Q390 344 520 325 L520 480 L0 480Z"
+            fill="url(#hGround)"/>
+
+      <!-- Ground shadow/depth -->
+      <path d="M0 335 Q130 325 260 338 Q390 350 520 330 L520 370 L0 370Z"
+            fill="rgba(120,80,30,0.12)"/>
+
+      <!-- Scrub brush left -->
+      <ellipse cx="45" cy="335" rx="28" ry="12" fill="#7A8C5A" opacity="0.7"/>
+      <ellipse cx="38" cy="330" rx="18" ry="9"  fill="#6B7C4A" opacity="0.8"/>
+
+      <!-- Scrub brush right -->
+      <ellipse cx="475" cy="330" rx="22" ry="10" fill="#7A8C5A" opacity="0.6"/>
+
+      <!-- Left small saguaro -->
+      <rect x="68"  y="268" width="16" height="80" rx="8" fill="#5A7840"/>
+      <rect x="50"  y="288" width="16" height="44" rx="8" fill="#5A7840"/>
+      <rect x="46"  y="288" width="24" height="14" rx="7" fill="#5A7840"/>
+      <!-- ribs -->
+      <line x1="74"  y1="272" x2="74"  y2="346" stroke="#4A6830" stroke-width="0.8" opacity="0.7"/>
+      <line x1="78"  y1="270" x2="78"  y2="347" stroke="#4A6830" stroke-width="0.8" opacity="0.7"/>
+
+      <!-- Main saguaro centre -->
+      <rect x="230" y="130" width="36" height="230" rx="18" fill="#5A7840"/>
+      <rect x="174" y="176" width="26" height="110" rx="13" fill="#5A7840"/>
+      <rect x="154" y="176" width="48" height="22"  rx="11" fill="#5A7840"/>
+      <rect x="316" y="200" width="26" height="96"  rx="13" fill="#5A7840"/>
+      <rect x="308" y="200" width="50" height="22"  rx="11" fill="#5A7840"/>
+      <!-- ribs -->
+      <line x1="240" y1="136" x2="240" y2="356" stroke="#4A6830" stroke-width="1.2" opacity="0.6"/>
+      <line x1="248" y1="132" x2="248" y2="358" stroke="#4A6830" stroke-width="1.2" opacity="0.6"/>
+      <line x1="256" y1="136" x2="256" y2="356" stroke="#4A6830" stroke-width="1.2" opacity="0.6"/>
+      <!-- arm ribs -->
+      <line x1="184" y1="180" x2="184" y2="284" stroke="#4A6830" stroke-width="0.8" opacity="0.5"/>
+      <line x1="325" y1="204" x2="325" y2="294" stroke="#4A6830" stroke-width="0.8" opacity="0.5"/>
+
+      <!-- Right tall saguaro -->
+      <rect x="420" y="190" width="28" height="165" rx="14" fill="#5A7840"/>
+      <rect x="396" y="225" width="22" height="70"  rx="11" fill="#5A7840"/>
+      <rect x="390" y="225" width="38" height="18"  rx="9"  fill="#5A7840"/>
+      <line x1="430" y1="195" x2="430" y2="353" stroke="#4A6830" stroke-width="0.9" opacity="0.6"/>
+      <line x1="436" y1="193" x2="436" y2="354" stroke="#4A6830" stroke-width="0.9" opacity="0.6"/>
+
+      <!-- Rocks -->
+      <ellipse cx="130" cy="346" rx="30" ry="13" fill="#A08060" opacity="0.7"/>
+      <ellipse cx="118" cy="342" rx="18" ry="9"  fill="#907050" opacity="0.8"/>
+      <ellipse cx="370" cy="348" rx="26" ry="11" fill="#A08060" opacity="0.65"/>
+
+      <!-- Motorhome (lil Rig) -->
+      <rect x="195" y="348" width="88" height="36" rx="4" fill="#E8D5A8"/>
+      <rect x="193" y="344" width="92" height="10" rx="2" fill="#C8922A" opacity="0.9"/>
+      <!-- windows -->
+      <rect x="204" y="354" width="20" height="14" rx="2" fill="#C8DDE8" opacity="0.9"/>
+      <rect x="232" y="354" width="14" height="14" rx="2" fill="#C8DDE8" opacity="0.9"/>
+      <!-- door -->
+      <rect x="255" y="354" width="12" height="20" rx="1" fill="#D4B87A"/>
+      <!-- wheels -->
+      <circle cx="218" cy="386" r="8" fill="#5A3E28" stroke="#D4B87A" stroke-width="1.5"/>
+      <circle cx="260" cy="386" r="8" fill="#5A3E28" stroke="#D4B87A" stroke-width="1.5"/>
+      <!-- wheel hub -->
+      <circle cx="218" cy="386" r="3" fill="#D4B87A" opacity="0.6"/>
+      <circle cx="260" cy="386" r="3" fill="#D4B87A" opacity="0.6"/>
+
+      <!-- Heat shimmer lines -->
+      <g stroke="#F5EDD8" stroke-width="0.6" opacity="0.25">
+        <path d="M80 310 Q120 305 160 310" fill="none"/>
+        <path d="M340 315 Q380 308 420 315" fill="none"/>
+      </g>
+
+      <!-- Ground label -->
+      <text x="260" y="460" text-anchor="middle"
+            font-family="'Josefin Sans', sans-serif" font-size="9"
+            fill="#8A6A4A" opacity="0.5" letter-spacing="4">
+        SONORAN DESERT
+      </text>
+    </svg>
+  </div>
+
+  <div class="scroll-hint">Explore</div>
+</section>
+
+<!-- ── RIBBON ───────────────────────────────────────────────── -->
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    <span>Travels with a Slumber Queen</span><span class="dot">·</span>
+    <span>Phoenix Short Story — 2026</span><span class="dot">·</span>
+    <span>Southwest Tour Fall 2026</span><span class="dot">·</span>
+    <span>The Pilgrimage of Amos</span><span class="dot">·</span>
+    <span>Superstition Mountain</span><span class="dot">·</span>
+    <span>Apache Junction</span><span class="dot">·</span>
+    <span>Oxford Bean Publishing</span><span class="dot">·</span>
+    <span>Travels with a Slumber Queen</span><span class="dot">·</span>
+    <span>Phoenix Short Story — 2026</span><span class="dot">·</span>
+    <span>Southwest Tour Fall 2026</span><span class="dot">·</span>
+    <span>The Pilgrimage of Amos</span><span class="dot">·</span>
+    <span>Superstition Mountain</span><span class="dot">·</span>
+    <span>Apache Junction</span><span class="dot">·</span>
+    <span>Oxford Bean Publishing</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="portrait-frame">
+          <div class="portrait-initials">TET</div>
+          <div class="portrait-caption">
+            <span class="pname">Thomas E. Towle</span>
+            <span class="psub">Author &nbsp;·&nbsp; Oxford Bean Publishing</span>
+          </div>
+        </div>
+        <blockquote class="about-pull">
+          "I hike; therefore I exist. The ring of my hiking pole's titanium
+          tip on the rocks — reassuring me, establishing my presence."
+        </blockquote>
+      </div>
+
+      <div class="about-body reveal">
+        <div class="section-kicker"><span>The Author</span></div>
+        <h2 class="sec-title">A life on<br><em>the road.</em></h2>
+        <p>
+          Thomas E. Towle writes from the margins of the map — from campfires,
+          desert trails, and the front seat of a 1987 Toyota motorhome he calls
+          the Slumber Queen. He has been wintering in the Sonoran Desert for
+          over four seasons, hiking the trails of Superstition Mountain,
+          boondocking in the shadow of saguaro, and writing about what it means
+          to be fully alive when the world keeps accelerating away from
+          everything worth living for.
+        </p>
+        <p>
+          His writing sits in the lineage of Edward Abbey, John Steinbeck, and
+          the Beat travellers — honest, funny, philosophically restless, and
+          deeply rooted in the physical world of rock and dust and light. He is
+          a hiker, a fiddle player, a former organic farmer, and a relentless
+          observer of the strange theatre of American desert life.
+        </p>
+        <p>
+          His debut in this series, <em>The Pilgrimage of Amos</em>, followed
+          a young hitchhiker across Europe and North America in the 1970s.
+          <em>Travels with a Slumber Queen</em> is the return — the same
+          restless intelligence, fifty years later, still searching for meaning
+          in a world that has become exactly what he feared it would.
+        </p>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-n">4+</span><span class="stat-l">Desert Seasons</span></div>
+          <div class="stat"><span class="stat-n">60+</span><span class="stat-l">Trails Hiked</span></div>
+          <div class="stat"><span class="stat-n">55k</span><span class="stat-l">Words Written</span></div>
+          <div class="stat"><span class="stat-n">1987</span><span class="stat-l">Year of the Rig</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOOKS ──────────────────────────────────────────────────── -->
+<section id="books">
+  <div class="section-wrap">
+    <div class="section-kicker reveal"><span>The Work</span></div>
+    <h2 class="sec-title reveal">Books by <em>Thomas E. Towle</em></h2>
+
+    <div class="books-grid">
+
+      <!-- SLUMBER QUEEN -->
+      <div class="book-card reveal">
+        <div class="book-spine"></div>
+        <div class="book-cover-art bca-slumber">
+          <div class="book-badge">Novel</div>
+          <div class="bca-text">
+            <span class="bt">Travels with a<br>Slumber Queen</span>
+            <span class="ba">Thomas E. Towle</span>
+          </div>
+        </div>
+        <div class="book-info">
+          <h3>Travels with a Slumber Queen</h3>
+          <span class="book-pub">Oxford Bean Publishing &nbsp;·&nbsp; 2nd Ed. Dec 2025</span>
+          <p>A desert memoir-travelogue in the tradition of Steinbeck and Abbey.
+          Soma winters in the Sonoran Desert in a 1987 Toyota motorhome, hiking
+          Superstition Mountain with the Three Amigos — searching for peyote,
+          meaning, lost love, and the gold the desert refuses to surrender.</p>
+          <p class="pull-quote">"I hike; therefore I exist. The ring of my hiking
+          pole's titanium tip rings on the rocks — reassuring me."</p>
+        </div>
+        <div class="book-actions">
+          <a href="https://www.amazon.com" target="_blank" class="bk-btn bk-btn-solid">Buy on Amazon</a>
+          <a href="#contact" class="bk-btn bk-btn-ghost">Book an Event</a>
+        </div>
+      </div>
+
+      <!-- PHOENIX SHORT STORY -->
+      <div class="book-card reveal">
+        <div class="book-spine" style="background:var(--terracotta)"></div>
+        <div class="book-cover-art bca-phoenix">
+          <div class="book-badge new">New — 2026</div>
+          <div class="bca-text">
+            <span class="bt">Phoenix<br><span style="font-size:0.75em;opacity:0.8">A Short Story</span></span>
+            <span class="ba">Thomas E. Towle</span>
+          </div>
+        </div>
+        <div class="book-info">
+          <h3>Phoenix <span style="font-size:0.8em;color:var(--ink-lt);">— New 2026</span></h3>
+          <span class="book-pub">Coming 2026 &nbsp;·&nbsp; Available at tour events</span>
+          <p>A new work of short fiction set in the city Thomas has wintered in
+          for four seasons. Phoenix as it rarely appears in print — the desert
+          city at the edge of its own contradictions, seen through eyes that have
+          hiked its mountains and slept in its shadow.</p>
+          <p class="pull-quote">Available as a chapbook at all 2026–2027 tour stops.
+          Sign up to be notified on release.</p>
+        </div>
+        <div class="book-actions">
+          <a href="#contact" class="bk-btn bk-btn-solid">Join Newsletter</a>
+          <a href="#tour" class="bk-btn bk-btn-ghost">Tour Dates</a>
+        </div>
+      </div>
+
+      <!-- PILGRIMAGE OF AMOS -->
+      <div class="book-card reveal">
+        <div class="book-spine dune"></div>
+        <div class="book-cover-art bca-amos">
+          <div class="book-badge back">Backlist</div>
+          <div class="bca-text">
+            <span class="bt">The Pilgrimage<br>of Amos</span>
+            <span class="ba">Thomas E. Towle</span>
+          </div>
+        </div>
+        <div class="book-info">
+          <h3>The Pilgrimage of Amos</h3>
+          <span class="book-pub">Available on Amazon &nbsp;·&nbsp; Kindle &amp; Paperback</span>
+          <p>The predecessor to Slumber Queen. Following the hitchhiking adventures
+          of Amos — Soma as a young man — across Europe and North America in the
+          1970s. Where it all began.</p>
+        </div>
+        <div class="book-actions">
+          <a href="https://www.amazon.com/Pilgrimage-Amos-Soma-G-Bmuth/dp/1470108526"
+             target="_blank" class="bk-btn bk-btn-solid">Buy on Amazon</a>
+          <a href="https://somaroadread.blogspot.com" target="_blank" class="bk-btn bk-btn-ghost">Author Blog</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── QUOTE BAND ─────────────────────────────────────────────── -->
+<div class="quote-band">
+  <div class="quote-inner">
+    <p class="quote-text">
+      "There's little of the melancholy element in her, my lord: she is never
+      sad but when she sleeps; and not ever sad then — for I have heard my
+      daughter say, she hath often dreamt of unhappiness, and waked herself
+      with laughing."
+    </p>
+    <p class="quote-attr">William Shakespeare &nbsp;·&nbsp; epigraph to <em>Travels with a Slumber Queen</em></p>
+  </div>
+</div>
+
+<!-- ── TOUR ───────────────────────────────────────────────────── -->
+<section id="tour">
+  <div class="section-wrap">
+    <div class="tour-header">
+      <div>
+        <div class="section-kicker reveal"><span>On the Road</span></div>
+        <h2 class="sec-title reveal">Fall 2026 <em>Tour Dates</em></h2>
+        <p class="reveal" style="font-size:1.05rem;line-height:1.8;color:var(--ink-mid);max-width:52ch;margin-top:0.5rem;">
+          The Slumber Queen heads south. From autumn through to March 30, 2027,
+          Thomas reads across the Southwest — at bookshops, breweries, desert parks,
+          and the occasional campfire. Both titles at every stop. Free unless noted.
+        </p>
+      </div>
+      <div class="rig-tag reveal">
+        <span class="rt-label">Travelling in</span>
+        <span class="rt-name">The Slumber Queen</span>
+        <span class="rt-sub">1987 Toyota Class C Motorhome</span>
+      </div>
+    </div>
+
+    <div class="tour-list">
+      <div class="tour-stop reveal">
+        <div class="ts-date">Oct 2026<span class="ts-yr">TBC</span></div>
+        <div class="ts-line"></div>
+        <div class="ts-info">
+          <h4>Phoenix, Arizona — Tour Launch</h4>
+          <div class="ts-venue">Changing Hands Bookstore &nbsp;·&nbsp; First Draft Book Bar &nbsp;·&nbsp; 300 W Camelback Rd</div>
+        </div>
+        <div class="ts-badge special">Anchor Event</div>
+      </div>
+      <div class="tour-stop reveal">
+        <div class="ts-date">Oct 2026<span class="ts-yr">TBC</span></div>
+        <div class="ts-line"></div>
+        <div class="ts-info">
+          <h4>Apache Junction, Arizona — Homecoming</h4>
+          <div class="ts-venue">Lost Dutchman State Park / Blue Bird Café &nbsp;·&nbsp; The Book's Setting</div>
+        </div>
+        <div class="ts-badge special">Special Event</div>
+      </div>
+      <div class="tour-stop reveal">
+        <div class="ts-date">Nov 2026<span class="ts-yr">TBC</span></div>
+        <div class="ts-line"></div>
+        <div class="ts-info">
+          <h4>Prescott, Arizona</h4>
+          <div class="ts-venue">Peregrine Book Company &nbsp;·&nbsp; 219A N Cortez St</div>
+        </div>
+        <div class="ts-badge">Indie Bookshop</div>
+      </div>
+      <div class="tour-stop reveal">
+        <div class="ts-date">Nov 2026<span class="ts-yr">TBC</span></div>
+        <div class="ts-line"></div>
+        <div class="ts-info">
+          <h4>Tucson, Arizona</h4>
+          <div class="ts-venue">Antigone Books &nbsp;·&nbsp; 411 N 4th Ave &nbsp;·&nbsp; Fourth Avenue District</div>
+        </div>
+        <div class="ts-badge">Indie Bookshop</div>
+      </div>
+      <div class="tour-stop reveal">
+        <div class="ts-date">Dec 2026<span class="ts-yr">TBC</span></div>
+        <div class="ts-line"></div>
+        <div class="ts-info">
+          <h4>Flagstaff, Arizona</h4>
+          <div class="ts-venue">Bright Side Bookshop &nbsp;·&nbsp; 18 N San Francisco St &nbsp;·&nbsp; Downtown</div>
+        </div>
+        <div class="ts-badge">Indie Bookshop</div>
+      </div>
+      <div class="tour-stop reveal">
+        <div class="ts-date">Jan 2027<span class="ts-yr">TBC</span></div>
+        <div class="ts-line"></div>
+        <div class="ts-info">
+          <h4>Albuquerque, New Mexico</h4>
+          <div class="ts-venue">Bookworks &nbsp;·&nbsp; 4022 Rio Grande Blvd NW &nbsp;·&nbsp; North Valley</div>
+        </div>
+        <div class="ts-badge">Indie Bookshop</div>
+      </div>
+      <div class="tour-stop reveal">
+        <div class="ts-date">Feb 2027<span class="ts-yr">TBC</span></div>
+        <div class="ts-line"></div>
+        <div class="ts-info">
+          <h4>Santa Fe, New Mexico</h4>
+          <div class="ts-venue">Collected Works Bookstore &nbsp;·&nbsp; 202 Galisteo St &nbsp;·&nbsp; Downtown</div>
+        </div>
+        <div class="ts-badge">Indie Bookshop</div>
+      </div>
+      <div class="tour-stop reveal">
+        <div class="ts-date">Mar 30<span class="ts-yr">2027 — Final</span></div>
+        <div class="ts-line"></div>
+        <div class="ts-info">
+          <h4>Tour Close — Location TBC</h4>
+          <div class="ts-venue">Final event of the season &nbsp;·&nbsp; Southwest corridor</div>
+        </div>
+        <div class="ts-badge close">Tour Close</div>
+      </div>
+    </div>
+
+    <p class="tour-note">
+      All dates are provisional pending venue confirmation. Sign up via the contact
+      form to receive confirmed dates as they are announced. Venues wishing to host
+      Thomas — get in touch below.
+    </p>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="contact-grid">
+      <div class="contact-text reveal">
+        <div class="section-kicker"><span>Get in Touch</span></div>
+        <h2 class="sec-title">Press, Events<br><em>&amp; Inquiries</em></h2>
+        <p>For media inquiries, venue booking, press kits, review copies, or
+        general correspondence — use the form. Thomas reads and responds to
+        all serious inquiries personally.</p>
+
+        <div class="contact-detail">
+          <div class="cd-icon">✉</div>
+          <span>Contact via form (email on request)</span>
+        </div>
+        <div class="contact-detail">
+          <div class="cd-icon">🌐</div>
+          <span>somaroadread.blogspot.com</span>
+        </div>
+        <div class="contact-detail">
+          <div class="cd-icon">📚</div>
+          <span>Oxford Bean Publishing — ISBN 978-0-9812955-2-7</span>
+        </div>
+
+        <div class="press-block">
+          <h3>Press Resources</h3>
+          <a href="#" class="press-item">Author Bio (100 words)<span>Download →</span></a>
+          <a href="#" class="press-item">Author Bio (250 words)<span>Download →</span></a>
+          <a href="#" class="press-item">Press Kit PDF<span>Download →</span></a>
+          <a href="#" class="press-item">High-Res Author Photo<span>Download →</span></a>
+          <a href="#" class="press-item">Book Cover Images<span>Download →</span></a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="contact-form-wrap">
+          <div class="cf-title">Send an Inquiry</div>
+
+          <!--
+            ╔══════════════════════════════════════════════════════╗
+            ║  FORMSPREE SETUP:                                    ║
+            ║  1. Sign up free at formspree.io                     ║
+            ║  2. Create a new form — get an ID like "xpzvgkqr"   ║
+            ║  3. Replace YOUR_FORMSPREE_ID below with that ID     ║
+            ╚══════════════════════════════════════════════════════╝
+          -->
+          <form
+            class="contact-form"
+            id="contact-form"
+            action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+            method="POST"
+          >
+            <input type="hidden" name="_next"    value="https://towlet.github.io/?sent=true">
+            <input type="hidden" name="_subject" value="New inquiry — ThomasTowle.com">
+            <input type="text"   name="_gotcha"  style="display:none">
+
+            <div class="fg-row">
+              <div class="fg">
+                <label for="f-name">Your Name</label>
+                <input id="f-name" type="text" name="name" placeholder="Full name" required>
+              </div>
+              <div class="fg">
+                <label for="f-email">Email Address</label>
+                <input id="f-email" type="email" name="email" placeholder="your@email.com" required>
+              </div>
+            </div>
+            <div class="fg-row">
+              <div class="fg">
+                <label for="f-type">Inquiry Type</label>
+                <select id="f-type" name="inquiry_type">
+                  <option value="">Select type...</option>
+                  <option>Press / Media Interview</option>
+                  <option>Venue / Event Booking</option>
+                  <option>Review Copy Request</option>
+                  <option>Newsletter Sign-Up</option>
+                  <option>General Correspondence</option>
+                  <option>Podcast / Radio Interview</option>
+                </select>
+              </div>
+              <div class="fg">
+                <label for="f-org">Organization</label>
+                <input id="f-org" type="text" name="organization" placeholder="Bookshop, podcast, etc.">
+              </div>
+            </div>
+            <div class="fg">
+              <label for="f-msg">Message</label>
+              <textarea id="f-msg" name="message" placeholder="Tell Thomas about your inquiry, event, or how you found the books..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Inquiry →</button>
+          </form>
+
+          <div id="form-success">✓ Message sent. Thomas will be in touch shortly.</div>
+          <div id="form-error">✗ Something went wrong. Please try again or reach out via the blog.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-brand">Thomas E. Towle</div>
+  <div class="footer-text">
+    © 2026 Thomas E. Towle &nbsp;·&nbsp; Oxford Bean Publishing<br>
+    ISBN 978-0-9812955-2-7
+  </div>
+  <ul class="footer-links">
+    <li><a href="https://somaroadread.blogspot.com" target="_blank">Blog</a></li>
+    <li><a href="https://www.amazon.com/Pilgrimage-Amos-Soma-G-Bmuth/dp/1470108526" target="_blank">Amazon</a></li>
+    <li><a href="#contact">Instagram</a></li>
+    <li><a href="#contact">Newsletter</a></li>
+  </ul>
+</footer>
+
+<script>
+  // ── Formspree async handler ───────────────────────────────
+  const form    = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  const error   = document.getElementById('form-error');
+
+  if (window.location.search.includes('sent=true')) {
+    success.style.display = 'block';
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.opacity = '0.3';
+        form.style.pointerEvents = 'none';
+        success.style.display = 'block';
+        error.style.display = 'none';
+      } else { throw new Error(); }
+    } catch {
+      btn.textContent = 'Send Inquiry →';
+      btn.disabled = false;
+      error.style.display = 'block';
+    }
+  });
+
+  // ── Scroll reveal ─────────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
