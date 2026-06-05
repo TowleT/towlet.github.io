@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Author Resources</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press &amp; Media Resources — Thomas E. Towle</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Gill+Sans+Nova:wght@200;300;400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --ink:       #1a1714;
-      --parchment: #f7f4ef;
-      --cream:     #ede9e2;
-      --amber:     #b8832a;
-      --amber-lt:  #d4a44c;
-      --stone:     #8a8278;
-      --grey-cool: #5c6370;
-      --rule:      rgba(26,23,20,0.12);
+      --ink:        #1a1714;
+      --parchment:  #f7f4ef;
+      --cream:      #ede9e2;
+      --amber:      #b8832a;
+      --amber-lt:   #d4a44c;
+      --stone:      #8a8278;
+      --grey-cool:  #5c6370;
+      --rule:       rgba(26,23,20,0.12);
     }
+
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Gill Sans Nova', 'Gill Sans', Optima, sans-serif;
       font-weight: 300;
@@ -29,19 +32,23 @@
       font-size: 17px;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     .site-nav {
       position: sticky; top: 0; z-index: 100;
       background: var(--ink);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 60px;
     }
-    .nav-logo {
-      height: 40px; width: auto;
+    .nav-brand {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px; font-weight: 300;
+      color: var(--parchment);
+      text-decoration: none;
+      letter-spacing: 0.04em;
       opacity: 0.9;
       transition: opacity 0.2s;
     }
-    .nav-logo:hover { opacity: 1; }
+    .nav-brand:hover { opacity: 1; }
     .site-nav .nav-links {
       display: flex; gap: 36px; list-style: none;
     }
@@ -56,7 +63,7 @@
     }
     .site-nav .nav-links a:hover { opacity: 1; color: var(--amber-lt); }
 
-    /* TICKER */
+    /* ── TICKER ── */
     .ticker {
       background: var(--amber);
       overflow: hidden; white-space: nowrap; padding: 10px 0;
@@ -72,23 +79,17 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* HERO */
+    /* ── HERO ── */
     .hero {
       background: var(--ink);
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      min-height: 520px;
+      padding: 80px 48px;
+      position: relative;
       overflow: hidden;
     }
-    .hero-text {
-      padding: 80px 56px 80px 48px;
-      display: flex; flex-direction: column; justify-content: center;
-      position: relative;
-    }
-    .hero-text::after {
+    .hero::after {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 60%, rgba(184,131,42,0.07) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 70% 50%, rgba(184,131,42,0.08) 0%, transparent 65%);
       pointer-events: none;
     }
     .hero-eyebrow {
@@ -98,7 +99,7 @@
     }
     .hero h1 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(48px, 5.5vw, 80px);
+      font-size: clamp(44px, 5vw, 72px);
       font-weight: 300; line-height: 1.05;
       color: var(--parchment);
       margin-bottom: 16px;
@@ -108,73 +109,13 @@
       font-family: 'IM Fell English', Georgia, serif;
       font-style: italic; font-size: 17px;
       color: rgba(247,244,239,0.6);
-      margin-bottom: 16px;
-      max-width: 440px;
-    }
-    .hero-hook {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 18px; font-weight: 400;
-      color: var(--amber-lt);
-      margin-bottom: 36px;
-      max-width: 480px;
-      line-height: 1.5;
-    }
-    .reviewer-notice {
-      background: rgba(184,131,42,0.12);
-      border-left: 3px solid var(--amber);
-      padding: 14px 20px;
-      margin-bottom: 28px;
-      font-size: 13px;
-      color: rgba(247,244,239,0.75);
-      max-width: 480px;
-    }
-    .reviewer-notice a {
-      color: var(--amber-lt);
-      text-decoration: none;
-    }
-    .reviewer-notice a:hover { color: #fff; }
-    .hero-cta { display: inline-flex; gap: 14px; flex-wrap: wrap; }
-    .btn {
-      display: inline-block; padding: 12px 28px;
-      font-size: 11px; letter-spacing: 0.15em;
-      text-transform: uppercase; text-decoration: none;
-      font-weight: 400; transition: all 0.2s;
-      cursor: pointer; border: none; font-family: inherit;
-    }
-    .btn-primary { background: var(--amber); color: var(--parchment); }
-    .btn-primary:hover { background: var(--amber-lt); }
-    .btn-outline {
-      border: 1px solid rgba(247,244,239,0.35);
-      color: var(--parchment); background: transparent;
-    }
-    .btn-outline:hover { border-color: var(--amber-lt); color: var(--amber-lt); }
-
-    /* HERO PHOTO */
-    .hero-photo {
-      position: relative; overflow: hidden;
-    }
-    .hero-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-      filter: saturate(0.9);
-    }
-    .hero-photo::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, var(--ink) 0%, transparent 30%);
-      pointer-events: none;
-    }
-    .alien-caption {
-      position: absolute; bottom: 20px; right: 20px;
-      font-family: 'IM Fell English', Georgia, serif;
-      font-style: italic; font-size: 12px;
-      color: rgba(247,244,239,0.5);
-      letter-spacing: 0.04em;
+      max-width: 560px;
+      line-height: 1.65;
     }
 
-    /* SECTIONS */
+    /* ── SECTIONS ── */
     section { padding: 88px 48px; }
+
     .section-label {
       font-size: 11px; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--amber);
@@ -182,265 +123,160 @@
     }
     h2 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(36px, 4vw, 52px);
+      font-size: clamp(32px, 3.5vw, 48px);
       font-weight: 300; line-height: 1.15; margin-bottom: 48px;
     }
     h2 em { font-style: italic; color: var(--amber); }
 
-    /* ABOUT */
-    .about-section { background: var(--cream); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 64px; max-width: 960px;
-    }
-    .about-text p {
-      color: var(--grey-cool); margin-bottom: 20px; font-size: 16px;
-    }
-    .about-quote {
-      font-family: 'IM Fell English', Georgia, serif;
-      font-style: italic; font-size: 20px;
-      color: var(--ink); line-height: 1.5;
-      border-left: 3px solid var(--amber);
-      padding: 20px 24px;
-      background: var(--parchment);
-      margin-top: 8px;
-    }
-    .about-quote cite {
-      display: block; margin-top: 12px;
-      font-size: 12px; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--stone);
-      font-style: normal;
-    }
-    .stats {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 24px; margin-top: 0;
-    }
-    .stat { border-left: 2px solid var(--amber); padding-left: 16px; }
-    .stat-num {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 36px; font-weight: 300;
-      color: var(--ink); line-height: 1;
-    }
-    .stat-label {
-      font-size: 11px; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--stone); margin-top: 4px;
+    /* ── RESOURCES GRID ── */
+    .resources-section { background: var(--parchment); }
+
+    .resources-intro {
+      font-size: 15px; color: var(--grey-cool);
+      max-width: 600px; margin-bottom: 56px; line-height: 1.85;
     }
 
-    /* BOOKS */
-    .books-section { background: var(--parchment); }
-    .books-list { display: flex; flex-direction: column; gap: 72px; max-width: 960px; }
-    .book-card {
-      display: grid; grid-template-columns: 280px 1fr;
-      gap: 56px; align-items: start;
-      padding-bottom: 72px;
-      border-bottom: 1px solid var(--rule);
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+      max-width: 960px;
     }
-    .book-card:last-child { border-bottom: none; padding-bottom: 0; }
-    .book-cover-wrap { position: relative; }
-    .book-badge {
-      position: absolute; top: -12px; left: -12px;
-      background: var(--amber); color: var(--parchment);
-      font-size: 10px; letter-spacing: 0.15em;
-      text-transform: uppercase; padding: 5px 10px;
-      font-weight: 400; z-index: 2;
+
+    .resource-card {
+      background: var(--cream);
+      padding: 36px 32px;
+      border-left: 3px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;
+      text-decoration: none;
     }
-    .book-cover {
-      width: 100%; display: block;
-      box-shadow: 8px 12px 40px rgba(26,23,20,0.22);
-      transition: transform 0.3s, box-shadow 0.3s;
+    .resource-card:hover {
+      border-left-color: var(--amber);
+      background: #e5e0d7;
     }
-    .book-cover:hover {
-      transform: translateY(-4px) rotate(0.5deg);
-      box-shadow: 12px 20px 56px rgba(26,23,20,0.3);
+
+    .resource-top {}
+    .resource-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
     }
-    .book-meta { padding-top: 8px; }
-    .book-genre {
-      font-size: 11px; letter-spacing: 0.15em;
+    .resource-type {
+      font-size: 10px; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--amber);
-      margin-bottom: 10px; font-weight: 400;
+      margin-bottom: 8px; font-weight: 400;
+      display: block;
     }
-    .book-title {
+    .resource-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 38px; font-weight: 300;
-      line-height: 1.1; margin-bottom: 6px;
+      font-size: 22px; font-weight: 300;
+      color: var(--ink); line-height: 1.2;
+      margin-bottom: 10px;
     }
-    .book-title em { font-style: italic; }
-    .book-publisher {
-      font-size: 13px; color: var(--stone);
-      letter-spacing: 0.05em; margin-bottom: 20px;
+    .resource-desc {
+      font-size: 13px; color: var(--grey-cool);
+      line-height: 1.7; margin-bottom: 20px;
     }
-    .book-desc {
-      font-size: 15px; color: #3a3530;
-      line-height: 1.8; margin-bottom: 20px;
-    }
-
-    /* Synopsis toggle */
-    .synopsis-toggle {
+    .resource-dl {
+      display: inline-flex; align-items: center; gap: 8px;
       font-size: 11px; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--amber);
-      cursor: pointer; display: inline-flex;
-      align-items: center; gap: 8px;
-      font-weight: 400; background: none;
-      border: none; padding: 0; font-family: inherit;
+      font-weight: 400;
       transition: color 0.2s;
+      text-decoration: none;
     }
-    .synopsis-toggle:hover { color: var(--amber-lt); }
-    .toggle-arrow { transition: transform 0.25s; display: inline-block; }
-    .synopsis-toggle.open .toggle-arrow { transform: rotate(90deg); }
-    .synopsis-body {
-      display: none; margin-top: 20px;
-      padding: 28px 32px;
-      background: var(--cream);
-      border-left: 3px solid var(--amber);
-    }
-    .synopsis-body.open { display: block; }
-    .synopsis-body p {
-      font-size: 15px; color: #3a3530;
-      margin-bottom: 16px; line-height: 1.85;
-    }
-    .synopsis-body p:last-child { margin-bottom: 0; }
-    .synopsis-body strong { font-weight: 600; color: var(--ink); }
-    .bot-quote {
-      font-family: 'IM Fell English', Georgia, serif;
-      font-style: italic; font-size: 16px;
-      color: var(--amber); margin-top: 24px;
-      padding-top: 20px;
-      border-top: 1px solid var(--rule);
-    }
+    .resource-card:hover .resource-dl { color: var(--ink); }
+    .resource-dl-arrow { font-size: 14px; transition: transform 0.2s; }
+    .resource-card:hover .resource-dl-arrow { transform: translateX(4px); }
 
-    .book-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
-    .btn-dark {
-      background: var(--ink); color: var(--parchment);
-      padding: 11px 24px; font-size: 11px;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      text-decoration: none; font-weight: 400;
-      transition: background 0.2s; display: inline-block;
-      font-family: inherit;
-    }
-    .btn-dark:hover { background: #2e2a26; }
-    .btn-ghost {
-      border: 1px solid var(--rule); color: var(--ink);
-      padding: 11px 24px; font-size: 11px;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      text-decoration: none; font-weight: 400;
-      transition: border-color 0.2s, color 0.2s;
-      display: inline-block;
-    }
-    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+    /* ── NEWSLETTER CALLOUT ── */
+    .newsletter-section { background: var(--cream); }
 
-    /* placeholder covers */
-    .cover-placeholder {
-      width: 100%; aspect-ratio: 2/3;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 8px 12px 40px rgba(26,23,20,0.22);
+    .newsletter-callout {
+      background: var(--ink);
+      padding: 56px 48px;
+      position: relative;
+      overflow: hidden;
+      max-width: 960px;
     }
-    .cover-placeholder-inner {
-      text-align: center; padding: 24px; color: #f7f4ef;
+    .newsletter-callout::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(184,131,42,0.12) 0%, transparent 65%);
+      pointer-events: none;
     }
-    .cover-placeholder-inner .cp-genre {
-      font-size: 11px; letter-spacing: 0.15em;
-      text-transform: uppercase; color: #d4a44c; margin-bottom: 12px;
+    .newsletter-eyebrow {
+      font-size: 10px; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--amber-lt);
+      margin-bottom: 16px; font-weight: 400;
+      display: block;
     }
-    .cover-placeholder-inner .cp-title {
+    .newsletter-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 22px; font-weight: 300; line-height: 1.2;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 300; color: var(--parchment);
+      line-height: 1.15; margin-bottom: 14px;
     }
-    .cover-placeholder-inner .cp-author {
-      margin-top: 16px; font-size: 12px; opacity: 0.6;
+    .newsletter-title em { font-style: italic; color: var(--amber-lt); }
+    .newsletter-body {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-style: italic; font-size: 15px;
+      color: rgba(247,244,239,0.65);
+      line-height: 1.8; margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .newsletter-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--amber-lt), var(--amber));
+      color: var(--ink);
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 400;
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(184,131,42,0.4);
+    }
+    .newsletter-btn:hover {
+      background: linear-gradient(135deg, #e8b85a, var(--amber-lt));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(184,131,42,0.55);
     }
 
-    /* TOUR */
-    .tour-section { background: var(--ink); color: var(--parchment); }
-    .tour-section h2 { color: var(--parchment); }
-    .tour-section .section-label { color: var(--amber-lt); }
-    .tour-rig {
+    /* ── CONTACT / BACK ── */
+    .back-section { background: var(--parchment); padding: 56px 48px; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--amber);
+      text-decoration: none; font-weight: 400;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .back-link:hover { color: var(--amber-lt); gap: 14px; }
+
+    .divider {
+      width: 48px; height: 1px;
+      background: var(--amber); opacity: 0.4;
+      margin: 20px 0;
+    }
+
+    .back-note {
       font-family: 'IM Fell English', Georgia, serif;
       font-style: italic; font-size: 14px;
-      color: rgba(247,244,239,0.45); margin-bottom: 48px;
-    }
-    .tour-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 2px; max-width: 960px;
-    }
-    .tour-stop {
-      background: rgba(247,244,239,0.04); padding: 24px 28px;
-      border-left: 2px solid transparent;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .tour-stop:hover {
-      border-left-color: var(--amber);
-      background: rgba(247,244,239,0.07);
-    }
-    .tour-date {
-      font-size: 11px; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--amber-lt); margin-bottom: 6px;
-    }
-    .tour-city {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 22px; font-weight: 300; margin-bottom: 4px;
-    }
-    .tour-venue { font-size: 13px; color: rgba(247,244,239,0.45); }
-    .tour-tag {
-      display: inline-block; font-size: 10px; letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1px solid rgba(184,131,42,0.4);
-      color: var(--amber-lt); padding: 3px 8px; margin-top: 10px;
+      color: var(--stone);
     }
 
-    /* CONTACT */
-    .contact-section { background: var(--cream); }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 64px; max-width: 960px;
-    }
-    .contact-info p {
-      color: var(--grey-cool); font-size: 15px; margin-bottom: 28px;
-    }
-    .contact-link {
-      display: block; color: var(--amber); text-decoration: none;
-      font-size: 13px; letter-spacing: 0.08em; margin-bottom: 10px;
-      transition: color 0.2s;
-    }
-    .contact-link:hover { color: var(--amber-lt); }
-    .press-resources {
-      margin-top: 32px; display: flex; flex-direction: column; gap: 2px;
-    }
-    .press-link {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 16px; background: var(--parchment);
-      font-size: 13px; text-decoration: none; color: var(--ink);
-      transition: background 0.2s, color 0.2s;
-    }
-    .press-link:hover { background: #e0dcd5; color: var(--amber); }
-    .press-link span {
-      font-size: 11px; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--stone);
-    }
-    form { display: flex; flex-direction: column; gap: 14px; }
-    label {
-      font-size: 11px; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--stone);
-      margin-bottom: 4px; display: block;
-    }
-    input, select, textarea {
-      width: 100%; background: var(--parchment);
-      border: 1px solid var(--rule); padding: 12px 14px;
-      font-family: inherit; font-size: 15px; color: var(--ink);
-      font-weight: 300; outline: none;
-      transition: border-color 0.2s; -webkit-appearance: none;
-    }
-    input:focus, select:focus, textarea:focus { border-color: var(--amber); }
-    textarea { resize: vertical; min-height: 120px; }
-
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
       background: var(--ink); color: rgba(247,244,239,0.45);
       padding: 32px 48px;
       display: flex; justify-content: space-between;
       align-items: center; flex-wrap: wrap; gap: 20px;
     }
-    .footer-logo { height: 36px; width: auto; opacity: 0.6; }
     footer p { font-size: 13px; }
     footer nav { display: flex; gap: 28px; }
     footer nav a {
@@ -449,138 +285,158 @@
     }
     footer nav a:hover { color: var(--amber-lt); }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      section { padding: 56px 24px; }
       .site-nav { padding: 0 20px; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-photo { height: 300px; }
-      .hero-photo::after { background: linear-gradient(to top, var(--ink) 0%, transparent 50%); }
-      .hero-text { padding: 40px 24px; }
-      .book-card { grid-template-columns: 1fr; gap: 32px; }
-      .book-cover-wrap { max-width: 240px; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .site-nav .nav-links { gap: 16px; }
+      .hero { padding: 56px 24px; }
+      section { padding: 56px 24px; }
+      .back-section { padding: 40px 24px; }
+      .newsletter-callout { padding: 36px 28px; }
       footer { flex-direction: column; align-items: flex-start; }
-    }
-
-    /* ARC CALLOUT */
-    .arc-callout {
-      background: linear-gradient(135deg, rgba(184,131,42,0.28) 0%, rgba(26,23,20,0.85) 100%);
-      border: 2px solid var(--amber);
-      border-left: 6px solid var(--amber-lt);
-      padding: 36px 40px;
-      margin-top: 0;
-      position: relative;
-      box-shadow: 0 8px 48px rgba(184,131,42,0.25), inset 0 1px 0 rgba(212,164,76,0.2);
-    }
-    .arc-callout::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 20% 50%, rgba(184,131,42,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .arc-icon {
-      font-size: 32px;
-      color: var(--amber-lt);
-      margin-bottom: 12px;
-      line-height: 1;
-      text-shadow: 0 0 20px rgba(212,164,76,0.5);
-    }
-    .arc-label {
-      font-size: 10px; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--amber-lt);
-      margin-bottom: 10px; font-weight: 400;
-      border-bottom: 1px solid rgba(184,131,42,0.3);
-      padding-bottom: 10px; display: inline-block;
-    }
-    .arc-heading {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 32px; font-weight: 300;
-      color: #fff; margin-bottom: 14px;
-      line-height: 1.15;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-    }
-    .arc-body {
-      font-size: 15px; color: rgba(247,244,239,0.85);
-      line-height: 1.85; margin-bottom: 28px;
-      max-width: 440px;
-      font-family: 'IM Fell English', Georgia, serif;
-      font-style: italic;
-    }
-    .arc-body em { color: var(--amber-lt); font-style: normal; font-weight: 600; }
-    .arc-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-    .arc-btn-gumroad {
-      display: inline-flex; align-items: center; gap: 14px;
-      padding: 16px 28px;
-      background: linear-gradient(135deg, var(--amber-lt), var(--amber));
-      color: var(--ink);
-      text-decoration: none;
-      font-family: inherit;
-      transition: all 0.25s;
-      box-shadow: 0 4px 20px rgba(184,131,42,0.5);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-    .arc-btn-gumroad:hover {
-      background: linear-gradient(135deg, #e8b85a, var(--amber-lt));
-      transform: translateY(-3px);
-      box-shadow: 0 10px 32px rgba(184,131,42,0.6);
-    }
-    .arc-btn-icon {
-      font-size: 26px; line-height: 1;
-      color: var(--ink);
-    }
-    .arc-btn-text {
-      display: flex; flex-direction: column;
-    }
-    .arc-btn-sub {
-      font-size: 9px; letter-spacing: 0.2em;
-      text-transform: uppercase; opacity: 0.65;
-      font-weight: 400; margin-bottom: 3px;
-    }
-    .arc-btn-text > span:last-child {
-      font-size: 13px; letter-spacing: 0.08em;
-      text-transform: uppercase; font-weight: 600;
-    }
-    .arc-btn-outline {
-      display: inline-block; padding: 16px 24px;
-      border: 1px solid rgba(212,164,76,0.5);
-      color: var(--amber-lt);
-      font-size: 11px; letter-spacing: 0.15em;
-      text-transform: uppercase; text-decoration: none;
-      font-weight: 400; transition: all 0.2s;
-      font-family: inherit;
-      background: rgba(184,131,42,0.08);
-    }
-    .arc-btn-outline:hover {
-      border-color: var(--amber-lt);
-      background: rgba(184,131,42,0.18);
-      color: #fff;
     }
   </style>
 </head>
 <body>
 
-<h1>Author Resources</h1>
+<!-- NAV -->
+<nav class="site-nav">
+  <a class="nav-brand" href="towle.html">Thomas E. Towle</a>
+  <ul class="nav-links">
+    <li><a href="towle.html#about">About</a></li>
+    <li><a href="towle.html#books">Books</a></li>
+    <li><a href="towle.html#tour">Tour</a></li>
+    <li><a href="towle.html#contact">Contact</a></li>
+  </ul>
+</nav>
 
-<h3>Newsletter</h3>
-<a href="https://1drv.ms/u/c/76726608372fc949/IQD4biYYMkmWT71kYeJOCnaoAf73G1VOyOtHeTtZ7oTGPys?e=eEf95g" target="_blank">Download Newsletter</a>
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    Press &amp; Media Resources &nbsp;·&nbsp; Thomas E. Towle &nbsp;·&nbsp; Oxford Bean Publishing &nbsp;·&nbsp; Author Bio &nbsp;·&nbsp; Press Kit &nbsp;·&nbsp; Book Cover Images &nbsp;·&nbsp; Newsletter &nbsp;·&nbsp; Fall 2026 Southwest Tour &nbsp;·&nbsp;
+    Press &amp; Media Resources &nbsp;·&nbsp; Thomas E. Towle &nbsp;·&nbsp; Oxford Bean Publishing &nbsp;·&nbsp; Author Bio &nbsp;·&nbsp; Press Kit &nbsp;·&nbsp; Book Cover Images &nbsp;·&nbsp; Newsletter &nbsp;·&nbsp; Fall 2026 Southwest Tour &nbsp;·&nbsp;
+  </div>
+</div>
 
-<h3>Author Bio </h3>
-<a href="https://1drv.ms/b/c/76726608372fc949/IQAUQn_6OIn9SoKidyOlidL2AfVDdIUB4p2JW32A3wRYKTI?e=2tIxZf" target="_blank">Download</a>
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Oxford Bean Publishing · Thomas E. Towle</p>
+  <h1>Press &amp; <em>Media</em><br>Resources</h1>
+  <p class="hero-sub">Downloadable assets for journalists, booksellers, event organisers,<br>and anyone writing about the work or the road.</p>
+</div>
 
-<h3>Press Kit</h3>
-<a href="https://1drv.ms/w/c/76726608372fc949/IQDWyUAcy3UZRK2-aUUr8l5KARivfLnwtYBNS8WPYmPaRds?e=hffUFP" target="_blank">Download Press Kit</a>
+<!-- RESOURCES -->
+<section class="resources-section" id="resources">
+  <p class="section-label">Downloads</p>
+  <h2>Author <em>Assets</em></h2>
 
-<h3>Press Kit PDF</h3>
-<a href="https://1drv.ms/b/c/76726608372fc949/IQDlfLJOPoADSqN6O6512bK_ATh669rCcszMEjSsu8YX7F8?e=quza0z" target="_blank">Download PDF Press Kit</a>
+  <p class="resources-intro">
+    All files below are ready for editorial and promotional use. For interview requests, venue bookings, or review copies, please use the contact form on the <a href="towle.html#contact" style="color:var(--amber);text-decoration:none;">author page</a>.
+  </p>
 
-<h3>Book Cover Images</h3>
-<a href="https://1drv.ms/i/c/76726608372fc949/IQDDFEobXLd9TLyS14bw9mw4AYO9uiaQLZUffRaWBtRlUUI?e=HOm0sQ" target="_blank">Download</a>
+  <div class="resources-grid">
 
-<br><br>
+    <!-- Newsletter -->
+    <a class="resource-card"
+       href="https://1drv.ms/u/c/76726608372fc949/IQD4biYYMkmWT71kYeJOCnaoAf73G1VOyOtHeTtZ7oTGPys?e=eEf95g"
+       target="_blank" rel="noopener">
+      <div class="resource-top">
+        <span class="resource-icon">✉</span>
+        <span class="resource-type">Newsletter</span>
+        <div class="resource-title">Author Newsletter</div>
+        <p class="resource-desc">The latest dispatch from the Slumber Queen — tour dates, new work, and desert dispatches from the road.</p>
+      </div>
+      <span class="resource-dl">Download <span class="resource-dl-arrow">→</span></span>
+    </a>
 
-<a href="towle.html">← Back to Home</a>
+    <!-- Author Bio -->
+    <a class="resource-card"
+       href="https://1drv.ms/b/c/76726608372fc949/IQAUQn_6OIn9SoKidyOlidL2AfVDdIUB4p2JW32A3wRYKTI?e=2tIxZf"
+       target="_blank" rel="noopener">
+      <div class="resource-top">
+        <span class="resource-icon">✍</span>
+        <span class="resource-type">Author Bio</span>
+        <div class="resource-title">Author Biography</div>
+        <p class="resource-desc">Short and long-form author biography for use in event programmes, catalogue copy, and editorial profiles.</p>
+      </div>
+      <span class="resource-dl">Download PDF <span class="resource-dl-arrow">→</span></span>
+    </a>
+
+    <!-- Press Kit (Word) -->
+    <a class="resource-card"
+       href="https://1drv.ms/w/c/76726608372fc949/IQDWyUAcy3UZRK2-aUUr8l5KARivfLnwtYBNS8WPYmPaRds?e=hffUFP"
+       target="_blank" rel="noopener">
+      <div class="resource-top">
+        <span class="resource-icon">📋</span>
+        <span class="resource-type">Press Kit</span>
+        <div class="resource-title">Press Kit</div>
+        <p class="resource-desc">Complete press kit in Word format — bio, synopsis, selected quotes, publication details, and contact information.</p>
+      </div>
+      <span class="resource-dl">Download .docx <span class="resource-dl-arrow">→</span></span>
+    </a>
+
+    <!-- Press Kit PDF -->
+    <a class="resource-card"
+       href="https://1drv.ms/b/c/76726608372fc949/IQDlfLJOPoADSqN6O6512bK_ATh669rCcszMEjSsu8YX7F8?e=quza0z"
+       target="_blank" rel="noopener">
+      <div class="resource-top">
+        <span class="resource-icon">📄</span>
+        <span class="resource-type">Press Kit</span>
+        <div class="resource-title">Press Kit PDF</div>
+        <p class="resource-desc">Print-ready PDF version of the full press kit — formatted for immediate editorial use.</p>
+      </div>
+      <span class="resource-dl">Download PDF <span class="resource-dl-arrow">→</span></span>
+    </a>
+
+    <!-- Book Cover Images -->
+    <a class="resource-card"
+       href="https://1drv.ms/i/c/76726608372fc949/IQDDFEobXLd9TLyS14bw9mw4AYO9uiaQLZUffRaWBtRlUUI?e=HOm0sQ"
+       target="_blank" rel="noopener">
+      <div class="resource-top">
+        <span class="resource-icon">🖼</span>
+        <span class="resource-type">Book Cover Images</span>
+        <div class="resource-title">High-Res Cover Art</div>
+        <p class="resource-desc">High-resolution cover images for <em>Travels with a Slumber Queen</em> and <em>The Pilgrimage of Amos</em> — print and digital formats.</p>
+      </div>
+      <span class="resource-dl">Download Images <span class="resource-dl-arrow">→</span></span>
+    </a>
+
+  </div>
+</section>
+
+<!-- NEWSLETTER CALLOUT -->
+<section class="newsletter-section">
+  <div class="newsletter-callout">
+    <span class="newsletter-eyebrow">Stay in Touch</span>
+    <h3 class="newsletter-title">From the <em>Slumber Queen</em></h3>
+    <p class="newsletter-body">
+      Irregular dispatches from the Sonoran Desert — new work, confirmed tour stops, and whatever the trail demands writing about. Sign up once; unsubscribe whenever the desert calls.
+    </p>
+    <a class="newsletter-btn"
+       href="https://1drv.ms/u/c/76726608372fc949/IQD4biYYMkmWT71kYeJOCnaoAf73G1VOyOtHeTtZ7oTGPys?e=eEf95g"
+       target="_blank" rel="noopener">
+      ✉ &nbsp; Download Newsletter
+    </a>
+  </div>
+</section>
+
+<!-- BACK LINK -->
+<div class="back-section">
+  <a class="back-link" href="towle.html">← Back to Thomas E. Towle</a>
+  <div class="divider"></div>
+  <p class="back-note">For interview, tour booking, and review copy requests — use the contact form on the author page.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Thomas E. Towle · Oxford Bean Publishing · ISBN 978-0-9812955-2-7</p>
+  <nav>
+    <a href="https://somaroadread.blogspot.com" target="_blank" rel="noopener">Blog</a>
+    <a href="towle.html#books">Books</a>
+    <a href="towle.html#tour">Tour</a>
+    <a href="towle.html#contact">Contact</a>
+  </nav>
+</footer>
 
 </body>
 </html>
-
