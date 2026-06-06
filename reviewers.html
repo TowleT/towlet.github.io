@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advance Review Copies — Chimera: The Hypatia Chronicle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Gill+Sans+Nova:wght@200;300;400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:       #1a1714;
+      --parchment: #f7f4ef;
+      --cream:     #ede9e2;
+      --amber:     #b8832a;
+      --amber-lt:  #d4a44c;
+      --stone:     #8a8278;
+      --grey-cool: #5c6370;
+      --rule:      rgba(26,23,20,0.12);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Gill Sans Nova', 'Gill Sans', Optima, sans-serif;
+      font-weight: 300;
+      background: var(--parchment);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    /* NAV */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--ink);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 60px;
+    }
+    .nav-back {
+      color: var(--parchment);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s, color 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-back:hover { opacity: 1; color: var(--amber-lt); }
+    .nav-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 16px; font-weight: 300;
+      color: var(--amber-lt); letter-spacing: 0.05em;
+    }
+    .nav-right {
+      font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(247,244,239,0.4);
+    }
+
+    /* TICKER */
+    .ticker {
+      background: var(--amber);
+      overflow: hidden; white-space: nowrap; padding: 10px 0;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+      font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink); font-weight: 400;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: var(--ink);
+      padding: 88px 48px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(184,131,42,0.09) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--amber-lt);
+      margin-bottom: 20px; font-weight: 400;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 300; line-height: 1.05;
+      color: var(--parchment);
+      margin-bottom: 20px;
+      max-width: 680px;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--amber-lt); }
+    .hero-deck {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-style: italic; font-size: 18px;
+      color: rgba(247,244,239,0.65);
+      max-width: 560px; line-height: 1.6;
+    }
+
+    /* MAIN LAYOUT */
+    .page-body { max-width: 860px; padding: 0 48px 100px; margin: 0 auto; }
+
+    /* SECTION STYLING */
+    .rev-section {
+      padding: 72px 0 0;
+      border-top: 1px solid var(--rule);
+    }
+    .rev-section:first-child { border-top: none; padding-top: 72px; }
+
+    .section-num {
+      font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--amber);
+      margin-bottom: 8px; font-weight: 400;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-num::after {
+      content: '';
+      display: block; height: 1px; width: 40px;
+      background: var(--amber); opacity: 0.4;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 300; line-height: 1.15;
+      margin-bottom: 32px;
+    }
+    h2 em { font-style: italic; color: var(--amber); }
+
+    /* BOOK INTRO */
+    .book-intro {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .cover-wrap {
+      position: relative;
+    }
+    .cover-wrap img {
+      width: 100%; display: block;
+      box-shadow: 8px 12px 40px rgba(26,23,20,0.22);
+    }
+    .cover-placeholder {
+      width: 100%; aspect-ratio: 2/3;
+      background: var(--ink);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 24px;
+      box-shadow: 8px 12px 40px rgba(26,23,20,0.22);
+      text-align: center;
+    }
+    .cover-placeholder .cp-genre {
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--amber-lt);
+      margin-bottom: 12px;
+    }
+    .cover-placeholder .cp-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px; font-weight: 300;
+      color: var(--parchment); line-height: 1.2;
+    }
+    .cover-placeholder .cp-author {
+      margin-top: 16px; font-size: 11px;
+      color: rgba(247,244,239,0.45); letter-spacing: 0.08em;
+    }
+    .book-details p {
+      color: var(--grey-cool); font-size: 15px;
+      line-height: 1.85; margin-bottom: 18px;
+    }
+    .book-meta-line {
+      font-size: 12px; letter-spacing: 0.08em;
+      color: var(--stone); margin-bottom: 24px;
+      border-left: 2px solid var(--amber);
+      padding-left: 14px;
+    }
+    .book-meta-line span { display: block; }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-style: italic; font-size: 20px;
+      color: var(--ink); line-height: 1.55;
+      border-left: 3px solid var(--amber);
+      padding: 20px 28px;
+      background: var(--cream);
+      margin: 32px 0 0;
+    }
+    .pull-quote cite {
+      display: block; margin-top: 12px;
+      font-size: 12px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--stone);
+      font-style: normal;
+    }
+
+    /* WHO IT'S FOR */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 8px;
+    }
+    .audience-item {
+      background: var(--cream);
+      padding: 24px 28px;
+      border-left: 2px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .audience-item:hover {
+      border-left-color: var(--amber);
+      background: #e6e1d8;
+    }
+    .audience-icon {
+      font-size: 22px; margin-bottom: 10px; line-height: 1;
+    }
+    .audience-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px; font-weight: 300;
+      margin-bottom: 6px;
+    }
+    .audience-desc {
+      font-size: 13px; color: var(--grey-cool); line-height: 1.65;
+    }
+
+    /* GET THE ARC */
+    .arc-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 8px;
+    }
+    .arc-option {
+      background: var(--ink);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .arc-option::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 80%, rgba(184,131,42,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .arc-option-label {
+      font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--amber-lt);
+      margin-bottom: 12px; font-weight: 400;
+    }
+    .arc-option-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 26px; font-weight: 300;
+      color: var(--parchment); margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .arc-option-desc {
+      font-size: 14px; color: rgba(247,244,239,0.55);
+      line-height: 1.7; margin-bottom: 24px;
+    }
+    .btn-gumroad {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, var(--amber-lt), var(--amber));
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 400;
+      font-family: inherit;
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(184,131,42,0.4);
+    }
+    .btn-gumroad:hover {
+      background: linear-gradient(135deg, #e8b85a, var(--amber-lt));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(184,131,42,0.5);
+    }
+    .btn-email {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 24px;
+      border: 1px solid rgba(212,164,76,0.45);
+      color: var(--amber-lt);
+      text-decoration: none;
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 400;
+      font-family: inherit;
+      background: rgba(184,131,42,0.08);
+      transition: all 0.2s;
+    }
+    .btn-email:hover {
+      border-color: var(--amber-lt);
+      background: rgba(184,131,42,0.18);
+      color: #fff;
+    }
+
+    /* WHAT WE ASK */
+    .ask-list {
+      display: flex; flex-direction: column; gap: 2px;
+      margin-top: 8px;
+    }
+    .ask-item {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 24px 28px;
+      background: var(--cream);
+      border-left: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .ask-item:hover { border-left-color: var(--amber); }
+    .ask-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px; font-weight: 300;
+      color: var(--amber); opacity: 0.5;
+      line-height: 1; flex-shrink: 0;
+      width: 32px; text-align: center;
+    }
+    .ask-body {}
+    .ask-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px; font-weight: 300; margin-bottom: 4px;
+    }
+    .ask-desc {
+      font-size: 14px; color: var(--grey-cool); line-height: 1.65;
+    }
+    .ask-desc a {
+      color: var(--amber); text-decoration: none;
+    }
+    .ask-desc a:hover { color: var(--amber-lt); }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: var(--ink);
+      margin-top: 72px;
+      padding: 56px 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(184,131,42,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .final-cta-text {}
+    .final-cta-label {
+      font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--amber-lt);
+      margin-bottom: 12px;
+    }
+    .final-cta-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 34px; font-weight: 300;
+      color: var(--parchment); line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .final-cta-heading em { font-style: italic; color: var(--amber-lt); }
+    .final-cta-sub {
+      font-size: 14px; color: rgba(247,244,239,0.5);
+      line-height: 1.7;
+    }
+    .final-cta-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink); color: rgba(247,244,239,0.45);
+      padding: 32px 48px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 20px;
+    }
+    footer p { font-size: 13px; }
+    footer nav { display: flex; gap: 28px; }
+    footer nav a {
+      color: rgba(247,244,239,0.45); text-decoration: none;
+      font-size: 13px; transition: color 0.2s;
+    }
+    footer nav a:hover { color: var(--amber-lt); }
+
+    @media (max-width: 768px) {
+      .site-nav { padding: 0 20px; }
+      .page-hero { padding: 56px 24px 48px; }
+      .page-body { padding: 0 24px 72px; }
+      .book-intro { grid-template-columns: 1fr; gap: 32px; }
+      .cover-wrap { max-width: 200px; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .arc-options { grid-template-columns: 1fr; }
+      .final-cta { grid-template-columns: 1fr; gap: 32px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="towle.html" class="nav-back">← Thomas E. Towle</a>
+  <span class="nav-title">Advance Review Copies</span>
+  <span class="nav-right">Chimera · 2026</span>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    Advance Review Copies &nbsp;·&nbsp; Chimera: The Hypatia Chronicle &nbsp;·&nbsp; Thomas E. Towle &nbsp;·&nbsp; Oxford Bean Publishing &nbsp;·&nbsp; Literary Science Fiction &nbsp;·&nbsp; EPUB Available Now &nbsp;·&nbsp; Honest Reviews Welcome &nbsp;·&nbsp; Goodreads · Amazon · Your Blog &nbsp;·&nbsp; Advance Review Copies &nbsp;·&nbsp; Chimera: The Hypatia Chronicle &nbsp;·&nbsp; Thomas E. Towle &nbsp;·&nbsp; Oxford Bean Publishing &nbsp;·&nbsp; Literary Science Fiction &nbsp;·&nbsp; EPUB Available Now &nbsp;·&nbsp; Honest Reviews Welcome &nbsp;·&nbsp; Goodreads · Amazon · Your Blog &nbsp;·&nbsp;
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <p class="hero-label">For Reviewers &amp; Advance Readers</p>
+  <h1>Get an early copy of <em>Chimera.</em></h1>
+  <p class="hero-deck">Read it free. Tell people what you honestly think. That's all.</p>
+</header>
+
+<main class="page-body">
+
+  <!-- SECTION 1: THE BOOK -->
+  <section class="rev-section">
+    <p class="section-num">I &nbsp; The Book</p>
+    <h2>What <em>Chimera</em> is about.</h2>
+    <div class="book-intro">
+      <div class="cover-wrap">
+        <img src="bookcover.png" alt="Chimera: The Hypatia Chronicle — cover"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="cover-placeholder" style="display:none;">
+          <p class="cp-genre">Literary Science Fiction</p>
+          <p class="cp-title">Chimera:<br>The Hypatia Chronicle</p>
+          <p class="cp-author">Thomas E. Towle</p>
+        </div>
+      </div>
+      <div class="book-details">
+        <div class="book-meta-line">
+          <span>Oxford Bean Publishing · 2026</span>
+          <span>ISBN 978-0-9812955-6-5</span>
+          <span>Literary Science Fiction · Novel</span>
+        </div>
+        <p>In a post-Carbon Wars world of collapsed nations and resurgent theocracy, a fossil hunter named <strong>Luchs</strong> lies in an induced coma, held by a ruthless religious government called the Precisians. They want one thing: the location of an extraordinary prehistoric fossil — the <em>Chimera</em> — buried somewhere in the Shining Mountains. Luchs alone knows where it is. Even unconscious, he resists.</p>
+        <p>Into this standoff comes a monk-historian, a mountain rebel leader, an ancient AI called Bot, and the defining love of Luchs's life — Hypatia, a scientist being consumed from within by something she calls the Disease Voice. A presence that has learned to speak in her own cadence. A presence that may not be illness at all.</p>
+        <p>At its core, <em>Chimera</em> is about resistance and the limits of love — about who controls the past and therefore owns the future, and about what it means to build a true picture of the world when the world itself is being rewritten around you.</p>
+        <div class="pull-quote">
+          "The fossil and I have been waiting the same amount of time. Only one of us knows what for."
+          <cite>— Bot, in <em>Chimera: The Hypatia Chronicle</em></cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: WHO IT'S FOR -->
+  <section class="rev-section">
+    <p class="section-num">II &nbsp; The Reader</p>
+    <h2>Who it's <em>for.</em></h2>
+    <div class="audience-grid">
+      <div class="audience-item">
+        <div class="audience-icon">📚</div>
+        <p class="audience-title">Literary fiction readers</p>
+        <p class="audience-desc">If you love Ursula K. Le Guin's moral weight, Kazuo Ishiguro's interiority, or the philosophical restlessness of Doris Lessing — this is for you.</p>
+      </div>
+      <div class="audience-item">
+        <div class="audience-icon">🚀</div>
+        <p class="audience-title">Science fiction readers</p>
+        <p class="audience-desc">Dystopian world-building, a post-collapse political landscape, an ancient AI with its own agenda, and a mystery at the edge of human evolutionary history.</p>
+      </div>
+      <div class="audience-item">
+        <div class="audience-icon">🏔</div>
+        <p class="audience-title">Outdoor &amp; nature writers</p>
+        <p class="audience-desc">The mountains are not backdrop — they are presence. Readers of Edward Abbey, John Muir, or Barry Lopez will recognise the landscape as character.</p>
+      </div>
+      <div class="audience-item">
+        <div class="audience-icon">🧬</div>
+        <p class="audience-title">Science &amp; ideas readers</p>
+        <p class="audience-desc">The fossil at the heart of the novel raises serious questions about evolutionary biology, exogenesis, and what humanity might carry inside it without knowing.</p>
+      </div>
+      <div class="audience-item">
+        <div class="audience-icon">✍️</div>
+        <p class="audience-title">Book bloggers &amp; reviewers</p>
+        <p class="audience-desc">If you cover independent or literary fiction, debut novels, or speculative fiction from outside the mainstream — we would be honoured to be on your list.</p>
+      </div>
+      <div class="audience-item">
+        <div class="audience-icon">🎙</div>
+        <p class="audience-title">Podcast &amp; radio hosts</p>
+        <p class="audience-desc">Thomas is available for interviews, conversations, and guest appearances. The author, the book, and the 1987 Toyota motorhome he writes from are all part of the story.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: GET THE ARC -->
+  <section class="rev-section">
+    <p class="section-num">III &nbsp; The Copy</p>
+    <h2>How to get <em>your ARC.</em></h2>
+    <div class="arc-options">
+      <div class="arc-option">
+        <p class="arc-option-label">Instant Download</p>
+        <p class="arc-option-title">Get the EPUB<br>on Gumroad</p>
+        <p class="arc-option-desc">Free. No signup required. Download immediately and start reading. Compatible with any e-reader app — Kindle, Kobo, Apple Books, or your browser.</p>
+        <a href="https://9391657857251.gumroad.com/l/iuqfdo" class="btn-gumroad" target="_blank">
+          ↓ &nbsp; Download Free EPUB
+        </a>
+      </div>
+      <div class="arc-option">
+        <p class="arc-option-label">Personal Copy</p>
+        <p class="arc-option-title">Request by<br>email</p>
+        <p class="arc-option-desc">Prefer to receive your copy directly, or want to introduce yourself first? Send a short note — who you are, where you review, and Thomas will send the EPUB personally.</p>
+        <a href="mailto:your@email.com?subject=Review Copy Request — Chimera: The Hypatia Chronicle&body=Hi Thomas,%0A%0AI'd like to request a review copy of Chimera: The Hypatia Chronicle.%0A%0AAbout me / where I review:%0A%0A" class="btn-email">
+          ✉ &nbsp; Request by Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: WHAT WE ASK -->
+  <section class="rev-section">
+    <p class="section-num">IV &nbsp; The Ask</p>
+    <h2>What we're <em>asking in return.</em></h2>
+    <div class="ask-list">
+      <div class="ask-item">
+        <div class="ask-num">1</div>
+        <div class="ask-body">
+          <p class="ask-title">Read it honestly</p>
+          <p class="ask-desc">That's the only requirement. You don't have to love it. An honest critical review is more valuable to a writer than a polite one, and more useful to readers making their choice.</p>
+        </div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-num">2</div>
+        <div class="ask-body">
+          <p class="ask-title">Post a review somewhere public</p>
+          <p class="ask-desc"><a href="https://www.goodreads.com" target="_blank">Goodreads</a> and <a href="https://www.amazon.com" target="_blank">Amazon</a> are the most useful for discoverability — even a few sentences helps readers find the book. Your blog, newsletter, or social platform is equally welcome.</p>
+        </div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-num">3</div>
+        <div class="ask-body">
+          <p class="ask-title">No deadline, no obligation</p>
+          <p class="ask-desc">Read at your own pace. If you start it and it's not for you, no problem — there's no contract here. The copy is yours to keep regardless.</p>
+        </div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-num">4</div>
+        <div class="ask-body">
+          <p class="ask-title">Let Thomas know</p>
+          <p class="ask-desc">If you post a review, a quick note to <a href="mailto:your@email.com">your@email.com</a> is always appreciated — not required, but it means a great deal. He reads and responds to all of them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <div class="final-cta-text">
+      <p class="final-cta-label">Ready to read?</p>
+      <p class="final-cta-heading">Get <em>Chimera</em> now.<br>Tell people what you think.</p>
+      <p class="final-cta-sub">Free EPUB · No obligations · Honest reviews only</p>
+    </div>
+    <div class="final-cta-actions">
+      <a href="https://9391657857251.gumroad.com/l/iuqfdo" class="btn-gumroad" target="_blank">
+        ↓ &nbsp; Download on Gumroad
+      </a>
+      <a href="mailto:your@email.com?subject=Review Copy Request — Chimera: The Hypatia Chronicle" class="btn-email">
+        ✉ &nbsp; Request by Email
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Thomas E. Towle · Oxford Bean Publishing · ISBN 978-0-9812955-6-5</p>
+  <nav>
+    <a href="towle.html">Author Page</a>
+    <a href="https://towlet.github.io/index.html">Oxford Bean Publishing</a>
+    <a href="https://pilgrimageofamos.blogspot.com/2026/06/chimera-hypatia-chronicle-by-thomas-e.html">Blog</a>
+  </nav>
+</footer>
+
+</body>
+</html>
