@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Club Guide — Thomas E. Towle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Gill+Sans+Nova:wght@200;300;400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1714; --parchment: #f7f4ef; --cream: #ede9e2;
+      --amber: #b8832a; --amber-lt: #d4a44c; --stone: #8a8278;
+      --rule: rgba(26,23,20,0.12);
+    }
+    body {
+      font-family: 'Gill Sans Nova', 'Gill Sans', Optima, sans-serif;
+      font-weight: 300; background: var(--parchment); color: var(--ink);
+      line-height: 1.7; font-size: 17px;
+    }
+    .site-nav {
+      background: var(--ink); padding: 0 48px; height: 60px;
+      display: flex; align-items: center;
+    }
+    .site-nav a {
+      color: var(--parchment); text-decoration: none;
+      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7;
+    }
+    .site-nav a:hover { opacity: 1; color: var(--amber-lt); }
+
+    main { max-width: 680px; margin: 0 auto; padding: 64px 24px 80px; }
+    .guide-eyebrow {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(32px, 5vw, 44px); font-weight: 300; line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .guide-author { font-size: 14px; color: var(--stone); margin-bottom: 28px; }
+    .guide-print-hint { font-size: 13px; color: var(--stone); margin-bottom: 16px; }
+    .guide-print-btn { margin-bottom: 36px; cursor: pointer; }
+    .btn-dark {
+      background: var(--ink); color: var(--parchment);
+      padding: 11px 24px; font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none; font-weight: 400;
+      border: none; font-family: inherit; display: inline-block;
+    }
+    .btn-dark:hover { background: #2e2a26; }
+    ol { padding-left: 22px; }
+    ol li { margin-bottom: 20px; font-size: 18px; }
+    .guide-missing { color: var(--stone); margin-bottom: 20px; }
+    main a { color: var(--amber); }
+    main ul { list-style: none; margin-top: 12px; }
+    main ul li { margin-bottom: 10px; }
+
+    @media print {
+      .site-nav, .guide-print-hint, .guide-print-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="towle.html">&larr; Back to Thomas E. Towle</a>
+</nav>
+
+<main id="guide"></main>
+
+<script src="data/catalog.js"></script>
+<script src="assets/render-catalog.js"></script>
+<script>
+  function renderGuideOrError() {
+    const guide = document.getElementById('guide');
+    if (typeof BOOKS === 'undefined') {
+      guide.innerHTML = '<p class="guide-missing">Could not load the book catalog. ' +
+        'Check that <code>data/catalog.js</code> and <code>assets/render-catalog.js</code> ' +
+        'are uploaded in their own folders next to this page.</p>';
+      return;
+    }
+    renderBookClubGuide(guide);
+  }
+  renderGuideOrError();
+  window.addEventListener('hashchange', renderGuideOrError);
+</script>
+
+</body>
+</html>
