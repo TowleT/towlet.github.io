@@ -124,16 +124,16 @@ function renderBookCards(container) {
     if (book.bookClub && book.bookClub.length) {
       const clubBtn = document.createElement("a");
       clubBtn.href = "bookclub.html#" + book.slug;
-      clubBtn.className = "btn-ghost";
-      clubBtn.textContent = "Book Club Guide";
+      clubBtn.className = "btn-highlight";
+      clubBtn.textContent = "\uD83D\uDCD6 Book Club Guide";
       actions.appendChild(clubBtn);
     }
 
     if (book.excerpt && book.excerpt.length) {
       const sampleBtn = document.createElement("a");
       sampleBtn.href = "sample.html#" + book.slug;
-      sampleBtn.className = "btn-ghost";
-      sampleBtn.textContent = "Read a Sample";
+      sampleBtn.className = "btn-highlight";
+      sampleBtn.textContent = "\u270E Read a Sample";
       actions.appendChild(sampleBtn);
     }
 
