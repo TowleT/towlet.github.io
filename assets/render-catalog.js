@@ -120,12 +120,107 @@ function renderBookCards(container) {
     eventBtn.className = "btn-ghost";
     eventBtn.textContent = "Book an Event";
     actions.appendChild(eventBtn);
+
+    if (book.bookClub && book.bookClub.length) {
+      const clubBtn = document.createElement("a");
+      clubBtn.href = "bookclub.html#" + book.slug;
+      clubBtn.className = "btn-ghost";
+      clubBtn.textContent = "Book Club Guide";
+      actions.appendChild(clubBtn);
+    }
+
+    if (book.excerpt && book.excerpt.length) {
+      const sampleBtn = document.createElement("a");
+      sampleBtn.href = "sample.html#" + book.slug;
+      sampleBtn.className = "btn-ghost";
+      sampleBtn.textContent = "Read a Sample";
+      actions.appendChild(sampleBtn);
+    }
+
     meta.appendChild(actions);
 
     card.appendChild(coverWrap);
     card.appendChild(meta);
     container.appendChild(card);
   });
+}
+
+// ── bookclub.html — standalone printable/downloadable guide ──
+function renderBookClubGuide(container) {
+  if (!container) return;
+  const slug = (location.hash || "").replace("#", "");
+  const book = BOOKS.find(function (b) { return b.slug === slug; });
+
+  if (!book) {
+    container.innerHTML =
+      '<p class="guide-missing">Choose a book below to view its discussion guide.</p>' +
+      renderGuidePicker();
+    return;
+  }
+  if (!book.bookClub || !book.bookClub.length) {
+    container.innerHTML =
+      "<h1>" + book.title + "</h1>" +
+      '<p class="guide-missing">A book club guide for this title isn\u2019t ready yet — check back soon.</p>' +
+      '<p><a href="towle.html#book-' + book.slug + '">&larr; Back to the book</a></p>';
+    return;
+  }
+
+  const questions = book.bookClub.map(function (q) { return "<li>" + q + "</li>"; }).join("");
+  container.innerHTML =
+    '<p class="guide-eyebrow">Oxford Bean Publishing — Reading Group Guide</p>' +
+    "<h1>" + book.title + (book.subtitle ? ": " + book.subtitle : "") + "</h1>" +
+    '<p class="guide-author">by ' + book.author + "</p>" +
+    '<p class="guide-print-hint">Use your browser\u2019s Print (Ctrl/Cmd+P) and choose \u201cSave as PDF\u201d to download this guide.</p>' +
+    '<button class="btn-dark guide-print-btn" onclick="window.print()">Print / Save as PDF</button>' +
+    (book.bookClubIntro ? '<p class="guide-intro">' + book.bookClubIntro + "</p>" : "") +
+    "<ol>" + questions + "</ol>" +
+    (book.bookClubOutro ? '<p class="guide-outro">' + book.bookClubOutro + "</p>" : "") +
+    '<p><a href="towle.html#book-' + book.slug + '">&larr; Back to the book</a></p>';
+}
+
+function renderGuidePicker() {
+  const withGuides = BOOKS.filter(function (b) { return b.bookClub && b.bookClub.length; });
+  if (!withGuides.length) return "<p>No book club guides are available yet.</p>";
+  return "<ul>" + withGuides.map(function (b) {
+    return '<li><a href="bookclub.html#' + b.slug + '">' + b.title + "</a></li>";
+  }).join("") + "</ul>";
+}
+
+// ── sample.html — standalone writing-sample page ──────────────
+function renderSample(container) {
+  if (!container) return;
+  const slug = (location.hash || "").replace("#", "");
+  const book = BOOKS.find(function (b) { return b.slug === slug; });
+
+  if (!book) {
+    container.innerHTML =
+      '<p class="guide-missing">Choose a book below to read a sample.</p>' +
+      renderSamplePicker();
+    return;
+  }
+  if (!book.excerpt || !book.excerpt.length) {
+    container.innerHTML =
+      "<h1>" + book.title + "</h1>" +
+      '<p class="guide-missing">A sample for this title isn\u2019t posted yet — check back soon.</p>' +
+      '<p><a href="towle.html#book-' + book.slug + '">&larr; Back to the book</a></p>';
+    return;
+  }
+
+  const paragraphs = book.excerpt.map(function (p) { return "<p>" + p + "</p>"; }).join("");
+  container.innerHTML =
+    '<p class="guide-eyebrow">Oxford Bean Publishing — A Sample</p>' +
+    "<h1>" + book.title + (book.subtitle ? ": " + book.subtitle : "") + "</h1>" +
+    '<p class="guide-author">by ' + book.author + "</p>" +
+    '<div class="sample-text">' + paragraphs + "</div>" +
+    '<p><a href="towle.html#book-' + book.slug + '">&larr; Back to the book</a></p>';
+}
+
+function renderSamplePicker() {
+  const withSamples = BOOKS.filter(function (b) { return b.excerpt && b.excerpt.length; });
+  if (!withSamples.length) return "<p>No samples are available yet.</p>";
+  return "<ul>" + withSamples.map(function (b) {
+    return '<li><a href="sample.html#' + b.slug + '">' + b.title + "</a></li>";
+  }).join("") + "</ul>";
 }
 
 // ── towle.html — ISBN line in the "Where to Find It" callout ─
