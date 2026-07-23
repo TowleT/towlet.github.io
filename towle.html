@@ -3,89 +3,790 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Read a Sample — Thomas E. Towle</title>
+  <title>Thomas E. Towle — Author</title>
+	<meta name="description" content="Thomas E. Towle — author of Chimera: The Hypatia Chronicle and The Pilgrimage of Amos. Oxford Bean Publishing, 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Gill+Sans+Nova:wght@200;300;400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --ink: #1a1714; --parchment: #f7f4ef; --cream: #ede9e2;
-      --amber: #b8832a; --amber-lt: #d4a44c; --stone: #8a8278;
-      --rule: rgba(26,23,20,0.12);
+      --ink:       #1a1714;
+      --parchment: #f7f4ef;
+      --cream:     #ede9e2;
+      --amber:     #b8832a;
+      --amber-lt:  #d4a44c;
+      --stone:     #8a8278;
+      --grey-cool: #5c6370;
+      --rule:      rgba(26,23,20,0.12);
     }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Gill Sans Nova', 'Gill Sans', Optima, sans-serif;
-      font-weight: 300; background: var(--parchment); color: var(--ink);
-      line-height: 1.7; font-size: 17px;
+      font-weight: 300;
+      background: var(--parchment);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 17px;
     }
+
+    /* NAV */
     .site-nav {
-      background: var(--ink); padding: 0 48px; height: 60px;
-      display: flex; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+      background: var(--ink);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 60px;
     }
-    .site-nav a {
-      color: var(--parchment); text-decoration: none;
-      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7;
+    .nav-logo {
+      height: 40px; width: auto;
+      opacity: 0.9;
+      transition: opacity 0.2s;
     }
-    .site-nav a:hover { opacity: 1; color: var(--amber-lt); }
+    .nav-logo:hover { opacity: 1; }
+    .site-nav .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .site-nav .nav-links a {
+      color: var(--parchment);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .site-nav .nav-links a:hover { opacity: 1; color: var(--amber-lt); }
 
-    main { max-width: 680px; margin: 0 auto; padding: 64px 24px 80px; }
-    .guide-eyebrow {
-      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--amber); margin-bottom: 12px;
+    /* TICKER */
+    .ticker {
+      background: var(--amber);
+      overflow: hidden; white-space: nowrap; padding: 10px 0;
     }
-    h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(32px, 5vw, 44px); font-weight: 300; line-height: 1.1;
-      margin-bottom: 6px;
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 32s linear infinite;
+      font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink); font-weight: 400;
     }
-    .guide-author { font-size: 14px; color: var(--stone); margin-bottom: 36px; }
-    .guide-missing { color: var(--stone); margin-bottom: 20px; }
-    main a { color: var(--amber); }
-    main ul { list-style: none; margin-top: 12px; }
-    main ul li { margin-bottom: 10px; }
-
-    .sample-text {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 20px; line-height: 1.75; color: var(--ink);
-    }
-    .sample-text p { margin-bottom: 22px; }
-    .sample-text p:first-of-type::first-letter {
-      font-size: 54px; line-height: 0.8; float: left;
-      padding: 6px 8px 0 0; color: var(--amber);
-      font-family: 'Cormorant Garamond', Georgia, serif;
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    @media (max-width: 480px) {
+    /* HERO */
+    .hero {
+      background: var(--ink);
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      min-height: 520px;
+      overflow: hidden;
+    }
+    .hero-text {
+      padding: 80px 56px 80px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+    }
+    .hero-text::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(184,131,42,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--amber-lt);
+      margin-bottom: 20px; font-weight: 400;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(48px, 5.5vw, 80px);
+      font-weight: 300; line-height: 1.05;
+      color: var(--parchment);
+      margin-bottom: 16px;
+    }
+    .hero h1 em { font-style: italic; color: var(--amber-lt); }
+    .hero-sub {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-style: italic; font-size: 17px;
+      color: rgba(247,244,239,0.6);
+      margin-bottom: 16px;
+      max-width: 440px;
+    }
+    .hero-hook {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px; font-weight: 400;
+      color: var(--amber-lt);
+      margin-bottom: 36px;
+      max-width: 480px;
+      line-height: 1.5;
+    }
+    .reviewer-notice {
+      background: rgba(184,131,42,0.12);
+      border-left: 3px solid var(--amber);
+      padding: 14px 20px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: rgba(247,244,239,0.75);
+      max-width: 480px;
+    }
+    .reviewer-notice a {
+      color: var(--amber-lt);
+      text-decoration: none;
+    }
+    .reviewer-notice a:hover { color: #fff; }
+    .hero-cta { display: inline-flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 12px 28px;
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none;
+      font-weight: 400; transition: all 0.2s;
+      cursor: pointer; border: none; font-family: inherit;
+    }
+    .btn-primary { background: var(--amber); color: var(--parchment); }
+    .btn-primary:hover { background: var(--amber-lt); }
+    .btn-outline {
+      border: 1px solid rgba(247,244,239,0.35);
+      color: var(--parchment); background: transparent;
+    }
+    .btn-outline:hover { border-color: var(--amber-lt); color: var(--amber-lt); }
+
+    /* HERO PHOTO */
+    .hero-photo {
+      position: relative; overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      filter: saturate(0.9);
+    }
+    .hero-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--ink) 0%, transparent 30%);
+      pointer-events: none;
+    }
+    .alien-caption {
+      position: absolute; bottom: 20px; right: 20px;
+      font-family: 'IM Fell English', Georgia, serif;
+      font-style: italic; font-size: 12px;
+      color: rgba(247,244,239,0.5);
+      letter-spacing: 0.04em;
+    }
+
+    /* SECTIONS */
+    section { padding: 88px 48px; }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--amber);
+      margin-bottom: 8px; font-weight: 400;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 300; line-height: 1.15; margin-bottom: 48px;
+    }
+    h2 em { font-style: italic; color: var(--amber); }
+
+    /* ABOUT */
+    .about-section { background: var(--cream); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; max-width: 960px;
+    }
+    .about-text p {
+      color: var(--grey-cool); margin-bottom: 20px; font-size: 16px;
+    }
+    .about-quote {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-style: italic; font-size: 20px;
+      color: var(--ink); line-height: 1.5;
+      border-left: 3px solid var(--amber);
+      padding: 20px 24px;
+      background: var(--parchment);
+      margin-top: 8px;
+    }
+    .about-quote cite {
+      display: block; margin-top: 12px;
+      font-size: 12px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--stone);
+      font-style: normal;
+    }
+    .stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; margin-top: 0;
+    }
+    .stat { border-left: 2px solid var(--amber); padding-left: 16px; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 36px; font-weight: 300;
+      color: var(--ink); line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--stone); margin-top: 4px;
+    }
+
+    /* BOOKS */
+    .books-section { background: var(--parchment); }
+    .books-list { display: flex; flex-direction: column; gap: 72px; max-width: 960px; }
+    .book-card {
+      display: grid; grid-template-columns: 280px 1fr;
+      gap: 56px; align-items: start;
+      padding-bottom: 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .book-card:last-child { border-bottom: none; padding-bottom: 0; }
+    .book-cover-wrap { position: relative; }
+    .book-badge {
+      position: absolute; top: -12px; left: -12px;
+      background: var(--amber); color: var(--parchment);
+      font-size: 10px; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 5px 10px;
+      font-weight: 400; z-index: 2;
+    }
+    .book-cover {
+      width: 100%; display: block;
+      box-shadow: 8px 12px 40px rgba(26,23,20,0.22);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .book-cover:hover {
+      transform: translateY(-4px) rotate(0.5deg);
+      box-shadow: 12px 20px 56px rgba(26,23,20,0.3);
+    }
+    .book-meta { padding-top: 8px; }
+    .book-genre {
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--amber);
+      margin-bottom: 10px; font-weight: 400;
+    }
+    .book-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 38px; font-weight: 300;
+      line-height: 1.1; margin-bottom: 6px;
+    }
+    .book-title em { font-style: italic; }
+    .book-publisher {
+      font-size: 13px; color: var(--stone);
+      letter-spacing: 0.05em; margin-bottom: 20px;
+    }
+    .book-desc {
+      font-size: 15px; color: #3a3530;
+      line-height: 1.8; margin-bottom: 20px;
+    }
+
+    /* Synopsis toggle */
+    .synopsis-toggle {
+      font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--amber);
+      cursor: pointer; display: inline-flex;
+      align-items: center; gap: 8px;
+      font-weight: 400; background: none;
+      border: none; padding: 0; font-family: inherit;
+      transition: color 0.2s;
+    }
+    .synopsis-toggle:hover { color: var(--amber-lt); }
+    .toggle-arrow { transition: transform 0.25s; display: inline-block; }
+    .synopsis-toggle.open .toggle-arrow { transform: rotate(90deg); }
+    .synopsis-body {
+      display: none; margin-top: 20px;
+      padding: 28px 32px;
+      background: var(--cream);
+      border-left: 3px solid var(--amber);
+    }
+    .synopsis-body.open { display: block; }
+    .synopsis-body p {
+      font-size: 15px; color: #3a3530;
+      margin-bottom: 16px; line-height: 1.85;
+    }
+    .synopsis-body p:last-child { margin-bottom: 0; }
+    .synopsis-body strong { font-weight: 600; color: var(--ink); }
+    .bot-quote {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-style: italic; font-size: 16px;
+      color: var(--amber); margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .book-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn-dark {
+      background: var(--ink); color: var(--parchment);
+      padding: 11px 24px; font-size: 11px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; font-weight: 400;
+      transition: background 0.2s; display: inline-block;
+      font-family: inherit;
+    }
+    .btn-dark:hover { background: #2e2a26; }
+    .btn-ghost {
+      border: 1px solid var(--rule); color: var(--ink);
+      padding: 11px 24px; font-size: 11px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; font-weight: 400;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+    .btn-highlight {
+      background: var(--amber); color: var(--parchment);
+      padding: 11px 24px; font-size: 11px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; font-weight: 400;
+      transition: background 0.2s, transform 0.2s; display: inline-block;
+      font-family: inherit;
+      box-shadow: 0 3px 14px rgba(184,131,42,0.35);
+    }
+    .btn-highlight:hover { background: var(--amber-lt); transform: translateY(-2px); }
+
+    /* placeholder covers — shown automatically when a cover image 404s */
+    .cover-placeholder {
+      width: 100%; aspect-ratio: 2/3;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      text-align: center; padding: 24px;
+    }
+    .cover-placeholder span {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px; font-weight: 300; line-height: 1.3;
+      color: var(--stone);
+    }
+
+    /* TOUR */
+    .tour-section { background: var(--ink); color: var(--parchment); }
+    .tour-section h2 { color: var(--parchment); }
+    .tour-section .section-label { color: var(--amber-lt); }
+    .tour-rig {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-style: italic; font-size: 14px;
+      color: rgba(247,244,239,0.45); margin-bottom: 48px;
+    }
+    .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px; max-width: 960px;
+    }
+    .tour-stop {
+      background: rgba(247,244,239,0.04); padding: 24px 28px;
+      border-left: 2px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .tour-stop:hover {
+      border-left-color: var(--amber);
+      background: rgba(247,244,239,0.07);
+    }
+    .tour-date {
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--amber-lt); margin-bottom: 6px;
+    }
+    .tour-city {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px; font-weight: 300; margin-bottom: 4px;
+    }
+    .tour-venue { font-size: 13px; color: rgba(247,244,239,0.45); }
+    .tour-tag {
+      display: inline-block; font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(184,131,42,0.4);
+      color: var(--amber-lt); padding: 3px 8px; margin-top: 10px;
+    }
+
+    /* CONTACT */
+    .contact-section { background: var(--cream); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; max-width: 960px;
+    }
+    .contact-info p {
+      color: var(--grey-cool); font-size: 15px; margin-bottom: 28px;
+    }
+    .contact-link {
+      display: block; color: var(--amber); text-decoration: none;
+      font-size: 13px; letter-spacing: 0.08em; margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--amber-lt); }
+    .press-resources {
+      margin-top: 32px; display: flex; flex-direction: column; gap: 2px;
+    }
+    .press-link {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px; background: var(--parchment);
+      font-size: 13px; text-decoration: none; color: var(--ink);
+      transition: background 0.2s, color 0.2s;
+    }
+    .press-link:hover { background: #e0dcd5; color: var(--amber); }
+    .press-link span {
+      font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--stone);
+    }
+    form { display: flex; flex-direction: column; gap: 14px; }
+    label {
+      font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--stone);
+      margin-bottom: 4px; display: block;
+    }
+    input, select, textarea {
+      width: 100%; background: var(--parchment);
+      border: 1px solid var(--rule); padding: 12px 14px;
+      font-family: inherit; font-size: 15px; color: var(--ink);
+      font-weight: 300; outline: none;
+      transition: border-color 0.2s; -webkit-appearance: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--amber); }
+    textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink); color: rgba(247,244,239,0.45);
+      padding: 32px 48px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo { height: 36px; width: auto; opacity: 0.6; }
+    footer p { font-size: 13px; }
+    footer nav { display: flex; gap: 28px; }
+    footer nav a {
+      color: rgba(247,244,239,0.45); text-decoration: none;
+      font-size: 13px; transition: color 0.2s;
+    }
+    footer nav a:hover { color: var(--amber-lt); }
+
+    @media (max-width: 768px) {
+      section { padding: 56px 24px; }
       .site-nav { padding: 0 20px; }
-      main { padding: 40px 20px 60px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { height: 300px; }
+      .hero-photo::after { background: linear-gradient(to top, var(--ink) 0%, transparent 50%); }
+      .hero-text { padding: 40px 24px; }
+      .book-card { grid-template-columns: 1fr; gap: 32px; }
+      .book-cover-wrap { max-width: 240px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .site-nav .nav-links { gap: 16px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ARC CALLOUT */
+    .arc-callout {
+      background: linear-gradient(135deg, rgba(184,131,42,0.28) 0%, rgba(26,23,20,0.85) 100%);
+      border: 2px solid var(--amber);
+      border-left: 6px solid var(--amber-lt);
+      padding: 36px 40px;
+      margin-top: 0;
+      position: relative;
+      box-shadow: 0 8px 48px rgba(184,131,42,0.25), inset 0 1px 0 rgba(212,164,76,0.2);
+    }
+    .arc-callout::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(184,131,42,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .arc-icon {
+      font-size: 32px;
+      color: var(--amber-lt);
+      margin-bottom: 12px;
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(212,164,76,0.5);
+    }
+    .arc-label {
+      font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--amber-lt);
+      margin-bottom: 12px; font-weight: 600;
+      border-bottom: 1px solid rgba(184,131,42,0.3);
+      padding-bottom: 10px; display: inline-block;
+    }
+    .arc-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px; font-weight: 300;
+      color: #fff; margin-bottom: 14px;
+      line-height: 1.15;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .arc-body {
+      font-size: 17px; color: rgba(247,244,239,0.96);
+      line-height: 1.7; margin-bottom: 24px;
+      max-width: 460px;
+      font-family: 'Gill Sans Nova', 'Gill Sans', Optima, sans-serif;
+      font-weight: 300;
+    }
+    .arc-body em { color: var(--amber-lt); font-style: normal; font-weight: 600; }
+    .arc-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .arc-btn-gumroad {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, var(--amber-lt), var(--amber));
+      color: var(--ink);
+      text-decoration: none;
+      font-family: inherit;
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(184,131,42,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .arc-btn-gumroad:hover {
+      background: linear-gradient(135deg, #e8b85a, var(--amber-lt));
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(184,131,42,0.6);
+    }
+    .arc-btn-icon {
+      font-size: 26px; line-height: 1;
+      color: var(--ink);
+    }
+    .arc-btn-text {
+      display: flex; flex-direction: column;
+    }
+    .arc-btn-sub {
+      font-size: 9px; letter-spacing: 0.2em;
+      text-transform: uppercase; opacity: 0.65;
+      font-weight: 400; margin-bottom: 3px;
+    }
+    .arc-btn-text > span:last-child {
+      font-size: 13px; letter-spacing: 0.08em;
+      text-transform: uppercase; font-weight: 600;
+    }
+    .arc-btn-outline {
+      display: inline-block; padding: 16px 24px;
+      border: 1px solid rgba(212,164,76,0.5);
+      color: var(--amber-lt);
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none;
+      font-weight: 400; transition: all 0.2s;
+      font-family: inherit;
+      background: rgba(184,131,42,0.08);
+    }
+    .arc-btn-outline:hover {
+      border-color: var(--amber-lt);
+      background: rgba(184,131,42,0.18);
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="site-nav">
-  <a href="towle.html">&larr; Back to Thomas E. Towle</a>
+  <a href="https://towlet.github.io/index.html">
+    <img class="nav-logo" src="beanlogo.png" alt="Oxford Bean Publishing">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#tour">Tour</a></li>
+    <li><a href="#contact">Contact</a></li>
+	<li><a href="reviewers.html">For Reviewers</a></li>
+    <li><a href="#contact">Book an Event</a></li>
+  </ul>
 </nav>
 
-<main id="sample"></main>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    Thomas E. Towle &nbsp;·&nbsp; Author &nbsp;·&nbsp; Mountain Hiker&nbsp;·&nbsp; Road Traveller &nbsp;·&nbsp; Oxford Bean&nbsp;·&nbsp; New 2026 — Chimera: The Hypatia Chronicle · Now Available&nbsp;·&nbsp; Zero Carbon Garden &nbsp;·&nbsp; The Flymph&nbsp;·&nbsp; QuatroDrive-4 Tales&nbsp;·&nbsp; Southwest Sonorna Desert&nbsp;·&nbsp; Thomas E. Towle &nbsp;·&nbsp; Author &nbsp;·&nbsp; Desert Walker &nbsp;·&nbsp; Road Traveller &nbsp;·&nbsp; Oxford Bean Publishing &nbsp;·&nbsp; New 2026 — Chimera: The Hypatia Chronicle &nbsp;·&nbsp; Travels with a Slumber Queen &nbsp;·&nbsp; The Pilgrimage of Amos &nbsp;·&nbsp; Phoenix &nbsp;·&nbsp; Southwest Tour Fall 2026 &nbsp;·&nbsp;
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Author · Oxford Bean Publishing</p>
+    <h1>Thomas <em>E. Towle</em></h1>
+    <p class="hero-sub">Literary science fiction about a fossil that may contain alien DNA — and the fight to control the truth.</p>
+    <p class="hero-hook"><em>Chimera:</em> A prehistoric fossil may contain alien DNA billions of years old — and a government will do anything to control it.</p>
+    <div class="hero-cta">
+      <a href="#books" class="btn btn-primary">Explore the Books →</a>
+      <a href="reviewers.html" class="btn btn-outline">For Reviewers</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="hero.png"   alt="Thomas E. Towle — author photo, Mt Robson">
+    <span class="alien-caption">Banff, Alberta — with an uninvited guest</span>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <p class="section-label">The Author</p>
+  <h2>A life on <em>the road.</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Thomas E. Towle writes from the margins of the map — from campfires, desert trails, and the front seat of a 1987 Toyota motorhome he calls the Slumber Queen. He has been wintering in the Sonoran Desert for over four seasons, hiking the trails of Superstition Mountain, boondocking in the shadow of saguaro, and writing about what it means to be fully alive when the world keeps accelerating away from everything worth living for.</p>
+      <p>His writing sits in the lineage of Edward Abbey, John Steinbeck, and the Beat travellers — honest, funny, philosophically restless, and deeply rooted in the physical world of rock and dust and light. He is a hiker, a fiddle player, a former organic farmer, and a relentless observer of the strange theatre of American desert life.</p>
+      <p>His debut <em>The Pilgrimage of Amos</em> followed a young hitchhiker across Europe and North America in the 1970s. <em>Travels with a Slumber Queen</em> is the return — the same restless intelligence, fifty years later, still searching. And <em>Chimera: The Hypatia Chronicle</em> is the leap into literary science fiction, into the mountains, and into the oldest question of what has always been waiting in the stone.</p>
+      <div class="about-quote">
+        "I hike; therefore I exist. The ring of my hiking pole's titanium tip on the rocks — reassuring me, establishing my presence."
+        <cite>— Thomas E. Towle</cite>
+      </div>
+    </div>
+    <div>
+      <div class="arc-callout">
+        <div class="arc-icon">&#128214;</div>
+        <p class="arc-label">Now Available</p>
+        <p class="arc-heading">Where to Find the Books</p>
+        <p class="arc-body">Both <em>Chimera: The Hypatia Chronicle</em> and <em>The Pilgrimage of Amos</em> are out now in paperback — <em>Chimera</em> is also available as an ebook. Order through Ingram at any bookstore worldwide, or pick up <em>Chimera</em> in person at Octopus Books in Ottawa.</p>
+        <p class="arc-body" id="isbn-summary"></p>
+        <div class="arc-actions">
+          <a href="https://www.amazon.com/dp/0981295568" class="arc-btn-gumroad">
+            <span class="arc-btn-icon">&#128179;</span>
+            <span class="arc-btn-text"><span class="arc-btn-sub">Paperback</span>Buy Chimera on Amazon</span>
+          </a>
+         <a href="https://octopusbooks.ca" class="arc-btn-outline" target="_blank">Octopus Books, Ottawa →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section class="books-section" id="books">
+  <p class="section-label">The Work</p>
+  <h2>Books by <em>Thomas E. Towle</em></h2>
+  <div class="books-list" id="books-list"></div>
+</section>
+
+<!-- TOUR -->
+<section class="tour-section" id="tour">
+  <p class="section-label">On the Road</p>
+  <h2>Fall 2026 <em>Tour Dates</em></h2>
+  <p class="tour-rig">Travelling in The Slumber Queen — 1987 Toyota Class C Motorhome</p>
+  <div class="tour-grid">
+    <div class="tour-stop">
+      <div class="tour-date">Oct 2026 · TBC</div>
+      <div class="tour-city">Phoenix, Arizona</div>
+      <div class="tour-venue">Changing Hands Bookstore · First Draft Book Bar</div>
+      <span class="tour-tag">Anchor Event</span>
+    </div>
+    <div class="tour-stop">
+      <div class="tour-date">Oct 2026 · TBC</div>
+      <div class="tour-city">Apache Junction, Arizona</div>
+      <div class="tour-venue">Lost Dutchman State Park / Blue Bird Café</div>
+      <span class="tour-tag">Special Event</span>
+    </div>
+    <div class="tour-stop">
+      <div class="tour-date">Nov 2026 · TBC</div>
+      <div class="tour-city">Prescott, Arizona</div>
+      <div class="tour-venue">Peregrine Book Company · 219A N Cortez St</div>
+      <span class="tour-tag">Indie Bookshop</span>
+    </div>
+    <div class="tour-stop">
+      <div class="tour-date">Nov 2026 · TBC</div>
+      <div class="tour-city">Tucson, Arizona</div>
+      <div class="tour-venue">Antigone Books · 411 N 4th Ave</div>
+      <span class="tour-tag">Indie Bookshop</span>
+    </div>
+    <div class="tour-stop">
+      <div class="tour-date">Dec 2026 · TBC</div>
+      <div class="tour-city">Flagstaff, Arizona</div>
+      <div class="tour-venue">Bright Side Bookshop · 18 N San Francisco St</div>
+      <span class="tour-tag">Indie Bookshop</span>
+    </div>
+    <div class="tour-stop">
+      <div class="tour-date">Jan 2027 · TBC</div>
+      <div class="tour-city">Albuquerque, New Mexico</div>
+      <div class="tour-venue">Bookworks · 4022 Rio Grande Blvd NW</div>
+      <span class="tour-tag">Indie Bookshop</span>
+    </div>
+    <div class="tour-stop">
+      <div class="tour-date">Feb 2027 · TBC</div>
+      <div class="tour-city">Santa Fe, New Mexico</div>
+      <div class="tour-venue">Collected Works Bookstore · 202 Galisteo St</div>
+      <span class="tour-tag">Indie Bookshop</span>
+    </div>
+    <div class="tour-stop">
+      <div class="tour-date">Mar 30 2027 · Final</div>
+      <div class="tour-city">Tour Close — TBC</div>
+      <div class="tour-venue">Final event of the season · Southwest corridor</div>
+      <span class="tour-tag">Tour Close</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2>Press, Events <em>&amp; Inquiries</em></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>For media inquiries, venue booking, press kits, review copies, or general correspondence. Thomas reads and responds to all serious inquiries personally.</p>
+      <a href="https://pilgrimageofamos.blogspot.com/2026/06/chimera-hypatia-chronicle-by-thomas-e.html" class="contact-link">↗Thomas' Blog Alley</a>
+      <a href="https://towlet.github.io/index.html" class="contact-link"> Oxford Bean Publishing</a>
+      <a href="media.html" class="contact-link">  <b>Author Resources / Media Kit</b></a>
+       <a href="reviewers.html" class="contact-link">  <b>Reiewers Wanted</b></a>
+      </div>
+    </div>
+
+    
+<form action="https://formsubmit.co/d7cdaae9d7ceca64caafc59b00b318d2 " method="POST">
+
+  <!-- Required: disables captcha -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- Optional: subject line -->
+  <input type="hidden" name="_subject" value="Website Inquiry">
+
+  <!-- Optional: nicer formatting -->
+  <input type="hidden" name="_template" value="table">
+
+  <p>
+    <label>Your Name</label><br>
+    <input type="text" name="name" required>
+  </p>
+
+  <p>
+    <label>Your Email</label><br>
+    <input type="email" name="email" required>
+  </p>
+
+  <p>
+    <label>Message</label><br>
+    <textarea name="message" rows="5" required></textarea>
+  </p>
+
+  <button type="submit">Send Message</button>
+
+</form>
+
+
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo" src="beanlogo.png" alt="Oxford Bean Publishing">
+  <p>© 2026 Thomas E. Towle · Oxford Bean Publishing · All rights reserved.</p>
+  <nav>
+    <a href="https://pilgrimageofamos.blogspot.com/2026/06/chimera-hypatia-chronicle-by-thomas-e.html">Blog</a>
+ 
+     </nav>
+</footer>
 
 <script src="data/catalog.js"></script>
 <script src="assets/render-catalog.js"></script>
 <script>
-  function renderSampleOrError() {
-    const el = document.getElementById('sample');
-    if (typeof BOOKS === 'undefined') {
-      el.innerHTML = '<p class="guide-missing">Could not load the book catalog. ' +
-        'Check that <code>data/catalog.js</code> and <code>assets/render-catalog.js</code> ' +
-        'are uploaded in their own folders next to this page.</p>';
-      return;
+  const booksList = document.getElementById('books-list');
+  if (typeof BOOKS === 'undefined') {
+    booksList.innerHTML = '<p style="color:#b8832a;">Could not load the book catalog. ' +
+      'Check that <code>data/catalog.js</code> and <code>assets/render-catalog.js</code> ' +
+      'are uploaded in their own folders next to this page.</p>';
+  } else {
+    renderBookCards(booksList);
+    renderIsbnSummary(document.getElementById('isbn-summary'));
+    // Deep links like towle.html#book-chimera point at elements that only
+    // exist after the render above, so the browser's automatic scroll-to-hash
+    // happens too early — redo it manually once the cards are in the page.
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) target.scrollIntoView();
     }
-    renderSample(el);
   }
-  renderSampleOrError();
-  window.addEventListener('hashchange', renderSampleOrError);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-confirm').style.display = 'block';
+    e.target.reset();
+  }
 </script>
 
-</body>
-</html>
+</body></html>
