@@ -75,7 +75,7 @@ const BOOKS = [
     subtitle: "",
     author: "Thomas E. Towle",
     genre: "Literary Fiction",
-    series: "",
+    series: "Life as Tom",
     year: 2026,
     status: "available",
     isbn: "978-0-9812955-0-3",
@@ -86,7 +86,56 @@ const BOOKS = [
       "TOM: paste your Amos writing sample here, one paragraph per array entry."
     ],
     retailers: [
+      // TOM: these Amazon links go to the ORIGINAL "Soma Bmuth" paperback/ebook listings —
+      // the only Amos listings I could find. If the Thomas E. Towle reissue (ISBN above)
+      // has its own Amazon page, swap these two urls for that one.
+      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/1470108526" },
+      { name: "Amazon", format: "Kindle", url: "https://www.amazon.com/dp/B0079EAWL2" },
       { name: "Ingram", format: "Order via your local bookstore", url: "https://www.ingramspark.com" }
+    ]
+  },
+  {
+    slug: "flymph",
+    title: "Flymph",
+    subtitle: "",
+    author: "Thomas E. Towle",
+    genre: "Literary Fiction",
+    series: "Life as Tom",
+    year: 2026,               // TOM: confirm original publication year
+    status: "available",
+    isbn: "978-0-9812955-5-8",
+    isbnEbook: "",
+    cover: "flymph-cover.jpg",        // TOM: drop this file next to towle.html
+    // TOM: replace with real jacket copy — I couldn't pull the description from Amazon (blocked to bots).
+    blurb: "TOM: paste the real back-cover copy for Flymph here. Book 2 in the Life as Tom series.",
+    excerpt: [
+      "TOM: paste your Flymph writing sample here, one paragraph per array entry."
+    ],
+    retailers: [
+      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/098129555X" },
+      { name: "Amazon", format: "Kindle", url: "https://www.amazon.com/dp/B08B48R256" }
+    ]
+  },
+  {
+    slug: "nova-georgic",
+    title: "Nova Georgic",
+    subtitle: "",
+    author: "Thomas E. Towle",
+    genre: "Literary Fiction",
+    series: "",               // TOM: confirm whether this belongs to the Life as Tom series
+    year: 2026,                // TOM: confirm original publication year
+    status: "available",
+    isbn: "978-0-9812955-4-1",
+    isbnEbook: "",
+    cover: "nova-georgic-cover.jpg",  // TOM: drop this file next to towle.html
+    // TOM: replace with real jacket copy — I couldn't pull the description from Amazon (blocked to bots).
+    blurb: "TOM: paste the real back-cover copy for Nova Georgic here.",
+    excerpt: [
+      "TOM: paste your Nova Georgic writing sample here, one paragraph per array entry."
+    ],
+    retailers: [
+      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/0981295541" }
+      // TOM: add a Kindle/ebook link here if one exists — I couldn't find one.
     ]
   }
 
