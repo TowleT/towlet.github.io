@@ -65,6 +65,7 @@ const BOOKS = [
     ],
     retailers: [
       { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/0981295568" },
+      { name: "Amazon", format: "Read Sample", url: "https://www.amazon.com/dp/0981295568?asin=0981295568&revisionId=&format=4&depth=1" },
       { name: "Ingram", format: "Order via your local bookstore", url: "https://www.ingramspark.com" },
       { name: "Octopus Books, Ottawa", format: "In store", url: "https://octopusbooks.ca" }
     ]
@@ -75,7 +76,7 @@ const BOOKS = [
     subtitle: "",
     author: "Thomas E. Towle",
     genre: "Literary Fiction",
-    series: "Life as Tom",
+    series: "",
     year: 2026,
     status: "available",
     isbn: "978-0-9812955-0-3",
@@ -86,11 +87,8 @@ const BOOKS = [
       "TOM: paste your Amos writing sample here, one paragraph per array entry."
     ],
     retailers: [
-      // TOM: these Amazon links go to the ORIGINAL "Soma Bmuth" paperback/ebook listings —
-      // the only Amos listings I could find. If the Thomas E. Towle reissue (ISBN above)
-      // has its own Amazon page, swap these two urls for that one.
-      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/1470108526" },
-      { name: "Amazon", format: "Kindle", url: "https://www.amazon.com/dp/B0079EAWL2" },
+      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/0981295509" },
+      { name: "Amazon", format: "Read Sample", url: "https://www.amazon.com/dp/0981295509?asin=0981295509&revisionId=&format=4&depth=1" },
       { name: "Ingram", format: "Order via your local bookstore", url: "https://www.ingramspark.com" }
     ]
   },
@@ -100,20 +98,20 @@ const BOOKS = [
     subtitle: "",
     author: "Thomas E. Towle",
     genre: "Literary Fiction",
-    series: "Life as Tom",
-    year: 2026,               // TOM: confirm original publication year
+    series: "",
+    year: 2026,                // TOM: confirm publication year
     status: "available",
-    isbn: "978-0-9812955-5-8",
+    isbn: "978-0-9812955-3-4",
     isbnEbook: "",
     cover: "flymph-cover.jpg",        // TOM: drop this file next to towle.html
-    // TOM: replace with real jacket copy — I couldn't pull the description from Amazon (blocked to bots).
-    blurb: "TOM: paste the real back-cover copy for Flymph here. Book 2 in the Life as Tom series.",
+    blurb: "TOM: paste the real back-cover copy for Flymph here.",
     excerpt: [
       "TOM: paste your Flymph writing sample here, one paragraph per array entry."
     ],
     retailers: [
-      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/098129555X" },
-      { name: "Amazon", format: "Kindle", url: "https://www.amazon.com/dp/B08B48R256" }
+      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/0981295533" },
+      { name: "Amazon", format: "Read Sample", url: "https://www.amazon.com/dp/0981295533?asin=0981295533&revisionId=&format=4&depth=1" }
+      // TOM: add a Kindle/ebook link here if one exists.
     ]
   },
   {
@@ -122,10 +120,10 @@ const BOOKS = [
     subtitle: "",
     author: "Thomas E. Towle",
     genre: "Literary Fiction",
-    series: "",               // TOM: confirm whether this belongs to the Life as Tom series
-    year: 2026,                // TOM: confirm original publication year
+    series: "",
+    year: 2026,                // TOM: confirm publication year
     status: "available",
-    isbn: "978-0-9812955-4-1",
+    isbn: "978-1-06-781843-2",
     isbnEbook: "",
     cover: "nova-georgic-cover.jpg",  // TOM: drop this file next to towle.html
     // TOM: replace with real jacket copy — I couldn't pull the description from Amazon (blocked to bots).
@@ -134,8 +132,9 @@ const BOOKS = [
       "TOM: paste your Nova Georgic writing sample here, one paragraph per array entry."
     ],
     retailers: [
-      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/0981295541" }
-      // TOM: add a Kindle/ebook link here if one exists — I couldn't find one.
+      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/106781843X" },
+      { name: "Amazon", format: "Read Sample", url: "https://www.amazon.com/dp/106781843X?asin=B0HFNV27TZ&revisionId=cd1cf698&format=3&depth=1" },
+      { name: "Amazon", format: "Kindle", url: "https://www.amazon.com/dp/B0HFNV27TZ" }
     ]
   }
 
