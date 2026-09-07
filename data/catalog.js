@@ -136,6 +136,27 @@ const BOOKS = [
       { name: "Amazon", format: "Read Sample", url: "https://www.amazon.com/dp/106781843X?asin=B0HFNV27TZ&revisionId=cd1cf698&format=3&depth=1" },
       { name: "Amazon", format: "Kindle", url: "https://www.amazon.com/dp/B0HFNV27TZ" }
     ]
+  },
+  {
+    slug: "slumber-queen",
+    title: "Travels with a Slumber Queen",
+    subtitle: "",
+    author: "Thomas E. Towle",
+    genre: "Travel Memoir",
+    series: "",
+    year: 2026,                // TOM: confirm publication year for this reissue
+    status: "available",
+    isbn: "",                  // TOM: add the ISBN-13 from your registry — didn't want to guess this one
+    isbnEbook: "",
+    cover: "slumberqueen-cover.jpg",  // TOM: drop this file next to towle.html — not in the repo yet, so the placeholder box will show until you do
+    blurb: "TOM: paste the real back-cover copy for Travels with a Slumber Queen here.",
+    excerpt: [
+      "TOM: paste your Travels with a Slumber Queen writing sample here, one paragraph per array entry."
+    ],
+    retailers: [
+      { name: "Amazon", format: "Paperback", url: "https://www.amazon.com/dp/1067818448" },
+      { name: "Amazon", format: "Read Sample", url: "https://www.amazon.com/dp/1067818448?asin=1067818448&revisionId=&format=4&depth=1" }
+    ]
   }
 
   // TOM: to add the next book, copy one of the objects above and edit every field.
