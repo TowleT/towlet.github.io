@@ -673,7 +673,8 @@
   /* ── RESPONSIVE ───────────────────────────────────────── */
   @media (max-width: 960px) {
     .topbar, .masthead { padding: 0.8rem 1.5rem; }
-    .masthead-nav { gap: 1.2rem; }
+    .masthead { flex-wrap: wrap; row-gap: 0.7rem; }
+    .masthead-nav { gap: 1.2rem; width: 100%; justify-content: center; flex-wrap: wrap; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-feature { display: none; }
     .hero-content { padding: 5rem 1.5rem 3rem; }
@@ -685,6 +686,14 @@
     .wrap { padding: 0 1.5rem; }
     #authors, #catalogue, #about, #submissions { padding: 4rem 0; }
     .mission-band { padding: 2.5rem 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .topbar { flex-direction: column; gap: 0.4rem; text-align: center; padding: 0.6rem 1rem; }
+    .topbar-right { gap: 1.2rem; }
+    .catalogue-grid { grid-template-columns: 1fr; }
+    .footer-main { grid-template-columns: 1fr; }
+    .sf-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
