@@ -386,7 +386,11 @@
     footer nav a:hover { color: var(--amber-lt); }
 
     @media (max-width: 768px) {
-      .site-nav { padding: 0 20px; }
+      .site-nav {
+        padding: 12px 20px; height: auto;
+        flex-wrap: wrap; row-gap: 8px; justify-content: center; text-align: center;
+      }
+      .nav-title, .nav-right { flex-basis: 100%; text-align: center; }
       .page-hero { padding: 56px 24px 48px; }
       .page-body { padding: 0 24px 72px; }
       .book-intro { grid-template-columns: 1fr; gap: 32px; }
@@ -394,6 +398,7 @@
       .audience-grid { grid-template-columns: 1fr; }
       .arc-options { grid-template-columns: 1fr; }
       .final-cta { grid-template-columns: 1fr; gap: 32px; }
+      .final-cta-actions { width: 100%; }
       footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
