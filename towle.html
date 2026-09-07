@@ -456,7 +456,10 @@
 
     @media (max-width: 768px) {
       section { padding: 56px 24px; }
-      .site-nav { padding: 0 20px; }
+      .site-nav {
+        padding: 12px 20px; height: auto;
+        flex-wrap: wrap; row-gap: 10px; justify-content: center;
+      }
       .hero { grid-template-columns: 1fr; }
       .hero-photo { height: 300px; }
       .hero-photo::after { background: linear-gradient(to top, var(--ink) 0%, transparent 50%); }
@@ -464,8 +467,16 @@
       .book-card { grid-template-columns: 1fr; gap: 32px; }
       .book-cover-wrap { max-width: 240px; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .site-nav .nav-links { gap: 16px; }
+      .site-nav .nav-links {
+        gap: 10px 18px; width: 100%; justify-content: center; flex-wrap: wrap;
+      }
+      .stats { grid-template-columns: 1fr; }
       footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-cta, .arc-actions, .book-actions { flex-direction: column; align-items: stretch; }
+      .hero-cta .btn, .arc-actions a, .book-actions a { text-align: center; }
     }
 
     /* ARC CALLOUT */
