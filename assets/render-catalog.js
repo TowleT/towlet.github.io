@@ -72,7 +72,8 @@ function renderBookCards(container) {
     const meta = document.createElement("div");
     meta.className = "book-meta";
 
-    let isbnLine = "Oxford Bean Publishing · " + book.year + " · ISBN " + book.isbn;
+    let isbnLine = "Oxford Bean Publishing · " + book.year;
+    if (book.isbn) isbnLine += " · ISBN " + book.isbn;
     if (book.isbnEbook) isbnLine += " · Ebook ISBN " + book.isbnEbook;
 
     meta.innerHTML =
@@ -226,6 +227,7 @@ function renderSamplePicker() {
 // ── towle.html — ISBN line in the "Where to Find It" callout ─
 function renderIsbnSummary(container) {
   if (!container) return;
+  const withIsbn = BOOKS.filter(function (b) { return b.isbn; });
   container.textContent = "Ingram ISBNs — " +
-    BOOKS.map(function (b) { return b.title + ": " + b.isbn; }).join(" · ");
+    withIsbn.map(function (b) { return b.title + ": " + b.isbn; }).join(" · ");
 }
