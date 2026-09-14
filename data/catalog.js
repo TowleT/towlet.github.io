@@ -1,4 +1,4 @@
-// ─────────────────────────────────────────────────────────────
+ // ─────────────────────────────────────────────────────────────
 // Oxford Bean Publishing — catalog data
 //
 // This is the ONLY file to edit when:
@@ -146,8 +146,8 @@ const BOOKS = [
     series: "",
     year: 2026,                // TOM: confirm publication year for this reissue
     status: "available",
-    isbn: "",                  // TOM: add the ISBN-13 from your registry — didn't want to guess this one
-    isbnEbook: "",
+    isbn: "978-1-06-781844-9",
+    isbnEbook: "978-1-06-781847-0",
     cover: "slumberqueen-cover.jpg",  // TOM: drop this file next to towle.html — not in the repo yet, so the placeholder box will show until you do
     blurb: "TOM: paste the real back-cover copy for Travels with a Slumber Queen here.",
     excerpt: [
