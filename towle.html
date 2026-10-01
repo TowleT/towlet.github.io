@@ -572,6 +572,34 @@
       background: rgba(184,131,42,0.18);
       color: #fff;
     }
+
+    /* FEATURED EVENT */
+    .event-feature {
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: 40px; align-items: center;
+      max-width: 960px; margin-bottom: 48px; padding: 32px;
+      border: 1px solid rgba(184,131,42,0.5);
+      border-left: 4px solid var(--amber-lt);
+      background: rgba(184,131,42,0.08);
+    }
+    .event-feature img {
+      width: 100%; display: block;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+      transition: transform 0.25s;
+    }
+    .event-feature a:hover img { transform: translateY(-3px); }
+    .event-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 34px; font-weight: 300; line-height: 1.15;
+      margin: 6px 0 12px;
+    }
+    .event-title em { font-style: italic; color: var(--amber-lt); }
+    .event-details { font-size: 15px; color: rgba(247,244,239,0.8); margin-bottom: 24px; }
+    .tour-stop.featured { border-left-color: var(--amber); background: rgba(184,131,42,0.12); }
+    @media (max-width: 768px) {
+      .event-feature { grid-template-columns: 1fr; padding: 24px; }
+      .event-feature img { max-width: 240px; }
+    }
   </style>
 </head>
 <body>
@@ -605,6 +633,7 @@
     <h1>Thomas <em>E. Towle</em></h1>
     <p class="hero-sub">Literary science fiction about a fossil that may contain alien DNA — and the fight to control the truth.</p>
     <p class="hero-hook"><em>Chimera:</em> A prehistoric fossil may contain alien DNA billions of years old — and a government will do anything to control it.</p>
+    <p class="reviewer-notice"><strong>Book signing:</strong> Sat, Oct 24 · 11 AM – 1 PM · Books on Beechwood, Ottawa · <a href="#signing">See the flyer →</a></p>
     <div class="hero-cta">
       <a href="#books" class="btn btn-primary">Explore the Books →</a>
       <a href="reviewers.html" class="btn btn-outline">For Reviewers</a>
@@ -661,7 +690,24 @@
   <p class="section-label">On the Road</p>
   <h2>Fall/Winter 2026–27 <em>Tour Dates</em></h2>
   <p class="tour-rig">Travelling in The Slumber Queen — 1987 Toyota Class C Motorhome</p>
+  <div class="event-feature" id="signing">
+    <a href="signing-flyer.jpg" target="_blank">
+      <img src="signing-flyer.jpg" alt="Flyer: Chimera book signing, Saturday, October 24, 2026, Books on Beechwood, Ottawa">
+    </a>
+    <div>
+      <div class="tour-date">Next Event · Saturday, October 24, 2026 · 11 AM – 1 PM</div>
+      <div class="event-title">Book Signing: <em>Chimera: The Hypatia Chronicle</em></div>
+      <p class="event-details">Books on Beechwood<br>35 Beechwood Avenue, Ottawa, ON K1M 1M1<br>Meet the author · Signed copies available</p>
+      <a href="signing-flyer.jpg" class="btn btn-primary" target="_blank">View the Flyer →</a>
+    </div>
+  </div>
   <div class="tour-grid">
+    <div class="tour-stop featured">
+      <div class="tour-date">Sat 24 Oct 2026 · 11 AM – 1 PM</div>
+      <div class="tour-city">Ottawa, Ontario</div>
+      <div class="tour-venue">Books on Beechwood · 35 Beechwood Ave</div>
+      <span class="tour-tag">Book Signing</span>
+    </div>
     <div class="tour-stop">
       <div class="tour-date">Late Nov 2026 · TBC</div>
       <div class="tour-city">Phoenix, Arizona</div>
@@ -723,8 +769,7 @@
       <a href="https://pilgrimageofamos.blogspot.com/2026/06/chimera-hypatia-chronicle-by-thomas-e.html" class="contact-link">↗Thomas' Blog Alley</a>
       <a href="https://towlet.github.io/index.html" class="contact-link"> Oxford Bean Publishing</a>
       <a href="media.html" class="contact-link">  <b>Author Resources / Media Kit</b></a>
-       <a href="reviewers.html" class="contact-link">  <b>Reiewers Wanted</b></a>
-      </div>
+       <a href="reviewers.html" class="contact-link">  <b>Reviewers Wanted</b></a>
     </div>
 
     
