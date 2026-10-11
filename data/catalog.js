@@ -41,6 +41,10 @@ const BOOKS = [
     isbn: "978-0-9812955-6-5",
     isbnEbook: "978-1-06-781840-1",
     cover: "bookcover.png",           // TOM: drop this file next to towle.html
+    // Link to the French edition's card on the French site (towle-fr.html)
+    translations: [
+      { lang: "fr", label: "Lire en français — Chimère", url: "towle-fr.html#book-chimere" }
+    ],
     blurb: "A post-Carbon Wars world. A man in a coma building miniature worlds to resist his captors. A fossil that may not be what anyone thinks it is. And a love story set against the oldest question in the stone.",
     // Optional expandable synopsis — omit this key entirely for books that don't have one yet
     synopsis: [
