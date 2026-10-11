@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxford Bean Publishing — Maison d'édition littéraire indépendante</title>
+<link rel="alternate" hreflang="en" href="https://towlet.github.io/index.html">
+<link rel="alternate" hreflang="fr" href="https://towlet.github.io/index-fr.html">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --oxford-blue:   #002147;
+    --oxford-mid:    #1A3A6B;
+    --gold:          #B8960C;
+    --gold-lt:       #D4AF37;
+    --gold-pale:     #F5EDD0;
+    --cream:         #FDFAF4;
+    --parchment:     #F0E8D0;
+    --warm-white:    #FAF8F3;
+    --ink:           #1A1208;
+    --ink-mid:       #3A2E1E;
+    --ink-lt:        #6A5A40;
+    --rule:          #C8B870;
+    --rule-lt:       rgba(184,150,12,0.2);
+    --bg-section:    #F5F0E8;
+    --red-accent:    #8B1A1A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+    font-size: 18px;
+  }
+
+  /* ── TOP UTILITY BAR ─────────────────────────────────── */
+  .topbar {
+    background: var(--oxford-blue);
+    padding: 0.45rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .topbar-left {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.55);
+  }
+  .topbar-right {
+    display: flex; gap: 2rem;
+  }
+  .topbar-right a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .topbar-right a:hover { color: var(--gold-lt); }
+
+  /* ── MASTHEAD ─────────────────────────────────────────── */
+  .masthead {
+    background: var(--oxford-blue);
+    padding: 1.8rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 3px solid var(--gold);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .masthead-brand {
+    display: flex; align-items: center; gap: 1.4rem;
+    text-decoration: none;
+  }
+  .brand-crest {
+    width: 52px; height: 52px; flex-shrink: 0;
+  }
+  .brand-crest svg { width: 100%; height: 100%; }
+
+  .brand-text-wrap { line-height: 1; }
+  .brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--gold-lt); letter-spacing: 0.06em;
+    display: block;
+  }
+  .brand-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); margin-top: 0.2rem; display: block;
+  }
+
+  .masthead-nav { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+  .masthead-nav a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .masthead-nav a:hover { color: var(--gold-lt); border-bottom-color: var(--gold); }
+  .masthead-nav .nav-highlight {
+    background: var(--gold);
+    color: var(--oxford-blue) !important;
+    padding: 0.45rem 1.2rem; border: none !important;
+    font-weight: 600;
+    transition: background 0.2s !important;
+  }
+  .masthead-nav .nav-highlight:hover { background: var(--gold-lt) !important; }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    background: var(--oxford-blue);
+    position: relative; overflow: hidden;
+    min-height: 82vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  /* classical column pattern */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(90deg,
+        rgba(184,150,12,0.04) 0px, rgba(184,150,12,0.04) 1px,
+        transparent 1px, transparent 80px),
+      repeating-linear-gradient(0deg,
+        rgba(184,150,12,0.02) 0px, rgba(184,150,12,0.02) 1px,
+        transparent 1px, transparent 80px);
+    pointer-events: none;
+  }
+
+  /* gold arc top-right */
+  .hero::after {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,150,12,0.15);
+    box-shadow:
+      0 0 0 40px rgba(184,150,12,0.04),
+      0 0 0 80px rgba(184,150,12,0.03),
+      0 0 0 120px rgba(184,150,12,0.02);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    padding: 6rem 4rem 6rem 5rem;
+    position: relative; z-index: 2;
+  }
+
+  .hero-overline {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+  }
+  .hero-overline::before, .hero-overline::after {
+    content: ''; flex: 0 0 2rem; height: 1px; background: var(--gold);
+  }
+  .hero-overline span {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-lt); white-space: nowrap;
+  }
+
+  h1.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.8rem, 4.5vw, 5.2rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--cream); letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+  }
+  h1.hero-title .gold { color: var(--gold-lt); }
+
+  .hero-rule {
+    width: 5rem; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 1.5rem 0;
+  }
+
+  .hero-body {
+    font-size: 1.15rem; line-height: 1.8; font-style: italic;
+    color: rgba(253,250,244,0.65); max-width: 44ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hbtn-primary {
+    padding: 1rem 2.5rem;
+    background: var(--gold); color: var(--oxford-blue);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 600; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .hbtn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+  .hbtn-ghost {
+    padding: 1rem 2.5rem;
+    border: 1px solid rgba(184,150,12,0.5);
+    color: var(--gold-lt);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .hbtn-ghost:hover { border-color: var(--gold-lt); background: rgba(184,150,12,0.08); }
+
+  /* hero right — featured book display */
+  .hero-feature {
+    position: relative; z-index: 2;
+    padding: 4rem 4rem 4rem 2rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+
+  .featured-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); border-left: 2px solid var(--gold);
+    padding-left: 0.8rem;
+  }
+
+  .featured-book {
+    display: flex; gap: 1.8rem; align-items: flex-start;
+    padding: 2rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,150,12,0.15);
+    transition: border-color 0.3s, background 0.3s;
+    text-decoration: none;
+  }
+  .featured-book:hover {
+    border-color: rgba(184,150,12,0.4);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .fb-cover {
+    width: 90px; flex-shrink: 0;
+    aspect-ratio: 2/3;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .fb-cover.green {
+    background: linear-gradient(145deg, #2A4A3A 0%, #1A3A2A 100%);
+  }
+  .fb-cover.terracotta {
+    background: linear-gradient(145deg, #C96B3A 0%, #8A2800 100%);
+  }
+  .fb-spine {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 5px; background: var(--gold);
+  }
+  .fb-title-art {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.65rem; font-style: italic; font-weight: 700;
+    color: rgba(253,250,244,0.85); text-align: center;
+    padding: 0.5rem; line-height: 1.3;
+  }
+
+  .fb-info {}
+  .fb-meta {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.4rem; display: block;
+  }
+  .fb-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem; font-style: italic; font-weight: 700;
+    color: var(--cream); line-height: 1.2; margin-bottom: 0.3rem;
+  }
+  .fb-author {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem; color: rgba(253,250,244,0.5); margin-bottom: 0.6rem;
+  }
+  .fb-desc {
+    font-size: 0.9rem; line-height: 1.6;
+    color: rgba(253,250,244,0.55); font-style: italic;
+  }
+
+  /* ── DIVIDER RULE ─────────────────────────────────────── */
+  .rule-divider {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 0 3rem; margin: 0;
+    background: var(--oxford-blue);
+    padding-bottom: 2rem;
+  }
+  .rule-divider::before, .rule-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--rule-lt);
+  }
+  .rule-divider span {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem; color: var(--gold);
+    letter-spacing: 0.1em; white-space: nowrap;
+  }
+
+  /* ── MISSION BAND ─────────────────────────────────────── */
+  .mission-band {
+    background: var(--parchment);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 3.5rem 5rem;
+    text-align: center;
+  }
+  .mission-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.5rem; font-style: italic; line-height: 1.7;
+    color: var(--ink-mid); max-width: 800px; margin: 0 auto;
+  }
+  .mission-attr {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-lt); margin-top: 1.2rem; display: block;
+  }
+
+  /* ── SECTION WRAP ─────────────────────────────────────── */
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 3rem; }
+
+  .sec-head { margin-bottom: 2.5rem; }
+  .sec-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  .sec-label::before {
+    content: ''; width: 2rem; height: 1px; background: var(--gold);
+  }
+  h2.sec-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.4rem);
+    font-weight: 600; color: var(--oxford-blue);
+    letter-spacing: 0.03em; line-height: 1.2;
+  }
+  .sec-rule {
+    width: 4rem; height: 2px;
+    background: var(--gold); margin-top: 0.8rem;
+  }
+
+  /* ── AUTHORS ──────────────────────────────────────────── */
+  #authors { padding: 6rem 0; background: var(--warm-white); }
+
+  .authors-intro {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: end; margin-bottom: 3.5rem;
+  }
+  .authors-intro p {
+    font-size: 1.05rem; line-height: 1.85; color: var(--ink-mid);
+  }
+
+  .author-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .author-card {
+    border: 1px solid rgba(0,33,71,0.1);
+    background: var(--cream);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    text-decoration: none; color: inherit;
+    display: block;
+  }
+  .author-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,33,71,0.1);
+    border-color: var(--gold);
+  }
+
+  .ac-top {
+    background: var(--oxford-blue);
+    padding: 2rem; position: relative; overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex; align-items: flex-end;
+  }
+  .ac-top::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 30%, rgba(184,150,12,0.15), transparent 70%);
+  }
+  .ac-initials {
+    font-family: 'Cinzel', serif;
+    font-size: 4.5rem; font-weight: 700; line-height: 1;
+    color: rgba(184,150,12,0.12);
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: -0.02em;
+  }
+  .ac-name-overlay {
+    position: relative; z-index: 2;
+    border-left: 2px solid var(--gold);
+    padding-left: 0.8rem;
+  }
+  .ac-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem; font-style: italic; font-weight: 700;
+    color: var(--cream); display: block;
+  }
+  .ac-genre {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-top: 0.2rem;
+  }
+  .ac-body { padding: 1.4rem 1.5rem; }
+  .ac-body p {
+    font-size: 0.92rem; line-height: 1.7; color: var(--ink-mid);
+    margin-bottom: 0.8rem;
+  }
+  .ac-link {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--oxford-blue); font-weight: 600;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .author-card:hover .ac-link { color: var(--gold); }
+  .ac-link::after { content: '→'; }
+
+  /* ── CATALOGUE / FEATURED TITLES ──────────────────────── */
+  #catalogue { padding: 6rem 0; background: var(--bg-section); }
+
+  .catalogue-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; margin-top: 2.5rem;
+  }
+
+  .cat-book {
+    background: var(--cream);
+    border: 1px solid rgba(0,33,71,0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+  }
+  .cat-book:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,33,71,0.09); }
+
+  .cat-cover {
+    aspect-ratio: 3/4; position: relative;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .cc-1 { background: linear-gradient(145deg, #2A4A3A, #1A3020); }
+  .cc-2 { background: linear-gradient(145deg, #C96B3A, #7A1A00); }
+  .cc-3 { background: linear-gradient(145deg, #3A3060, #1A1030); }
+  .cc-4 { background: linear-gradient(145deg, #1A3A6B, #0A1A3A); }
+
+  .cat-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--gold); }
+  .cat-cover-text {
+    text-align: center; padding: 1.5rem; position: relative; z-index: 2;
+  }
+  .cat-cover-text .ct {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem; font-style: italic; font-weight: 700;
+    color: rgba(253,250,244,0.9); display: block;
+    line-height: 1.3; margin-bottom: 0.4rem;
+  }
+  .cat-cover-text .ca {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(253,250,244,0.45); display: block;
+  }
+  .cat-badge {
+    position: absolute; top: 0.6rem; right: 0.6rem;
+    background: var(--gold); color: var(--oxford-blue);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.2rem 0.5rem; font-weight: 600;
+  }
+  .cat-info { padding: 1.1rem 1.2rem; }
+  .cat-info h4 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem; font-style: italic; color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .cat-info .ci-author {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.08em;
+    color: var(--ink-lt); margin-bottom: 0.5rem; display: block;
+  }
+  .cat-info .ci-genre {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); display: block;
+  }
+
+  /* ── DYNAMIC CATALOGUE CARDS (minimal, image-optional) ──── */
+  .ob-card {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--cream);
+    border: 1px solid rgba(0,33,71,0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .ob-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,33,71,0.09); }
+  .ob-cover { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--bg-section); }
+  .ob-cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ob-cover-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 1rem;
+    font-family: 'EB Garamond', serif; font-style: italic;
+    color: var(--ink-lt); font-size: 0.95rem; line-height: 1.3;
+  }
+  .ob-badge {
+    position: absolute; top: 0.6rem; right: 0.6rem;
+    background: var(--gold); color: var(--oxford-blue);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.2rem 0.5rem; font-weight: 600;
+  }
+  .ob-card-info { padding: 1.1rem 1.2rem; }
+  .ob-card-info h4 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem; font-style: italic; color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .ob-card-author {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.08em;
+    color: var(--ink-lt); margin-bottom: 0.5rem; display: block;
+  }
+  .ob-card-genre {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); display: block;
+  }
+
+  /* ── VALUES / ABOUT ───────────────────────────────────── */
+  #about { padding: 6rem 0; background: var(--oxford-blue); }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+
+  .about-left h2.sec-title { color: var(--gold-lt); }
+  .about-left .sec-label { color: var(--gold); }
+  .about-left .sec-rule { background: var(--gold); }
+  .about-left p {
+    font-size: 1.05rem; line-height: 1.9;
+    color: rgba(253,250,244,0.7); margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+
+  .values-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .value-item {
+    padding: 1.4rem 1.5rem;
+    border: 1px solid rgba(184,150,12,0.2);
+    background: rgba(255,255,255,0.03);
+  }
+  .vi-num {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: rgba(184,150,12,0.25); line-height: 1;
+    margin-bottom: 0.5rem; display: block;
+  }
+  .vi-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.4rem; display: block;
+  }
+  .vi-body {
+    font-size: 0.88rem; line-height: 1.65;
+    color: rgba(253,250,244,0.55);
+  }
+
+  /* ── SUBMISSIONS ──────────────────────────────────────── */
+  #submissions { padding: 6rem 0; background: var(--parchment); }
+  .sub-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+  .sub-body p {
+    font-size: 1.05rem; line-height: 1.85; color: var(--ink-mid); margin-bottom: 1.2rem;
+  }
+  .sub-steps { margin-top: 2rem; }
+  .sub-step {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.2rem 0; border-bottom: 1px solid rgba(0,33,71,0.08);
+  }
+  .ss-num {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--gold);
+    line-height: 1; flex-shrink: 0; width: 2rem;
+  }
+  .ss-text h4 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--oxford-blue); margin-bottom: 0.3rem;
+  }
+  .ss-text p { font-size: 0.92rem; line-height: 1.65; color: var(--ink-lt); }
+
+  .sub-form-wrap {
+    background: var(--cream); border: 1px solid rgba(0,33,71,0.1);
+    border-top: 4px solid var(--oxford-blue); padding: 2.2rem;
+    box-shadow: 0 4px 20px rgba(0,33,71,0.06);
+  }
+  .sub-form-wrap h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem; color: var(--oxford-blue);
+    margin-bottom: 1.5rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule-lt);
+  }
+  .sf { display: flex; flex-direction: column; gap: 1rem; }
+  .sf-g { display: flex; flex-direction: column; gap: 0.3rem; }
+  .sf-g label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-lt);
+  }
+  .sf-g input, .sf-g select, .sf-g textarea {
+    padding: 0.8rem 1rem;
+    background: var(--parchment); border: 1px solid rgba(0,33,71,0.15);
+    color: var(--ink); font-family: 'EB Garamond', serif; font-size: 1rem;
+    outline: none; transition: border-color 0.2s;
+    -webkit-appearance: none; border-radius: 0;
+  }
+  .sf-g input:focus, .sf-g select:focus, .sf-g textarea:focus {
+    border-color: var(--oxford-blue);
+  }
+  .sf-g textarea { min-height: 90px; resize: vertical; }
+  .sf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .sf-btn {
+    padding: 0.9rem; background: var(--oxford-blue); color: var(--gold-lt);
+    border: none; cursor: pointer; width: 100%;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;
+    transition: background 0.2s;
+  }
+  .sf-btn:hover { background: var(--oxford-mid); }
+  #sf-success {
+    display:none; margin-top:0.8rem; padding:0.9rem;
+    background:rgba(0,33,71,0.05); border:1px solid rgba(0,33,71,0.2);
+    font-family:'Source Sans 3',sans-serif; font-size:0.72rem;
+    letter-spacing:0.08em; color:var(--oxford-blue);
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
+  footer {
+    background: var(--ink);
+    border-top: 3px solid var(--gold);
+  }
+  .footer-main {
+    padding: 4rem 3rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-brand .fb-logo {
+    font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700;
+    color: var(--gold-lt); letter-spacing: 0.06em; display: block; margin-bottom: 0.8rem;
+  }
+  .footer-brand p {
+    font-size: 0.9rem; line-height: 1.7; font-style: italic;
+    color: rgba(253,250,244,0.4); max-width: 28ch;
+  }
+  .footer-col h4 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.6rem; }
+  .footer-col a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem; color: rgba(253,250,244,0.45);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold-lt); }
+  .footer-bottom {
+    padding: 1.2rem 3rem;
+    border-top: 1px solid rgba(184,150,12,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.08em;
+    color: rgba(253,250,244,0.25);
+  }
+  .footer-isbn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem; color: rgba(253,250,244,0.25);
+  }
+
+  /* ── REVEAL ───────────────────────────────────────────── */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ───────────────────────────────────────── */
+  @media (max-width: 960px) {
+    .topbar, .masthead { padding: 0.8rem 1.5rem; }
+    .masthead { flex-wrap: wrap; row-gap: 0.7rem; }
+    .masthead-nav { gap: 1.2rem; width: 100%; justify-content: center; flex-wrap: wrap; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-feature { display: none; }
+    .hero-content { padding: 5rem 1.5rem 3rem; }
+    .authors-intro, .about-grid, .sub-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .author-cards { grid-template-columns: 1fr; }
+    .catalogue-grid { grid-template-columns: 1fr 1fr; }
+    .values-list { grid-template-columns: 1fr; }
+    .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .wrap { padding: 0 1.5rem; }
+    #authors, #catalogue, #about, #submissions { padding: 4rem 0; }
+    .mission-band { padding: 2.5rem 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .topbar { flex-direction: column; gap: 0.4rem; text-align: center; padding: 0.6rem 1rem; }
+    .topbar-right { gap: 1.2rem; }
+    .catalogue-grid { grid-template-columns: 1fr; }
+    .footer-main { grid-template-columns: 1fr; }
+    .sf-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TOP UTILITY BAR ─────────────────────────────────────── -->
+<div class="topbar">
+  <span class="topbar-left">Oxford Bean Publishing &nbsp;·&nbsp; Édition littéraire indépendante &nbsp;·&nbsp; Fondée en 2020</span>
+  <div class="topbar-right">
+    <a href="#contact">Contact</a>
+    <a href="towle-fr.html">Espace auteur</a>
+    <a href="index.html" lang="en" hreflang="en">English</a>
+  </div>
+</div>
+
+<!-- ── MASTHEAD ───────────────────────────────────────────── -->
+<header class="masthead">
+  <a href="index-fr.html" class="masthead-brand">
+    <!-- Crest / Logo SVG -->
+    <svg class="brand-crest" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+      <rect width="52" height="52" fill="none"/>
+      <!-- Shield -->
+      <path d="M26 4 L46 12 L46 28 C46 38 36 46 26 50 C16 46 6 38 6 28 L6 12 Z"
+            fill="none" stroke="#D4AF37" stroke-width="1.2"/>
+      <!-- Inner shield fill -->
+      <path d="M26 7 L43 14 L43 28 C43 36.5 34.5 43.5 26 47 C17.5 43.5 9 36.5 9 28 L9 14 Z"
+            fill="rgba(184,150,12,0.08)"/>
+      <!-- Open book -->
+      <line x1="26" y1="18" x2="26" y2="38" stroke="#D4AF37" stroke-width="0.8"/>
+      <path d="M15 20 Q20 18 26 20 L26 36 Q20 34 15 36 Z" fill="rgba(212,175,55,0.25)" stroke="#D4AF37" stroke-width="0.6"/>
+      <path d="M37 20 Q32 18 26 20 L26 36 Q32 34 37 36 Z" fill="rgba(212,175,55,0.25)" stroke="#D4AF37" stroke-width="0.6"/>
+      <!-- Star top -->
+      <path d="M26 9 L27.2 12.6 L31 12.6 L28 14.8 L29.2 18.4 L26 16.2 L22.8 18.4 L24 14.8 L21 12.6 L24.8 12.6 Z"
+            fill="#D4AF37" opacity="0.8"/>
+    </svg>
+    <div class="brand-text-wrap">
+      <span class="brand-name">Oxford Bean Publishing</span>
+      <span class="brand-sub">Édition littéraire indépendante</span>
+    </div>
+  </a>
+
+  <nav>
+    <ul class="masthead-nav">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="towle-fr.html" class="nav-highlight">Thomas E. Towle →</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-overline">
+      <span>Édition littéraire indépendante &nbsp;·&nbsp; Fondée en 2020</span>
+    </div>
+    <h1 class="hero-title">
+      Au service<br>de l'art<br><span class="gold">de l'écrit.</span>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-body">
+      Oxford Bean Publishing défend des écrivains dont l'œuvre éclaire les marges
+      de la carte — des voix qui refusent le confort, la prudence et les cases
+      toutes faites. Nous publions une littérature qui dure.
+    </p>
+    <div class="hero-btns">
+      <a href="towle-fr.html" class="hbtn-primary">Découvrir Thomas E. Towle →</a>
+    </div>
+  </div>
+
+  <div class="hero-feature">
+    <div class="featured-label">Nouveauté en français</div>
+
+    <a href="towle-fr.html#book-chimere" class="featured-book">
+      <div class="fb-cover" style="background:linear-gradient(145deg,#1A2A4A 0%,#0A1030 100%);">
+        <div class="fb-spine"></div>
+        <div class="fb-title-art">Chimère&nbsp;: La Chronique d'Hypatia</div>
+      </div>
+      <div class="fb-info">
+        <span class="fb-meta">Science-fiction littéraire &nbsp;·&nbsp; Le Cycle d'Hypatia</span>
+        <div class="fb-name">Chimère&nbsp;: La Chronique d'Hypatia</div>
+        <div class="fb-author">Thomas E. Towle</div>
+        <p class="fb-desc">Un roman de science-fiction littéraire à plusieurs voix, situé dans une cité-État dystopique — le premier volume du Cycle d'Hypatia.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ornamental rule -->
+<div class="rule-divider">
+  <span>✦</span>
+</div>
+
+<!-- ── MISSION BAND ────────────────────────────────────────── -->
+<div class="mission-band">
+  <p class="mission-text">
+    «&nbsp;Nous publions des œuvres qui font avancer le savoir, la beauté et la vérité —
+    des livres qui ont le courage de dire quelque chose de neuf, et le métier
+    pour le dire d'une manière que le lecteur n'oubliera jamais.&nbsp;»
+  </p>
+  <span class="mission-attr">Oxford Bean Publishing &nbsp;·&nbsp; Notre mission éditoriale</span>
+</div>
+
+<!-- ── CATALOGUE ───────────────────────────────────────────── -->
+<section id="catalogue">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label">Publications</div>
+      <h2 class="sec-title">Notre catalogue</h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="catalogue-grid" id="catalogue-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));"></div>
+  </div>
+</section>
+
+<script src="data/catalog.js"></script>
+<script src="data/catalog-fr.js"></script>
+<!-- The catalogue renderer is built into this page, so the French pages
+     work no matter which version of assets/render-catalog.js is on the site. -->
+<script>
+// ─────────────────────────────────────────────────────────────
+// Oxford Bean Publishing — catalog renderer
+// Reads BOOKS from data/catalog.js. Do not edit this file to add
+// a book or a retailer — edit data/catalog.js instead.
+// ─────────────────────────────────────────────────────────────
+//
+// Bilingual support: every render function takes an optional second
+// argument { books, root, lang }.
+//   books — the array to render (defaults to BOOKS, the English list)
+//   root  — path back to the site root ("" for English pages, "../"
+//           for pages inside /fr/) — used for covers, bookclub/sample
+//   lang  — "en" (default) or "fr" — chooses the button/label text
+// English pages call the functions with no options, exactly as before.
+
+const OB_LABELS = {
+  en: {
+    subSep: ": ", comingSoon: "Coming Soon", ebookIsbn: "Ebook ISBN",
+    readSynopsis: "Read Synopsis", hideSynopsis: "Hide Synopsis",
+    bookEvent: "Book an Event", bookClub: "\uD83D\uDCD6 Book Club Guide",
+    sample: "\u270E Read a Sample", isbnSummary: "Ingram ISBNs — "
+  },
+  fr: {
+    subSep: "\u00A0: ", comingSoon: "Bientôt disponible", ebookIsbn: "ISBN numérique",
+    readSynopsis: "Lire le synopsis", hideSynopsis: "Masquer le synopsis",
+    bookEvent: "Organiser un événement", bookClub: "\uD83D\uDCD6 Guide de lecture (en anglais)",
+    sample: "\u270E Lire un extrait (en anglais)", isbnSummary: "ISBN (broché) — "
+  }
+};
+
+function obOpts(opts) {
+  opts = opts || {};
+  const lang = opts.lang || "en";
+  return {
+    books: opts.books || BOOKS,
+    root: opts.root || "",
+    lang: lang,
+    L: OB_LABELS[lang] || OB_LABELS.en
+  };
+}
+
+function obCoverEl(book, imgClass, placeholderClass, root) {
+  const img = document.createElement("img");
+  img.src = (root || "") + book.cover;
+  img.alt = book.title + " — cover";
+  img.className = imgClass;
+  img.onerror = function () {
+    const ph = document.createElement("div");
+    ph.className = placeholderClass;
+    ph.innerHTML = "<span>" + book.title + "</span>";
+    img.replaceWith(ph);
+  };
+  return img;
+}
+
+// ── index.html — minimal catalogue grid ──────────────────────
+function renderCatalogueGrid(container, opts) {
+  if (!container) return;
+  const o = obOpts(opts);
+  container.innerHTML = "";
+  o.books.forEach(function (book) {
+    const a = document.createElement("a");
+    a.href = "towle.html#book-" + book.slug;
+    a.className = "ob-card";
+
+    const coverWrap = document.createElement("div");
+    coverWrap.className = "ob-cover";
+    coverWrap.appendChild(obCoverEl(book, "ob-cover-img", "ob-cover-placeholder", o.root));
+    if (book.status === "coming-soon") {
+      const badge = document.createElement("span");
+      badge.className = "ob-badge";
+      badge.textContent = o.L.comingSoon;
+      coverWrap.appendChild(badge);
+    }
+
+    const info = document.createElement("div");
+    info.className = "ob-card-info";
+    info.innerHTML =
+      "<h4>" + book.title + (book.subtitle ? o.L.subSep + book.subtitle : "") + "</h4>" +
+      '<span class="ob-card-author">' + book.author + "</span>" +
+      '<span class="ob-card-genre">' + book.genre + (book.langNote ? " · " + book.langNote : "") + "</span>";
+
+    a.appendChild(coverWrap);
+    a.appendChild(info);
+    container.appendChild(a);
+  });
+}
+
+// ── towle.html — full book cards with retailer links ─────────
+function renderBookCards(container, opts) {
+  if (!container) return;
+  const o = obOpts(opts);
+  container.innerHTML = "";
+  o.books.forEach(function (book) {
+    const card = document.createElement("div");
+    card.className = "book-card";
+    card.id = "book-" + book.slug;
+
+    const coverWrap = document.createElement("div");
+    coverWrap.className = "book-cover-wrap";
+    if (book.status === "coming-soon") {
+      const badge = document.createElement("span");
+      badge.className = "book-badge";
+      badge.textContent = o.L.comingSoon;
+      coverWrap.appendChild(badge);
+    }
+    coverWrap.appendChild(obCoverEl(book, "book-cover", "cover-placeholder", o.root));
+
+    const meta = document.createElement("div");
+    meta.className = "book-meta";
+
+    let isbnLine = "Oxford Bean Publishing · " + book.year;
+    if (book.isbn) isbnLine += " · ISBN " + book.isbn;
+    if (book.isbnEbook) isbnLine += " · " + o.L.ebookIsbn + " " + book.isbnEbook;
+
+    meta.innerHTML =
+      '<p class="book-genre">' + book.genre + (book.series ? " · " + book.series : "") +
+        (book.langNote ? " · " + book.langNote : "") + "</p>" +
+      '<h3 class="book-title">' + book.title + (book.subtitle ? o.L.subSep + "<em>" + book.subtitle + "</em>" : "") + "</h3>" +
+      '<p class="book-publisher">' + isbnLine + "</p>" +
+      (book.blurb ? '<p class="book-desc">' + book.blurb + "</p>" : "");
+
+    if (book.synopsis && book.synopsis.length) {
+      const toggle = document.createElement("button");
+      toggle.className = "synopsis-toggle";
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.innerHTML = '<span class="toggle-arrow">\u203a</span>&nbsp; ' + o.L.readSynopsis;
+
+      const body = document.createElement("div");
+      body.className = "synopsis-body";
+      body.innerHTML = book.synopsis.map(function (p) { return "<p>" + p + "</p>"; }).join("");
+      if (book.synopsisQuote) {
+        body.innerHTML += '<p class="bot-quote">' + book.synopsisQuote + "</p>";
+      }
+
+      toggle.addEventListener("click", function () {
+        const isOpen = body.classList.toggle("open");
+        toggle.classList.toggle("open", isOpen);
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.innerHTML = '<span class="toggle-arrow">' + (isOpen ? "\u2039" : "\u203a") +
+          "</span>&nbsp; " + (isOpen ? o.L.hideSynopsis : o.L.readSynopsis);
+      });
+
+      meta.appendChild(toggle);
+      meta.appendChild(body);
+    }
+
+    const actions = document.createElement("div");
+    actions.className = "book-actions";
+    (book.retailers || []).forEach(function (r, i) {
+      const a = document.createElement("a");
+      a.href = r.url;
+      a.className = i === 0 ? "btn-dark" : "btn-ghost";
+      a.textContent = r.format ? r.name + " — " + r.format : r.name;
+      actions.appendChild(a);
+    });
+    const eventBtn = document.createElement("a");
+    eventBtn.href = "#contact";
+    eventBtn.className = "btn-ghost";
+    eventBtn.textContent = o.L.bookEvent;
+    actions.appendChild(eventBtn);
+
+    // Links to the same book in another language (e.g. the French edition)
+    (book.translations || []).forEach(function (t) {
+      const tBtn = document.createElement("a");
+      tBtn.href = o.root + t.url;
+      tBtn.className = "btn-highlight";
+      if (t.lang) tBtn.setAttribute("hreflang", t.lang);
+      tBtn.textContent = t.label;
+      actions.appendChild(tBtn);
+    });
+
+    if (book.bookClub && book.bookClub.length) {
+      const clubBtn = document.createElement("a");
+      clubBtn.href = o.root + "bookclub.html#" + book.slug;
+      clubBtn.className = "btn-highlight";
+      clubBtn.textContent = o.L.bookClub;
+      actions.appendChild(clubBtn);
+    }
+
+    if (book.excerpt && book.excerpt.length) {
+      const sampleBtn = document.createElement("a");
+      sampleBtn.href = o.root + "sample.html#" + book.slug;
+      sampleBtn.className = "btn-highlight";
+      sampleBtn.textContent = o.L.sample;
+      actions.appendChild(sampleBtn);
+    }
+
+    meta.appendChild(actions);
+
+    card.appendChild(coverWrap);
+    card.appendChild(meta);
+    container.appendChild(card);
+  });
+}
+
+// ── bookclub.html — standalone printable/downloadable guide ──
+function renderBookClubGuide(container) {
+  if (!container) return;
+  const slug = (location.hash || "").replace("#", "");
+  const book = BOOKS.find(function (b) { return b.slug === slug; });
+
+  if (!book) {
+    container.innerHTML =
+      '<p class="guide-missing">Choose a book below to view its discussion guide.</p>' +
+      renderGuidePicker();
+    return;
+  }
+  if (!book.bookClub || !book.bookClub.length) {
+    container.innerHTML =
+      "<h1>" + book.title + "</h1>" +
+      '<p class="guide-missing">A book club guide for this title isn\u2019t ready yet — check back soon.</p>' +
+      '<p><a href="towle.html#book-' + book.slug + '">&larr; Back to the book</a></p>';
+    return;
+  }
+
+  const questions = book.bookClub.map(function (q) { return "<li>" + q + "</li>"; }).join("");
+  container.innerHTML =
+    '<p class="guide-eyebrow">Oxford Bean Publishing — Reading Group Guide</p>' +
+    "<h1>" + book.title + (book.subtitle ? ": " + book.subtitle : "") + "</h1>" +
+    '<p class="guide-author">by ' + book.author + "</p>" +
+    '<p class="guide-print-hint">Use your browser\u2019s Print (Ctrl/Cmd+P) and choose \u201cSave as PDF\u201d to download this guide.</p>' +
+    '<button class="btn-dark guide-print-btn" onclick="window.print()">Print / Save as PDF</button>' +
+    (book.bookClubIntro ? '<p class="guide-intro">' + book.bookClubIntro + "</p>" : "") +
+    "<ol>" + questions + "</ol>" +
+    (book.bookClubOutro ? '<p class="guide-outro">' + book.bookClubOutro + "</p>" : "") +
+    '<p><a href="towle.html#book-' + book.slug + '">&larr; Back to the book</a></p>';
+}
+
+function renderGuidePicker() {
+  const withGuides = BOOKS.filter(function (b) { return b.bookClub && b.bookClub.length; });
+  if (!withGuides.length) return "<p>No book club guides are available yet.</p>";
+  return "<ul>" + withGuides.map(function (b) {
+    return '<li><a href="bookclub.html#' + b.slug + '">' + b.title + "</a></li>";
+  }).join("") + "</ul>";
+}
+
+// ── sample.html — standalone writing-sample page ──────────────
+function renderSample(container) {
+  if (!container) return;
+  const slug = (location.hash || "").replace("#", "");
+  const book = BOOKS.find(function (b) { return b.slug === slug; });
+
+  if (!book) {
+    container.innerHTML =
+      '<p class="guide-missing">Choose a book below to read a sample.</p>' +
+      renderSamplePicker();
+    return;
+  }
+  if (!book.excerpt || !book.excerpt.length) {
+    container.innerHTML =
+      "<h1>" + book.title + "</h1>" +
+      '<p class="guide-missing">A sample for this title isn\u2019t posted yet — check back soon.</p>' +
+      '<p><a href="towle.html#book-' + book.slug + '">&larr; Back to the book</a></p>';
+    return;
+  }
+
+  const paragraphs = book.excerpt.map(function (p) { return "<p>" + p + "</p>"; }).join("");
+  container.innerHTML =
+    '<p class="guide-eyebrow">Oxford Bean Publishing — A Sample</p>' +
+    "<h1>" + book.title + (book.subtitle ? ": " + book.subtitle : "") + "</h1>" +
+    '<p class="guide-author">by ' + book.author + "</p>" +
+    '<div class="sample-text">' + paragraphs + "</div>" +
+    '<p><a href="towle.html#book-' + book.slug + '">&larr; Back to the book</a></p>';
+}
+
+function renderSamplePicker() {
+  const withSamples = BOOKS.filter(function (b) { return b.excerpt && b.excerpt.length; });
+  if (!withSamples.length) return "<p>No samples are available yet.</p>";
+  return "<ul>" + withSamples.map(function (b) {
+    return '<li><a href="sample.html#' + b.slug + '">' + b.title + "</a></li>";
+  }).join("") + "</ul>";
+}
+
+// ── towle.html — ISBN line in the "Where to Find It" callout ─
+function renderIsbnSummary(container, opts) {
+  if (!container) return;
+  const o = obOpts(opts);
+  const withIsbn = o.books.filter(function (b) { return b.isbn; });
+  container.textContent = o.L.isbnSummary +
+    withIsbn.map(function (b) { return b.title + o.L.subSep + b.isbn; }).join(" · ");
+}
+
+</script>
+<script>
+  const catalogueGrid = document.getElementById('catalogue-grid');
+  if (typeof BOOKS === 'undefined' || typeof BOOKS_FR === 'undefined') {
+    catalogueGrid.innerHTML = '<p style="grid-column:1/-1;color:#8B1A1A;">Impossible de charger le catalogue. ' +
+      'Vérifiez que <code>catalog.js</code> et <code>catalog-fr.js</code> ' +
+      'sont bien dans le dossier <code>data</code>.</p>';
+  } else {
+    renderCatalogueGrid(catalogueGrid, { books: BOOKS_FR, root: '', lang: 'fr' });
+  }
+</script>
+
+<!-- ── ABOUT ───────────────────────────────────────────────── -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="sec-label">Qui sommes-nous</div>
+        <h2 class="sec-title">À propos d'Oxford Bean Publishing</h2>
+        <div class="sec-rule"></div>
+        <br>
+        <p>
+          Oxford Bean Publishing est une maison d'édition littéraire indépendante, fondée
+          pour défendre une écriture sans compromis — des livres enracinés dans le monde
+          physique, la route et la longue tradition des écrivains qui ont préféré
+          l'expérience à la sécurité.
+        </p>
+        <p>
+          Nous sommes une petite maison au catalogue volontairement restreint. Nous publions
+          moins de livres que ce que l'industrie attend, et nous accordons à chacun le temps,
+          le soin et l'attention qu'il mérite. Notre registre ISBN, notre rigueur éditoriale
+          et notre distribution par Ingram permettent à nos auteurs de toucher le plus large
+          public possible.
+        </p>
+        <p>
+          Nous croyons que les meilleurs livres sont écrits par des gens qui ont vraiment
+          vécu ce qu'ils racontent. C'est le fondement de chacune de nos décisions
+          éditoriales.
+        </p>
+      </div>
+      <div class="values-list reveal">
+        <div class="value-item">
+          <span class="vi-num">I</span>
+          <span class="vi-title">Rigueur éditoriale</span>
+          <p class="vi-body">Chaque manuscrit bénéficie d'un travail éditorial approfondi. Nous ne précipitons pas la sortie des livres&nbsp;: nous publions quand un livre est prêt.</p>
+        </div>
+        <div class="value-item">
+          <span class="vi-num">II</span>
+          <span class="vi-title">Partenariat avec l'auteur</span>
+          <p class="vi-body">Nous travaillons avec les écrivains, pas seulement pour eux. Les auteurs sont associés à chaque décision, de la conception à la distribution et à la promotion.</p>
+        </div>
+        <div class="value-item">
+          <span class="vi-num">III</span>
+          <span class="vi-title">Soin de la fabrication</span>
+          <p class="vi-body">La couverture, la typographie intérieure et le choix du papier font partie intégrante de l'expérience de lecture, et ne sont jamais pensés après coup.</p>
+        </div>
+        <div class="value-item">
+          <span class="vi-num">IV</span>
+          <span class="vi-title">Large diffusion</span>
+          <p class="vi-body">Distribution complète par Ingram. Tous les titres sont entièrement retournables. Disponibles chez les grands détaillants et les librairies indépendantes du monde entier.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────── -->
+<footer id="contact">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <span class="fb-logo">Oxford Bean Publishing</span>
+      <p>Une maison d'édition littéraire indépendante qui publie des livres
+      enracinés dans le monde physique, la route et la longue tradition des
+      écrivains qui ont préféré l'expérience à la sécurité.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Publications</h4>
+      <ul>
+        <li><a href="towle-fr.html">Thomas E. Towle</a></li>
+        <li><a href="towle-fr.html#book-chimere">Chimère&nbsp;: La Chronique d'Hypatia</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>À propos</h4>
+      <ul>
+        <li><a href="#about">Notre mission</a></li>
+        <li><a href="#about">Nos valeurs éditoriales</a></li>
+        <li><a href="#about">Distribution</a></li>
+        <li><a href="index.html" lang="en" hreflang="en">English</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="towle-fr.html#contact">Renseignements</a></li>
+        <li><a href="towle-fr.html#contact">Presse et médias</a></li>
+        <li><a href="towle-fr.html#contact">Rencontres avec l'auteur</a></li>
+        <li><a href="https://somaroadread.blogspot.com" target="_blank" hreflang="en">Blog de l'auteur (EN)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Oxford Bean Publishing &nbsp;·&nbsp; Édition littéraire indépendante &nbsp;·&nbsp; Tous droits réservés.</p>
+    <span class="footer-isbn">Registre ISBN &nbsp;·&nbsp; Distribution Ingram &nbsp;·&nbsp; Retours acceptés</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
+
