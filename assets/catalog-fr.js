@@ -1,4 +1,4 @@
-// Oxford Bean Publishing — FRENCH catalogue data (used by the /fr/ pages)
+// Oxford Bean Publishing — FRENCH catalogue data (used by index-fr.html and towle-fr.html)
 //
 // Load this AFTER data/catalog.js — it builds the French list from two parts:
 //   1. CHIMERE_FR — the French edition of Chimera (all text in French)
@@ -21,7 +21,7 @@ const CHIMERE_FR = {
   status: "available",               // "available" | "coming-soon"
   isbn: "978-1-0678184-8-7",         // broché (paperback)
   isbnEbook: "978-1-0678184-9-4",
-  cover: "fr-chimera.png",           // TOM: drop this file next to towle.html (site root, NOT inside /fr/)
+  cover: "fr-chimera.png",           // TOM: drop this file next to towle.html (main folder)
   blurb: "Un monde d'après les Guerres du Carbone. Un homme plongé dans le coma qui bâtit des mondes miniatures pour résister à ses geôliers. Un fossile qui n'est peut-être pas ce que chacun croit. Et une histoire d'amour face à la plus ancienne question inscrite dans la pierre.",
   synopsis: [
     "Dans un monde d'après les Guerres du Carbone, fait de nations effondrées et de théocratie renaissante, <strong>Luchs</strong> — chasseur de fossiles, dioramiste et homme des montagnes — est plongé dans un coma artificiel, dans un hôpital contrôlé par les <strong>Précisiens</strong>, un gouvernement religieux impitoyable qui s'est emparé du pouvoir sur la côte Pacifique. Les Précisiens ne veulent qu'une chose\u00A0: l'emplacement d'un fossile préhistorique extraordinaire, la <strong>Chimère</strong>, enfoui quelque part dans les Montagnes Brillantes. Luchs est le seul à savoir où il se trouve. Et, même inconscient, il résiste — il bâtit des dioramas mentaux élaborés, des mondes miniatures assemblés de mémoire, autant de pièces verrouillées où ses geôliers ne peuvent jamais tout à fait entrer.",
