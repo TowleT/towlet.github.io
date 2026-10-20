@@ -11,6 +11,12 @@
 //   • a writing sample is ready           → add an "excerpt" array
 //                                            of paragraph strings
 //                                            (omit the key if none yet)
+//   • the "Leave a Review" button / review.html → automatic: it uses
+//                                            the book's Amazon Paperback
+//                                            link below. To use a different
+//                                            ASIN add  reviewAsin: "..."
+//                                            To hide a book from reviews
+//                                            add  reviews: false
 //
 // index.html and towle.html both read this file and render
 // themselves from it — no other HTML needs to change.
