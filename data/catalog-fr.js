@@ -21,6 +21,7 @@ const CHIMERE_FR = {
   status: "available",               // "available" | "coming-soon"
   isbn: "978-1-0678184-8-7",         // broché (paperback)
   isbnEbook: "978-1-0678184-9-4",
+  reviewAsin: "1067818480",          // Amazon ASIN of the French paperback — used by review-fr.html
   cover: "fr-chimera.png",           // TOM: drop this file next to towle.html (main folder)
   blurb: "Un monde d'après les Guerres du Carbone. Un homme plongé dans le coma qui bâtit des mondes miniatures pour résister à ses geôliers. Un fossile qui n'est peut-être pas ce que chacun croit. Et une histoire d'amour face à la plus ancienne question inscrite dans la pierre.",
   synopsis: [
