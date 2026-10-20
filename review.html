@@ -94,6 +94,7 @@
   .stores li.suggested .note { color: var(--amber-lt); }
 
   .missing { color: var(--amber-dk); }
+  .fr-note { margin: 0.9rem 0 0; font-size: 0.95rem; color: var(--ink-soft); }
   .sign { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 1.5rem; margin: 2rem 0 0; }
   footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--ink-soft); }
 </style>
@@ -227,6 +228,12 @@
         list.appendChild(li);
       });
       sec.appendChild(list);
+      if ((b.translations || []).some(function (t) { return t.lang === "fr"; })) {
+        var fr = el("p", { "class": "fr-note", lang: "fr" });
+        fr.appendChild(document.createTextNode("Vous avez lu l\u2019\u00e9dition fran\u00e7aise\u00a0? "));
+        fr.appendChild(el("a", { href: "review-fr.html", hreflang: "fr" }, "Laissez un avis ici"));
+        sec.appendChild(fr);
+      }
       root.appendChild(sec);
     });
 

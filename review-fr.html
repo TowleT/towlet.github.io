@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laisser un avis — Chimère — Thomas E. Towle</title>
+<meta name="description" content="Laissez un avis court et sincère sur Chimère : La Chronique d’Hypatia, de Thomas E. Towle.">
+<link rel="alternate" hreflang="en" href="https://towlet.github.io/review.html">
+<link rel="alternate" hreflang="fr" href="https://towlet.github.io/review-fr.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --ink:       #1a1714;
+    --ink-soft:  #4a4036;
+    --parchment: #f7f4ef;
+    --cream:     #ede9e2;
+    --paper:     #fffdf8;
+    --amber:     #b8832a;
+    --amber-lt:  #d4a44c;
+    --amber-dk:  #7a5313;
+    --rule:      rgba(26,23,20,0.14);
+    box-sizing: border-box;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    font-family: 'Gill Sans Nova', 'Gill Sans', 'Gill Sans MT', Optima, Calibri, sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  a { color: var(--amber-dk); }
+  a:focus-visible { outline: 3px solid var(--amber-dk); outline-offset: 2px; }
+
+  /* top bar, matching towle.html */
+  .bar {
+    background: var(--ink);
+    padding: calc(env(safe-area-inset-top, 0px) + 10px) 20px 10px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .bar img { height: 38px; width: auto; display: block; }
+  .bar a.back {
+    color: var(--parchment); text-decoration: none; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8;
+  }
+  .bar a.back:hover { opacity: 1; color: var(--amber-lt); }
+
+  main { max-width: 40rem; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: clamp(2.4rem, 8vw, 3.2rem); line-height: 1.05; margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 1.65rem; line-height: 1.15; margin: 0 0 0.75rem; }
+  p { margin: 0 0 1rem; text-wrap: pretty; }
+
+  .guide {
+    background: var(--paper); border: 1px solid var(--rule); border-left: 4px solid var(--amber);
+    padding: 1.25rem 1.25rem 0.5rem; margin: 1.75rem 0 2.25rem;
+  }
+  .guide ol, .guide ul { margin: 0 0 1.1rem; padding-left: 1.4rem; }
+  .guide li { margin-bottom: 0.45rem; }
+  .guide h3 { font-size: 1.05rem; font-weight: 600; margin: 1.1rem 0 0.5rem; }
+
+  .jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+  .jump a {
+    display: inline-block; padding: 0.35rem 0.75rem; border: 1px solid var(--rule);
+    background: var(--paper); text-decoration: none; color: var(--ink); font-size: 0.95rem;
+  }
+  .jump a:hover { border-color: var(--amber); }
+
+  .book { padding: 1.75rem 0 1.5rem; border-top: 1px solid var(--rule); }
+  .book-head { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.1rem; }
+  .book-head img { width: 4.75rem; height: auto; flex: 0 0 auto; box-shadow: 0 0.35rem 1rem rgba(26,23,20,0.22); }
+  .book-head h2 { margin: 0; }
+  .book-head .sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; color: var(--ink-soft); margin: 0.15rem 0 0; }
+
+  .stores { display: flex; flex-direction: column; gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
+  .stores a {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    min-height: 3.25rem; padding: 0.7rem 1rem;
+    background: var(--paper); border: 1px solid var(--rule);
+    color: var(--ink); text-decoration: none; font-size: 1.05rem;
+  }
+  .stores a:hover { border-color: var(--amber); }
+  .stores .note { font-size: 0.88rem; color: var(--ink-soft); text-align: right; }
+  .stores li.suggested { order: -1; }
+  .stores li.suggested a { background: var(--ink); border-color: var(--ink); color: var(--parchment); }
+  .stores li.suggested .note { color: var(--amber-lt); }
+
+  .missing { color: var(--amber-dk); }
+  .fr-note { margin: 0.9rem 0 0; font-size: 0.95rem; color: var(--ink-soft); }
+  .sign { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 1.5rem; margin: 2rem 0 0; }
+  footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <a href="index-fr.html"><img src="beanlogo.png" alt="Oxford Bean Publishing"></a>
+  <a class="back" href="towle-fr.html#books">&larr; Les livres</a>
+</div>
+
+<main>
+  <h1>Laisser un avis</h1>
+  <p>Merci de votre lecture. Un avis court et sincère est ce qui aide le plus un livre indépendant&nbsp;: c’est ainsi que le prochain lecteur le découvre.</p>
+  <p>Une phrase ou deux suffisent. Quoi que vous en ayez pensé, c’est votre avis sincère qui compte.</p>
+
+  <section class="guide" aria-labelledby="how">
+    <h2 id="how">Comment ça marche</h2>
+    <ol>
+      <li>Choisissez la boutique Amazon où vous avez déjà un compte, ou Goodreads. Celle qui semble être la vôtre apparaît en premier.</li>
+      <li>Connectez-vous si on vous le demande. Le formulaire d’avis s’ouvre pour le livre.</li>
+      <li>Attribuez une note en étoiles, écrivez une ligne ou deux, puis envoyez.</li>
+    </ol>
+
+    <h3>Avant de commencer&nbsp;: qui peut laisser un avis sur Amazon</h3>
+    <ul>
+      <li>Il vous faut un compte Amazon actif dans la boutique de votre pays. Amazon.fr et Amazon.ca sont des boutiques distinctes&nbsp;: utilisez celle où vous faites habituellement vos achats. En Belgique, en Suisse et au Luxembourg, la plupart des lecteurs utilisent Amazon.fr.</li>
+      <li>Amazon n’accepte que les avis des comptes ayant effectué un montant minimum d’achats au cours des 12 derniers mois (de l’ordre de 50&nbsp;€, avec une règle semblable sur Amazon.ca). Les achats payés par carte cadeau ou avec un crédit promotionnel peuvent ne pas compter.</li>
+      <li>Inutile d’avoir acheté le livre sur Amazon&nbsp;: si vous l’avez acheté lors d’une séance de dédicace ou en librairie, vous pouvez quand même laisser un avis.</li>
+      <li>Amazon vérifie les avis avant de les publier&nbsp;; le vôtre peut mettre quelques jours à apparaître.</li>
+      <li>Si Amazon refuse votre avis pour l’instant, Goodreads est une excellente solution de rechange&nbsp;: l’inscription est gratuite et aucun historique d’achat n’est demandé.</li>
+    </ul>
+  </section>
+
+  <div id="books"></div>
+
+  <p class="fr-note" lang="en">Read one of the English-language books? <a href="review.html" hreflang="en">Leave a review on the English page</a>.</p>
+
+  <p class="sign">Avec mes remerciements, Thomas E. Towle</p>
+
+  <footer>
+    Oxford Bean Publishing · <a href="towle-fr.html">En savoir plus sur l’auteur et ses livres</a>
+  </footer>
+</main>
+
+<script src="data/catalog.js"></script>
+<script src="data/catalog-fr.js"></script>
+<script>
+  /* Les livres viennent de data/catalog-fr.js : tout livre en français qui a
+     un « reviewAsin » apparaît ici (aujourd’hui : Chimère). */
+
+  var STORES = [
+    { key: "fr", label: "Avis sur Amazon.fr", note: "France, Belgique, Suisse", url: function (a) { return "https://www.amazon.fr/review/create-review?asin=" + a; } },
+    { key: "ca", label: "Avis sur Amazon.ca", note: "Canada",                  url: function (a) { return "https://www.amazon.ca/review/create-review?asin=" + a; } },
+    { key: "gr", label: "Avis sur Goodreads", note: "Tous pays",               url: function (a, b) { return "https://www.goodreads.com/search?q=" + (b.isbn || "").replace(/[^0-9X]/gi, ""); } }
+  ];
+
+  // Canada (fuseau horaire ou langue fr-CA) → Amazon.ca ; sinon Amazon.fr.
+  function guessStore() {
+    var tz = "", lang = "";
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    try { lang = (navigator.language || "").toUpperCase(); } catch (e) {}
+    var canada = ["America/Toronto","America/Montreal","America/Nipigon","America/Thunder_Bay","America/Iqaluit",
+      "America/Pangnirtung","America/Atikokan","America/Winnipeg","America/Rainy_River","America/Rankin_Inlet",
+      "America/Resolute","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay",
+      "America/Yellowknife","America/Inuvik","America/Vancouver","America/Dawson_Creek","America/Fort_Nelson",
+      "America/Creston","America/Whitehorse","America/Dawson","America/Halifax","America/Glace_Bay",
+      "America/Moncton","America/Goose_Bay","America/St_Johns","America/Blanc-Sablon"];
+    if (canada.indexOf(tz) !== -1 || /-CA$/.test(lang)) return "ca";
+    return "fr";
+  }
+
+  function el(tag, attrs, text) {
+    var n = document.createElement(tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text) n.textContent = text;
+    return n;
+  }
+
+  (function render() {
+    var root = document.getElementById("books");
+    if (typeof BOOKS_FR === "undefined") {
+      root.innerHTML = '<p class="missing">La liste des livres n’a pas pu être chargée. Réessayez plus tard, ou laissez un avis sur <a href="https://www.goodreads.com">Goodreads</a>.</p>';
+      return;
+    }
+    var suggested = guessStore();
+    var books = BOOKS_FR.filter(function (b) {
+      return b.reviewAsin && !b.langNote && b.status !== "coming-soon" && b.reviews !== false;
+    });
+
+    books.forEach(function (b) {
+      var sec = el("section", { "class": "book", id: b.slug, "aria-labelledby": b.slug + "-title" });
+      var head = el("div", { "class": "book-head" });
+      if (b.cover) {
+        var img = el("img", { src: b.cover, alt: "Couverture de " + b.title });
+        img.onerror = function () { img.remove(); };
+        head.appendChild(img);
+      }
+      var t = el("div", {});
+      t.appendChild(el("h2", { id: b.slug + "-title" }, b.title));
+      if (b.subtitle) t.appendChild(el("p", { "class": "sub" }, b.subtitle));
+      head.appendChild(t);
+      sec.appendChild(head);
+
+      var list = el("ul", { "class": "stores" });
+      STORES.forEach(function (s) {
+        if (s.key === "gr" && !b.isbn) return;
+        var li = el("li", {});
+        var a = el("a", { href: s.url(b.reviewAsin, b), rel: "noopener" });
+        a.appendChild(el("span", {}, s.label));
+        var isSuggested = s.key === suggested;
+        a.appendChild(el("span", { "class": "note" }, isSuggested ? "Suggéré pour vous" : s.note));
+        if (isSuggested) li.className = "suggested";
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      sec.appendChild(list);
+      root.appendChild(sec);
+    });
+
+    if (location.hash) {
+      var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) target.scrollIntoView();
+    }
+  })();
+</script>
+</body>
+</html>

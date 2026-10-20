@@ -58,6 +58,10 @@
       transition: opacity 0.2s, color 0.2s;
     }
     .site-nav .nav-links a:hover { opacity: 1; color: var(--amber-lt); }
+    @media (max-width: 1300px) and (min-width: 769px) {
+      .site-nav { padding: 0 24px; }
+      .site-nav .nav-links { gap: 16px; }
+    }
 
     /* TICKER */
     .ticker {
@@ -618,6 +622,7 @@
     <li><a href="#tour">Tournée</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="reviewers.html" hreflang="en">Critiques (EN)</a></li>
+    <li><a href="review-fr.html">Laisser un avis</a></li>
     <li><a href="#contact">Organiser un événement</a></li>
     <li><a href="towle.html" lang="en" hreflang="en">English</a></li>
   </ul>
@@ -774,6 +779,7 @@
       <a href="index-fr.html" class="contact-link">Oxford Bean Publishing</a>
       <a href="media.html" class="contact-link" hreflang="en"><b>Dossier de presse (EN)</b></a>
       <a href="reviewers.html" class="contact-link" hreflang="en"><b>Appel aux critiques (EN)</b></a>
+      <a href="review-fr.html" class="contact-link"><b>Vous avez lu <em>Chimère</em> ? Laissez un avis</b></a>
     </div>
 
 <form action="https://formsubmit.co/d7cdaae9d7ceca64caafc59b00b318d2" method="POST">
@@ -804,7 +810,7 @@
   <img class="footer-logo" src="beanlogo.png" alt="Oxford Bean Publishing">
   <p>© 2026 Thomas E. Towle · Oxford Bean Publishing · Tous droits réservés.</p>
   <nav>
-    <a href="https://pilgrimageofamos.blogspot.com/2026/06/chimera-hypatia-chronicle-by-thomas-e.html" hreflang="en">Blog (EN)</a> &nbsp;·&nbsp; <a href="towle.html" hreflang="en">English</a>
+    <a href="https://pilgrimageofamos.blogspot.com/2026/06/chimera-hypatia-chronicle-by-thomas-e.html" hreflang="en">Blog (EN)</a> &nbsp;·&nbsp; <a href="review-fr.html">Laisser un avis</a> &nbsp;·&nbsp; <a href="towle.html" hreflang="en">English</a>
  
      </nav>
 </footer>
@@ -999,6 +1005,15 @@ function renderBookCards(container, opts) {
       sampleBtn.className = "btn-highlight";
       sampleBtn.textContent = o.L.sample;
       actions.appendChild(sampleBtn);
+    }
+
+    // « Laisser un avis » — French editions only (books with a reviewAsin in data/catalog-fr.js)
+    if (book.reviewAsin && !book.langNote && book.status !== "coming-soon") {
+      const reviewBtn = document.createElement("a");
+      reviewBtn.href = o.root + "review-fr.html#" + book.slug;
+      reviewBtn.className = "btn-highlight";
+      reviewBtn.textContent = "\u2605 Laisser un avis";
+      actions.appendChild(reviewBtn);
     }
 
     meta.appendChild(actions);
