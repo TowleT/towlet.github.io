@@ -17,13 +17,15 @@ const OB_LABELS = {
     subSep: ": ", comingSoon: "Coming Soon", ebookIsbn: "Ebook ISBN",
     readSynopsis: "Read Synopsis", hideSynopsis: "Hide Synopsis",
     bookEvent: "Book an Event", bookClub: "\uD83D\uDCD6 Book Club Guide",
-    sample: "\u270E Read a Sample", isbnSummary: "Ingram ISBNs — "
+    sample: "\u270E Read a Sample", isbnSummary: "Ingram ISBNs — ",
+    review: "\u2605 Leave a Review"
   },
   fr: {
     subSep: "\u00A0: ", comingSoon: "Bientôt disponible", ebookIsbn: "ISBN numérique",
     readSynopsis: "Lire le synopsis", hideSynopsis: "Masquer le synopsis",
     bookEvent: "Organiser un événement", bookClub: "\uD83D\uDCD6 Guide de lecture (en anglais)",
-    sample: "\u270E Lire un extrait (en anglais)", isbnSummary: "ISBN (broché) — "
+    sample: "\u270E Lire un extrait (en anglais)", isbnSummary: "ISBN (broché) — ",
+    review: "\u2605 Laisser un avis"
   }
 };
 
@@ -36,6 +38,20 @@ function obOpts(opts) {
     lang: lang,
     L: OB_LABELS[lang] || OB_LABELS.en
   };
+}
+
+// The Amazon ASIN used for a book's "Leave a Review" button and review.html.
+// Uses book.reviewAsin if set; otherwise takes the ASIN from the book's
+// Amazon Paperback link in data/catalog.js. Returns "" when there is none,
+// or when the book is coming soon or has reviews: false.
+function obReviewAsin(book) {
+  if (!book || book.status === "coming-soon" || book.reviews === false) return "";
+  if (book.reviewAsin) return book.reviewAsin;
+  const r = (book.retailers || []).find(function (x) {
+    return x.name === "Amazon" && x.format === "Paperback";
+  });
+  const m = r && /\/dp\/([A-Z0-9]{10})/i.exec(r.url);
+  return m ? m[1].toUpperCase() : "";
 }
 
 function obCoverEl(book, imgClass, placeholderClass, root) {
@@ -183,6 +199,15 @@ function renderBookCards(container, opts) {
       sampleBtn.className = "btn-highlight";
       sampleBtn.textContent = o.L.sample;
       actions.appendChild(sampleBtn);
+    }
+
+    // "Leave a Review" — links to this book's section of review.html
+    if (o.lang === "en" && obReviewAsin(book)) {
+      const reviewBtn = document.createElement("a");
+      reviewBtn.href = o.root + "review.html#" + book.slug;
+      reviewBtn.className = "btn-highlight";
+      reviewBtn.textContent = o.L.review;
+      actions.appendChild(reviewBtn);
     }
 
     meta.appendChild(actions);
