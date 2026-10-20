@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leave a Review — Thomas E. Towle</title>
+<meta name="description" content="Leave a short, honest review of a book by Thomas E. Towle, Oxford Bean Publishing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --ink:       #1a1714;
+    --ink-soft:  #4a4036;
+    --parchment: #f7f4ef;
+    --cream:     #ede9e2;
+    --paper:     #fffdf8;
+    --amber:     #b8832a;
+    --amber-lt:  #d4a44c;
+    --amber-dk:  #7a5313;
+    --rule:      rgba(26,23,20,0.14);
+    box-sizing: border-box;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    font-family: 'Gill Sans Nova', 'Gill Sans', 'Gill Sans MT', Optima, Calibri, sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  a { color: var(--amber-dk); }
+  a:focus-visible { outline: 3px solid var(--amber-dk); outline-offset: 2px; }
+
+  /* top bar, matching towle.html */
+  .bar {
+    background: var(--ink);
+    padding: calc(env(safe-area-inset-top, 0px) + 10px) 20px 10px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .bar img { height: 38px; width: auto; display: block; }
+  .bar a.back {
+    color: var(--parchment); text-decoration: none; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8;
+  }
+  .bar a.back:hover { opacity: 1; color: var(--amber-lt); }
+
+  main { max-width: 40rem; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: clamp(2.4rem, 8vw, 3.2rem); line-height: 1.05; margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 1.65rem; line-height: 1.15; margin: 0 0 0.75rem; }
+  p { margin: 0 0 1rem; text-wrap: pretty; }
+
+  .guide {
+    background: var(--paper); border: 1px solid var(--rule); border-left: 4px solid var(--amber);
+    padding: 1.25rem 1.25rem 0.5rem; margin: 1.75rem 0 2.25rem;
+  }
+  .guide ol, .guide ul { margin: 0 0 1.1rem; padding-left: 1.4rem; }
+  .guide li { margin-bottom: 0.45rem; }
+  .guide h3 { font-size: 1.05rem; font-weight: 600; margin: 1.1rem 0 0.5rem; }
+
+  .jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+  .jump a {
+    display: inline-block; padding: 0.35rem 0.75rem; border: 1px solid var(--rule);
+    background: var(--paper); text-decoration: none; color: var(--ink); font-size: 0.95rem;
+  }
+  .jump a:hover { border-color: var(--amber); }
+
+  .book { padding: 1.75rem 0 1.5rem; border-top: 1px solid var(--rule); }
+  .book-head { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.1rem; }
+  .book-head img { width: 4.75rem; height: auto; flex: 0 0 auto; box-shadow: 0 0.35rem 1rem rgba(26,23,20,0.22); }
+  .book-head h2 { margin: 0; }
+  .book-head .sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; color: var(--ink-soft); margin: 0.15rem 0 0; }
+
+  .stores { display: flex; flex-direction: column; gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
+  .stores a {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    min-height: 3.25rem; padding: 0.7rem 1rem;
+    background: var(--paper); border: 1px solid var(--rule);
+    color: var(--ink); text-decoration: none; font-size: 1.05rem;
+  }
+  .stores a:hover { border-color: var(--amber); }
+  .stores .note { font-size: 0.88rem; color: var(--ink-soft); text-align: right; }
+  .stores li.suggested { order: -1; }
+  .stores li.suggested a { background: var(--ink); border-color: var(--ink); color: var(--parchment); }
+  .stores li.suggested .note { color: var(--amber-lt); }
+
+  .missing { color: var(--amber-dk); }
+  .sign { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 1.5rem; margin: 2rem 0 0; }
+  footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <a href="index.html"><img src="beanlogo.png" alt="Oxford Bean Publishing"></a>
+  <a class="back" href="towle.html#books">&larr; The books</a>
+</div>
+
+<main>
+  <h1>Leave a Review</h1>
+  <p>Thank you for reading. A short, honest review is the most helpful thing you can do for an independent book. It’s how the next reader finds it.</p>
+  <p>A sentence or two is plenty. Whatever you thought of the book, your honest view is what helps.</p>
+
+  <section class="guide" aria-labelledby="how">
+    <h2 id="how">How it works</h2>
+    <ol>
+      <li>Find your book below.</li>
+      <li>Choose the Amazon store where you already have an account, or Goodreads. The store we think is yours is shown first.</li>
+      <li>Sign in if asked. The review form opens for that book.</li>
+      <li>Give it a star rating and write a line or two, then submit.</li>
+    </ol>
+
+    <h3>Before you start: who can review on Amazon</h3>
+    <ul>
+      <li>You need an active Amazon account in that country’s store. Amazon.ca, Amazon.com, Amazon.co.uk and Amazon.com.au are separate stores, so use the one you normally shop on.</li>
+      <li>Amazon only accepts reviews from accounts that have spent a minimum amount in the past 12 months (about US $50 on Amazon.com, with similar rules in other countries). Purchases paid with gift cards or promotional credit may not count.</li>
+      <li>You don’t need to have bought the book from Amazon. If you bought it at a signing or a bookshop, you can still review it.</li>
+      <li>Amazon checks reviews before posting them, so yours may take a few days to appear.</li>
+      <li>If Amazon says you can’t review yet, Goodreads is a great alternative. It’s free to join and needs no purchase history.</li>
+    </ul>
+  </section>
+
+  <ul class="jump" id="jump" aria-label="Jump to a book"></ul>
+  <div id="books"></div>
+
+  <p class="sign">With thanks, Thomas E. Towle</p>
+
+  <footer>
+    Oxford Bean Publishing · <a href="towle.html">More about the author and his books</a>
+  </footer>
+</main>
+
+<script src="data/catalog.js"></script>
+<script>
+  /* Books come from data/catalog.js — nothing to edit here when a book is added.
+     A book appears when its status is "available" and it has an Amazon
+     Paperback link (or a reviewAsin). Add  reviews: false  to hide one. */
+
+  function reviewAsin(book) {
+    if (!book || book.status === "coming-soon" || book.reviews === false) return "";
+    if (book.reviewAsin) return book.reviewAsin;
+    var r = (book.retailers || []).filter(function (x) { return x.name === "Amazon" && x.format === "Paperback"; })[0];
+    var m = r && /\/dp\/([A-Z0-9]{10})/i.exec(r.url);
+    return m ? m[1].toUpperCase() : "";
+  }
+
+  var STORES = [
+    { key: "ca",  label: "Review on Amazon.ca",     note: "Canada",         url: function (a) { return "https://www.amazon.ca/review/create-review?asin=" + a; } },
+    { key: "com", label: "Review on Amazon.com",    note: "United States",  url: function (a) { return "https://www.amazon.com/review/create-review?asin=" + a; } },
+    { key: "uk",  label: "Review on Amazon.co.uk",  note: "United Kingdom", url: function (a) { return "https://www.amazon.co.uk/review/create-review?asin=" + a; } },
+    { key: "au",  label: "Review on Amazon.com.au", note: "Australia",      url: function (a) { return "https://www.amazon.com.au/review/create-review?asin=" + a; } },
+    { key: "gr",  label: "Review on Goodreads",     note: "Any country",    url: function (a, b) { return "https://www.goodreads.com/search?q=" + (b.isbn || "").replace(/[^0-9X]/gi, ""); } }
+  ];
+
+  // Guess the reader's Amazon store from their device's time zone and language.
+  function guessStore() {
+    var canada = ["America/Toronto","America/Montreal","America/Nipigon","America/Thunder_Bay","America/Iqaluit",
+      "America/Pangnirtung","America/Atikokan","America/Winnipeg","America/Rainy_River","America/Rankin_Inlet",
+      "America/Resolute","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay",
+      "America/Yellowknife","America/Inuvik","America/Vancouver","America/Dawson_Creek","America/Fort_Nelson",
+      "America/Creston","America/Whitehorse","America/Dawson","America/Halifax","America/Glace_Bay",
+      "America/Moncton","America/Goose_Bay","America/St_Johns","America/Blanc-Sablon"];
+    var tz = "", lang = "";
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    try { lang = (navigator.language || "").toUpperCase(); } catch (e) {}
+    if (canada.indexOf(tz) !== -1 || /-CA$/.test(lang)) return "ca";
+    if (tz === "Europe/London" || tz === "Europe/Belfast" || /-GB$/.test(lang)) return "uk";
+    if (tz.indexOf("Australia/") === 0 || /-AU$/.test(lang)) return "au";
+    if (tz.indexOf("America/") === 0 || tz === "Pacific/Honolulu") return "com";
+    return null;
+  }
+
+  function el(tag, attrs, text) {
+    var n = document.createElement(tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text) n.textContent = text;
+    return n;
+  }
+
+  (function render() {
+    var root = document.getElementById("books");
+    var jump = document.getElementById("jump");
+    if (typeof BOOKS === "undefined") {
+      root.innerHTML = '<p class="missing">The book list could not be loaded. Please try again later, or review on <a href="https://www.goodreads.com">Goodreads</a>.</p>';
+      return;
+    }
+    var suggested = guessStore();
+    var books = BOOKS.filter(function (b) { return reviewAsin(b); });
+
+    books.forEach(function (b) {
+      var asin = reviewAsin(b);
+
+      var j = el("li", {}); j.appendChild(el("a", { href: "#" + b.slug }, b.title)); jump.appendChild(j);
+
+      var sec = el("section", { "class": "book", id: b.slug, "aria-labelledby": b.slug + "-title" });
+      var head = el("div", { "class": "book-head" });
+      if (b.cover) {
+        var img = el("img", { src: b.cover, alt: "Cover of " + b.title });
+        img.onerror = function () { img.remove(); };
+        head.appendChild(img);
+      }
+      var t = el("div", {});
+      t.appendChild(el("h2", { id: b.slug + "-title" }, b.title));
+      if (b.subtitle) t.appendChild(el("p", { "class": "sub" }, b.subtitle));
+      head.appendChild(t);
+      sec.appendChild(head);
+
+      var list = el("ul", { "class": "stores" });
+      STORES.forEach(function (s) {
+        if (s.key === "gr" && !b.isbn) return;
+        var li = el("li", {});
+        var a = el("a", { href: s.url(asin, b), rel: "noopener" });
+        a.appendChild(el("span", {}, s.label));
+        var isSuggested = s.key === suggested;
+        a.appendChild(el("span", { "class": "note" }, isSuggested ? "Suggested for you" : s.note));
+        if (isSuggested) li.className = "suggested";
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      sec.appendChild(list);
+      root.appendChild(sec);
+    });
+
+    // Links like review.html#amos jump to that book once the list is built.
+    if (location.hash) {
+      var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) target.scrollIntoView();
+    }
+  })();
+</script>
+</body>
+</html>
